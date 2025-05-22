@@ -1,0 +1,136 @@
+body {
+  background-color: #f0d2b4;
+  color: #ffff;
+  font-family: "Noto Serif JP", serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow: auto;
+  position: relative;
+}
+
+body::before {
+  background-image: url("@/assets/images/pattern_104.png"); /* 画像パスに合わせて書き換え */
+  background-size: cover; /* 画像を全体にフィットさせる */
+  content: "";
+  height: 100%;
+  left: 0;
+  opacity: 0.03;
+  pointer-events: none; /* クリックできるように */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* 必要に応じて調整（ページの上に乗せる） */
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: block;
+}
+
+li::marker {
+  display: none;
+}
+
+/* li::marker {
+  all: unset;
+} */
+
+/* li::marker {
+  all: unset;
+  text-align: left !important;
+  text-align-last: auto !important;
+  text-indent: 0 !important;
+  unicode-bidi: normal !important;
+} */
+
+a {
+  text-decoration: none;
+}
+
+.title-inner {
+  align-items: center;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7.5rem;
+}
+
+.title-inner span {
+  font-family: "Cormorant Garamond", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  left: 1.375rem;
+  position: absolute;
+}
+
+.title-inner h1 {
+  font-size: 4rem;
+}
+
+.title-inner span::after {
+  background-color: #000;
+  content: "";
+  display: block;
+  height: 1px;
+  inset: 55% 0 5% 100%;
+  margin-left: 1rem;
+  position: absolute;
+  transform: translateY(-50%);
+  width: 42px;
+}
+
+.contens-inner {
+  align-items: start;
+  color: #000;
+  display: flex;
+  flex-flow: column;
+  flex-flow: row-reverse;
+  justify-content: space-between;
+  margin-bottom: 4.875rem;
+  width: 100%;
+}
+
+/* .contents-text {
+} */
+
+.contens-inner h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.contens-inner h2 span {
+  font-size: 1.375rem;
+}
+
+.contens-text-inner {
+  font-weight: bold;
+  margin-top: 1.375rem;
+}
+
+.contens-text-inner::after {
+  background-color: #000;
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 1.375rem;
+  position: absolute;
+  width: 42px;
+}
+
+.contens-inner p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 3.25rem;
+  margin-top: 6.125rem;
+}

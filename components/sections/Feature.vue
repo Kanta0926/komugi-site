@@ -9,48 +9,48 @@ import img3 from "@/assets/images/brenna-unsplash.png";
 import PlusIcon from "@/assets/icons/Subtract.svg";
 
 // 画像のホバー時のイージング処理
-const featureRef = ref<HTMLElement | null>(null);
+// const featureRef = ref<HTMLElement | null>(null);
 
-const animateWidth = (
-  el: HTMLElement,
-  start: number,
-  end: number,
-  duration: number
-): void => {
-  // アニメーションの開始を記録
-  const startTime = performance.now();
+// const animateWidth = (
+//   el: HTMLElement,
+//   start: number,
+//   end: number,
+//   duration: number
+// ): void => {
+//   // アニメーションの開始を記録
+//   const startTime = performance.now();
 
-  const step = (currentTime: number) => {
-    // アニメーション開始してから時刻を計算
-    const elapsed = currentTime - startTime;
+//   const step = (currentTime: number) => {
+//     // アニメーション開始してから時刻を計算
+//     const elapsed = currentTime - startTime;
 
-    // 0-1の範囲でアニメーションの進行具合
-    const progress = Math.min(elapsed / duration, 1);
-    const newWidth = start + (end - start) * progress;
+//     // 0-1の範囲でアニメーションの進行具合
+//     const progress = Math.min(elapsed / duration, 1);
+//     const newWidth = start + (end - start) * progress;
 
-    el.style.width = `${newWidth}%`;
+//     el.style.width = `${newWidth}%`;
 
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    }
-  };
+//     if (progress < 1) {
+//       requestAnimationFrame(step);
+//     }
+//   };
 
-  requestAnimationFrame(step);
-};
+//   requestAnimationFrame(step);
+// };
 
-// ホバー時の関数
-const expand = () => {
-  if (featureRef.value) {
-    animateWidth(featureRef.value, 33.33, 40, 400);
-  }
-};
+// // ホバー時の関数
+// const expand = () => {
+//   if (featureRef.value) {
+//     animateWidth(featureRef.value, 33.33, 40, 400);
+//   }
+// };
 
-// ホバー解除時の関数
-const shrink = () => {
-  if (featureRef.value) {
-    animateWidth(featureRef.value, 40, 33.33, 400);
-  }
-};
+// // ホバー解除時の関数
+// const shrink = () => {
+//   if (featureRef.value) {
+//     animateWidth(featureRef.value, 40, 33.33, 400);
+//   }
+// };
 </script>
 
 <template>
@@ -68,12 +68,7 @@ const shrink = () => {
       </div>
 
       <div class="feature-contens-inner">
-        <li
-          ref="featureRef"
-          class="feature-contents"
-          @mouseenter="expand"
-          @mouseleave="shrink"
-        >
+        <li ref="featureRef" class="feature-contents">
           <a class="feature-contens-pointer" href="">
             <div class="feature-text">
               <h3>
@@ -101,12 +96,7 @@ const shrink = () => {
           </a>
         </li>
 
-        <li
-          ref="featureRef"
-          class="feature-contents"
-          @mouseenter="expand"
-          @mouseleave="shrink"
-        >
+        <li ref="featureRef" class="feature-contents">
           <a class="feature-contens-pointer" href="">
             <div class="feature-text">
               <h3>
@@ -133,12 +123,7 @@ const shrink = () => {
           </a>
         </li>
 
-        <li
-          ref="featureRef"
-          class="feature-contents"
-          @mouseenter="expand"
-          @mouseleave="shrink"
-        >
+        <li ref="featureRef" class="feature-contents">
           <a class="feature-contens-pointer" href="">
             <div class="feature-text">
               <h3>

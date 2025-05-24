@@ -109,9 +109,16 @@ onMounted(() => {
 .logo-inner {
   display: flex;
   justify-content: space-between;
-  padding: 0 5.375rem;
+  /* padding: 0 5.375rem; */
   margin-top: 4rem;
   width: 100%;
+}
+
+.logo-inner a {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
 }
 
 .title-text {
@@ -242,7 +249,7 @@ onMounted(() => {
   bottom: 0;
   font-family: inter;
   font-size: 1.3rem;
-  padding: 0.8rem 0;
+  /* padding: 0.8rem 0; */
   justify-content: space-around;
 }
 

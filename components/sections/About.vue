@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script setup>
 import { onMounted, onUnmounted, ref } from "vue";
 
-import img1 from "@/assets/images/About01.png";
-import img2 from "@/assets/images/About02.png";
-import img3 from "@/assets/images/brenna-huff-PpxsF4L2BOg-unsplash.png";
-import img4 from "@/assets/images/brenna-huff-Ppxg-unsplash.png";
-import img5 from "@/assets/images/brenna-hufunsplash.png";
+// import img1 from "@/assets/images/About01.png";
+// import img2 from "@/assets/images/About02.png";
+// import img3 from "@/assets/images/brenna-huff-PpxsF4L2BOg-unsplash.png";
+// import img4 from "@/assets/images/brenna-huff-Ppxg-unsplash.png";
+// import img5 from "@/assets/images/brenna-hufunsplash.png";
 
 const scrollY = ref(0);
 
@@ -22,6 +22,7 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 </script>
+
 <template>
   <section class="sec-inner">
     <div class="about-inner">
@@ -37,7 +38,7 @@ onUnmounted(() => {
               transform: `translateY(${scrollY * -0.2}px) scale(1.7)`,
             }"
           >
-            <img :src="img1" alt="" />
+            <img src="/images/About01.png" alt="" />
           </div>
         </figure>
         <div class="contents-text">
@@ -70,7 +71,7 @@ onUnmounted(() => {
               transform: `translateY(${scrollY * -0.2}px) scale(1.7)`,
             }"
           >
-            <img :src="img2" alt="" />
+            <img src="/images/About02.png" alt="" />
           </div>
         </figure>
       </div>
@@ -83,7 +84,7 @@ onUnmounted(() => {
               transform: `translateY(${scrollY * -0.2}px) scale(1.2)`,
             }"
           >
-            <img :src="img3" alt="" />
+            <img src="/images/brenna-huff-Ppxg-unsplash.png" alt="" />
           </div>
         </figure>
 
@@ -94,7 +95,7 @@ onUnmounted(() => {
               transform: `translateY(${scrollY * -0.2}px) scale(1.2)`,
             }"
           >
-            <img :src="img4" alt="" />
+            <img src="/images/brenna-huff-Ppxg-unsplash.png" alt="" />
           </div>
         </figure>
 
@@ -105,7 +106,7 @@ onUnmounted(() => {
               transform: `translateY(${scrollY * -0.2}px) scale(1.2)`,
             }"
           >
-            <img :src="img5" alt="" />
+            <img src="/images/brenna-hufunsplash.png" alt="" />
           </div>
         </figure>
       </div>

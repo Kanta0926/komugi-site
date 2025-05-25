@@ -2,11 +2,17 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
+  ssr: true,
+  nitro: {
+    preset: "static", // ← これが重要！静的生成に切り替える
+  },
   vite: {
     plugins: [require("vite-svg-loader")()],
   },
   css: ["@/assets/css/main.css"],
   app: {
+    baseURL: "/komugi-site/",
+
     head: {
       link: [
         {

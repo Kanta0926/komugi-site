@@ -4,17 +4,23 @@ import { ref, onMounted } from "vue";
 import titleText from "@/assets/images/Group14.png";
 import logo from "@/assets/images/小麦好日ロゴ05.png";
 
-import img1 from "@/assets/images/Rectangle19.png";
-import img2 from "@/assets/images/Rectangle20.png";
-import img3 from "@/assets/images/Rectangle21.png";
+// import img1 from "@/assets/images/Rectangle19.png";
+// import img2 from "@/assets/images/Rectangle20.png";
+// import img3 from "@/assets/images/Rectangle21.png";
 
 // icon
-import MapIcon from "~/assets/icons/ph_map-pin-light.svg";
-import ClockIcon from "~/assets/icons/basil_clock-outline.svg";
-import InstaIcon from "~/assets/icons/hugeicons_instagram.svg";
+import MapIcon from "@/assets/icons/ph_map-pin-light.svg";
+import ClockIcon from "@/assets/icons/basil_clock-outline.svg";
+import InstaIcon from "@/assets/icons/hugeicons_instagram.svg";
 
 const currentIndex = ref(0);
-const images = [img1, img2, img3];
+// const images = [img1, img2, img3];
+
+const images = [
+  useRuntimeConfig().app.baseURL + "images/Rectangle19.png",
+  useRuntimeConfig().app.baseURL + "images/Rectangle20.png",
+  useRuntimeConfig().app.baseURL + "images/Rectangle21.png",
+];
 
 onMounted(() => {
   setInterval(() => {
@@ -26,11 +32,9 @@ onMounted(() => {
 <template>
   <section class="top-inner">
     <div class="logo-inner">
-      <h1>
-        <a href="">
-          <img :src="logo" class="logo" alt="小麦好日" />
-        </a>
-      </h1>
+      <a href="">
+        <img :src="logo" class="logo" alt="小麦好日" />
+      </a>
 
       <div>
         <img :src="titleText" class="title-text" alt="" />
@@ -109,14 +113,16 @@ onMounted(() => {
 .logo-inner {
   display: flex;
   justify-content: space-between;
-  /* padding: 0 5.375rem; */
+  padding: 0 5.375rem;
   margin-top: 4rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .logo-inner a {
   position: relative;
-  width: 100%;
+  width: 10%;
+  height: 20%;
   max-width: 100%;
   display: flex;
 }
@@ -127,8 +133,8 @@ onMounted(() => {
 
 .logo {
   /* position: absolute; */
-  width: 15%;
-  height: 25%;
+  width: 100%;
+  height: 100%;
 }
 .global-nav {
   position: absolute;

@@ -1,7 +1,7 @@
 <script setup>
-import Top from "~/components/sections/Top.vue";
-import About from "~/components/sections/About.vue";
-import Feature from "~/components/sections/Feature.vue";
+import Top from "@/components/sections/Top.vue";
+import About from "@/components/sections/About.vue";
+import Feature from "@/components/sections/Feature.vue";
 </script>
 
 <template>

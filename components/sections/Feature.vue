@@ -1,9 +1,5 @@
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from "vue";
-
-import img1 from "@/assets/images/american-heritage-chocolate-HJUae0j54tI-unsplash.jpg";
-import img2 from "@/assets/images/brenna-huff-PpxsF4LBOg-unsplash.png";
-import img3 from "@/assets/images/brenna-unsplash.png";
 
 // icon
 import PlusIcon from "@/assets/icons/Subtract.svg";
@@ -51,6 +47,8 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
 //     animateWidth(featureRef.value, 40, 33.33, 400);
 //   }
 // };
+
+const showDetail = ref(false);
 </script>
 
 <template>
@@ -68,9 +66,13 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
       </div>
 
       <div class="feature-contens-inner">
-        <li ref="featureRef" class="feature-contents">
-          <a class="feature-contens-pointer" href="">
-            <div class="feature-text">
+        <li
+          ref="featureRef"
+          class="feature-contents"
+          @click="showDetail = !showDetail"
+        >
+          <a class="feature-contens-pointer" href="javascript:void(0)">
+            <div class="feature-text" :class="{ lifted: isLifted }">
               <h3>
                 <span lang="ja">素材にこだわっているからこそ</span>
                 <span lang="na"
@@ -78,20 +80,25 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
                 >
               </h3>
 
-              <div class="feature-text-sub">
-                <p>小麦本来の香りと甘みを、まっすぐに伝えます。</p>
-                <p>
-                  私たちは、国産小麦をはじめとした安心
-                  できる素材にこだわり、余計なものを加えず、シンプルでいて深みのある味を追求しています。
-                </p>
-                <p>毎朝の手ごねから焼き上げまで、一つひとつ丁寧に。</p>
-              </div>
+              <transition name="fade">
+                <div v-if="showDetail" class="feature-text-sub">
+                  <p>小麦本来の香りと甘みを、まっすぐに伝えます。</p>
+                  <p>
+                    私たちは、国産小麦をはじめとした安心
+                    できる素材にこだわり、余計なものを加えず、シンプルでいて深みのある味を追求しています。
+                  </p>
+                  <p>毎朝の手ごねから焼き上げまで、一つひとつ丁寧に。</p>
+                </div>
+              </transition>
             </div>
             <div class="feature-btn">
               <PlusIcon />
             </div>
             <div class="feature-img">
-              <img :src="img1" alt="" />
+              <img
+                src="/images/american-heritage-chocolate-HJUae0j54tI-unsplash.jpg"
+                alt=""
+              />
             </div>
           </a>
         </li>
@@ -118,7 +125,7 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
               <PlusIcon />
             </div>
             <div class="feature-img">
-              <img :src="img2" alt="" />
+              <img src="/images/brenna-huff-PpxsF4LBOg-unsplash.png" alt="" />
             </div>
           </a>
         </li>
@@ -147,7 +154,7 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
               <PlusIcon></PlusIcon>
             </div>
             <div class="feature-img">
-              <img :src="img3" alt="" />
+              <img src="/images/brenna-unsplash.png"" alt="" />
             </div>
           </a>
         </li>
@@ -256,7 +263,7 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
 
 .feature-contents {
   width: 33.3333%;
-  height: 48.9375rem;
+  height: 100%;
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   transition-duration: 0.6s;
   transition-property: width;
@@ -342,6 +349,27 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
 
 /* クリック時のテキスト */
 .feature-text-sub {
-  display: none;
+  color: #ffff;
+  font-seze: 1rem;
+  font-family: "Gothic A1";
+  font-weight: bold;
+}
+
+/* 必要に応じて style タグに追加 */
+/* .fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+} */
+
+.feature-text {
+  transition: transform 0.4s ease;
+}
+
+.feature-text.lifted {
+  transform: translateY(-20px); /* 上に20px浮かせる */
 }
 </style>

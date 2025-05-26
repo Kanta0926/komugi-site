@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
 
 // icon
@@ -48,7 +48,13 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
 //   }
 // };
 
-const showDetail = ref(false);
+// const isLifted = ref(false); // 状態を持つ（最初は false）
+
+const liftedIndex = ref<number | null>(null);
+
+function toggleLift(index: number) {
+  liftedIndex.value = liftedIndex.value === index ? null : index;
+}
 </script>
 
 <template>
@@ -66,13 +72,9 @@ const showDetail = ref(false);
       </div>
 
       <div class="feature-contens-inner">
-        <li
-          ref="featureRef"
-          class="feature-contents"
-          @click="showDetail = !showDetail"
-        >
+        <li class="feature-contents" @click="toggleLift(0)">
           <a class="feature-contens-pointer" href="javascript:void(0)">
-            <div class="feature-text" :class="{ lifted: isLifted }">
+            <div class="feature-text" :class="{ lifted: liftedIndex === 0 }">
               <h3>
                 <span lang="ja">素材にこだわっているからこそ</span>
                 <span lang="na"
@@ -80,16 +82,14 @@ const showDetail = ref(false);
                 >
               </h3>
 
-              <transition name="fade">
-                <div v-if="showDetail" class="feature-text-sub">
-                  <p>小麦本来の香りと甘みを、まっすぐに伝えます。</p>
-                  <p>
-                    私たちは、国産小麦をはじめとした安心
-                    できる素材にこだわり、余計なものを加えず、シンプルでいて深みのある味を追求しています。
-                  </p>
-                  <p>毎朝の手ごねから焼き上げまで、一つひとつ丁寧に。</p>
-                </div>
-              </transition>
+              <div class="feature-text-sub">
+                <p>小麦本来の香りと甘みを、まっすぐに伝えます。</p>
+                <p>
+                  私たちは、国産小麦をはじめとした安心
+                  できる素材にこだわり、余計なものを加えず、シンプルでいて深みのある味を追求しています。
+                </p>
+                <p>毎朝の手ごねから焼き上げまで、一つひとつ丁寧に。</p>
+              </div>
             </div>
             <div class="feature-btn">
               <PlusIcon />
@@ -103,36 +103,45 @@ const showDetail = ref(false);
           </a>
         </li>
 
-        <li ref="featureRef" class="feature-contents">
-          <a class="feature-contens-pointer" href="">
+        <li
+          class="feature-contents"
+          @click="toggleLift(1)"
+          :class="{ lifted: liftedIndex === 1 }"
+        >
+          <a class="feature-contens-pointer" href="javascript:void(0)">
             <div class="feature-text">
-              <h3>
-                <span lang="ja">焼き立てのカリッと食感をあなたに</span>
-                <span lang="na">Freshly baked and crispy texture for you</span>
-              </h3>
+              <div>
+                <h3>
+                  <span lang="ja">焼き立てのカリッと食感をあなたに</span>
+                  <span lang="na"
+                    >Freshly baked and crispy texture for you</span
+                  >
+                </h3>
 
-              <div class="feature-text-sub">
-                <p>
-                  高温のオーブンでしっかりと焼き上げたクラストは、パリッと香ばしく。
-                </p>
-                <p>噛むたびに広がる、小麦本来の風味とやさしい甘み。</p>
-                <p>
-                  手間を惜しまず、心を込めて焼き上げた一つのベーグルに、きっとあなたの好きが詰まっています。
-                </p>
+                <div class="feature-text-sub">
+                  <p>
+                    高温のオーブンでしっかりと焼き上げたクラストは、パリッと香ばしく。
+                  </p>
+                  <p>噛むたびに広がる、小麦本来の風味とやさしい甘み。</p>
+                  <p>
+                    手間を惜しまず、心を込めて焼き上げた一つのベーグルに、きっとあなたの好きが詰まっています。
+                  </p>
+                </div>
               </div>
             </div>
             <div class="feature-btn">
               <PlusIcon />
             </div>
+            <div class="feature-vell"></div>
             <div class="feature-img">
               <img src="/images/brenna-huff-PpxsF4LBOg-unsplash.png" alt="" />
             </div>
           </a>
         </li>
 
-        <li ref="featureRef" class="feature-contents">
-          <a class="feature-contens-pointer" href="">
-            <div class="feature-text">
+        <li class="feature-contents" @click="toggleLift(2)">
+          <a class="feature-contens-pointer" href="javascript:void(0)">
+            <div class="feature-text" :class="{ lifted: liftedIndex === 2 }">
               <h3>
                 <span lang="ja">季節ごとのベーグルで新たな体験を</span>
                 <span lang="na"
@@ -175,6 +184,7 @@ const showDetail = ref(false);
   flex-flow: column;
   align-items: center;
   padding-top: 14.375rem;
+  padding-bottom: 14.375rem;
 }
 
 .title-inner {
@@ -294,6 +304,11 @@ const showDetail = ref(false);
   width: 24rem;
   margin: 0 auto;
   top: 70%;
+  flex-direction: column;
+  mask-image: url("@/assets/images/マスクグラデーション.png");
+  mask-size: 100% 100%;
+  padding: 10rem 0 9rem 0;
+  height: 100%;
 }
 
 .feature-contents a {
@@ -365,11 +380,38 @@ const showDetail = ref(false);
   opacity: 0;
 } */
 
+.feature-vell {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgb(60, 60, 60);
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition-duration: var(--dur-transition);
+  transition-property: opacity;
+  will-change: opacity;
+}
+
 .feature-text {
   transition: transform 0.4s ease;
 }
 
-.feature-text.lifted {
+.lifted .feature-text {
   transform: translateY(-20px); /* 上に20px浮かせる */
 }
+
+.lifted .feature-btn {
+  transform: rotate(90deg); /* 上に20px浮かせる */
+}
+
+.lifted .feature-vell {
+  opacity: 0.2;
+}
+
+/* .lifted.feature-img {
+  transform: translateY(-20px); 
+} */
 </style>

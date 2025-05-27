@@ -72,28 +72,36 @@ function toggleLift(index: number) {
       </div>
 
       <div class="feature-contens-inner">
-        <li class="feature-contents" @click="toggleLift(0)">
+        <li
+          class="feature-contents"
+          @click="toggleLift(0)"
+          :class="{ lifted: liftedIndex === 0 }"
+        >
           <a class="feature-contens-pointer" href="javascript:void(0)">
-            <div class="feature-text" :class="{ lifted: liftedIndex === 0 }">
-              <h3>
-                <span lang="ja">素材にこだわっているからこそ</span>
-                <span lang="na"
-                  >because we are particular about the materials we use</span
-                >
-              </h3>
+            <div class="feature-text">
+              <div class="feature-text-inner">
+                <h3>
+                  <span lang="ja">素材にこだわっているからこそ</span>
+                  <span lang="na"
+                    >because we are particular about the materials we use</span
+                  >
+                </h3>
 
-              <div class="feature-text-sub">
-                <p>小麦本来の香りと甘みを、まっすぐに伝えます。</p>
-                <p>
-                  私たちは、国産小麦をはじめとした安心
-                  できる素材にこだわり、余計なものを加えず、シンプルでいて深みのある味を追求しています。
-                </p>
-                <p>毎朝の手ごねから焼き上げまで、一つひとつ丁寧に。</p>
+                <div class="feature-text-sub">
+                  <p>小麦本来の香りと甘みを、まっすぐに伝えます。</p>
+                  <p>
+                    私たちは、国産小麦をはじめとした安心
+                    できる素材にこだわり、余計なものを加えず、シンプルでいて深みのある味を追求しています。
+                  </p>
+                  <p>毎朝の手ごねから焼き上げまで、一つひとつ丁寧に。</p>
+                </div>
               </div>
             </div>
             <div class="feature-btn">
               <PlusIcon />
             </div>
+            <div class="feature-vell"></div>
+
             <div class="feature-img">
               <img
                 src="/images/american-heritage-chocolate-HJUae0j54tI-unsplash.jpg"
@@ -110,7 +118,7 @@ function toggleLift(index: number) {
         >
           <a class="feature-contens-pointer" href="javascript:void(0)">
             <div class="feature-text">
-              <div>
+              <div class="feature-text-inner">
                 <h3>
                   <span lang="ja">焼き立てのカリッと食感をあなたに</span>
                   <span lang="na"
@@ -139,29 +147,36 @@ function toggleLift(index: number) {
           </a>
         </li>
 
-        <li class="feature-contents" @click="toggleLift(2)">
+        <li
+          class="feature-contents"
+          @click="toggleLift(2)"
+          :class="{ lifted: liftedIndex === 2 }"
+        >
           <a class="feature-contens-pointer" href="javascript:void(0)">
-            <div class="feature-text" :class="{ lifted: liftedIndex === 2 }">
-              <h3>
-                <span lang="ja">季節ごとのベーグルで新たな体験を</span>
-                <span lang="na"
-                  >Feel a new experience with seasonal bagels</span
-                >
-              </h3>
+            <div class="feature-text">
+              <div class="feature-text-inner">
+                <h3>
+                  <span lang="ja">季節ごとのベーグルで新たな体験を</span>
+                  <span lang="na"
+                    >Feel a new experience with seasonal bagels</span
+                  >
+                </h3>
 
-              <div class="feature-text-sub">
-                <p>
-                  春はいちご、夏はとうもろこし、秋はかぼちゃ、冬はチョコとスパイス。
-                </p>
-                <p>
-                  旬の素材をたっぷり使った、季節限定のベーグルたちは、毎回ちょっとしたワクワクを届けてくれます。
-                </p>
-                <p>今日はどんな味に出会えるか。</p>
+                <div class="feature-text-sub">
+                  <p>
+                    春はいちご、夏はとうもろこし、秋はかぼちゃ、冬はチョコとスパイス。
+                  </p>
+                  <p>
+                    旬の素材をたっぷり使った、季節限定のベーグルたちは、毎回ちょっとしたワクワクを届けてくれます。
+                  </p>
+                  <p>今日はどんな味に出会えるか。</p>
+                </div>
               </div>
             </div>
             <div class="feature-btn">
               <PlusIcon></PlusIcon>
             </div>
+            <div class="feature-vell"></div>
             <div class="feature-img">
               <img src="/images/brenna-unsplash.png"" alt="" />
             </div>
@@ -299,16 +314,25 @@ function toggleLift(index: number) {
   position: relative;
   z-index: 500;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   width: 24rem;
   margin: 0 auto;
-  top: 70%;
+  /* top: 70%; */
   flex-direction: column;
-  mask-image: url("@/assets/images/マスクグラデーション.png");
+  mask-image: url("@/assets/images/commit_mask.png");
   mask-size: 100% 100%;
   padding: 10rem 0 9rem 0;
   height: 100%;
+  box-sizing: border-box;
+}
+
+.feature-text-inner {
+  transform: translateY(8rem);
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition-duration: 0.6s;
+  transition-property: transform;
+  will-change: transform;
 }
 
 .feature-contents a {
@@ -339,12 +363,17 @@ function toggleLift(index: number) {
 
 .feature-btn {
   fill: #ffff;
-  position: relative;
+  position: absolute;
   z-index: 500;
   display: flex;
   justify-content: center;
-  margin-top: 3.25rem;
-  top: 70%;
+  left: 50%;
+  bottom: 3rem;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition-duration: 0.6s;
+  transition-property: transform;
+  will-change: transform;
+  /* top: 70%; */
 }
 
 .feature-img {
@@ -390,17 +419,17 @@ function toggleLift(index: number) {
   opacity: 0;
   background-color: rgb(60, 60, 60);
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-  transition-duration: var(--dur-transition);
+  transition-duration: 0.6s;
   transition-property: opacity;
   will-change: opacity;
 }
 
 .feature-text {
-  transition: transform 0.4s ease;
+  /* transition: transform 0.4s ease; */
 }
 
-.lifted .feature-text {
-  transform: translateY(-20px); /* 上に20px浮かせる */
+.lifted .feature-text-inner {
+  transform: translateY(0); /* 上に20px浮かせる */
 }
 
 .lifted .feature-btn {

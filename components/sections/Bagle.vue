@@ -71,7 +71,7 @@
   display: flex;
   justify-content: center;
   flex-flow: column;
-  width: 34.7%;
+  align-items: center;
 }
 
 .bagel-inner {

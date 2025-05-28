@@ -320,7 +320,7 @@ function toggleLift(index: number) {
   margin: 0 auto;
   /* top: 70%; */
   flex-direction: column;
-  mask-image: url("@/assets/images/commit_mask.png");
+  mask-image: url("@/assets/images/マスクグラデーション04.png");
   mask-size: 100% 100%;
   padding: 10rem 0 9rem 0;
   height: 100%;
@@ -328,7 +328,7 @@ function toggleLift(index: number) {
 }
 
 .feature-text-inner {
-  transform: translateY(8rem);
+  transform: translateY(12rem);
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   transition-duration: 0.6s;
   transition-property: transform;
@@ -349,6 +349,7 @@ function toggleLift(index: number) {
   align-items: center;
   color: #ffff;
   text-align: center;
+  margin: 2.5rem 0;
 }
 
 .feature-contents a h3 [lang="ja"] {

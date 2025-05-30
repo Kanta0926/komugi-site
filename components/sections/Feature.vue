@@ -1,8 +1,34 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // icon
 import PlusIcon from "@/assets/icons/Subtract.svg";
+
+// パララックス処理
+gsap.registerPlugin(ScrollTrigger);
+
+// const containerRef = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  const elements = gsap.utils.toArray<HTMLElement>(".js-parallax");
+
+  elements.forEach((wrap) => {
+    const y = wrap.getAttribute("data-y") || "-100";
+
+    gsap.to(wrap, {
+      y: y,
+      scrollTrigger: {
+        trigger: wrap,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.5,
+        markers: true, // デバッグ用
+      },
+    });
+  });
+});
 
 // 画像のホバー時のイージング処理
 // const featureRef = ref<HTMLElement | null>(null);
@@ -102,11 +128,13 @@ function toggleLift(index: number) {
             </div>
             <div class="feature-vell"></div>
 
-            <div class="feature-img">
-              <img
-                src="/images/american-heritage-chocolate-HJUae0j54tI-unsplash.jpg"
-                alt=""
-              />
+            <div class="feature-img js-parallax" data-y="-20vw">
+              <picture class="fexture-img-pic">
+                <img
+                  src="/images/american-heritage-chocolate-HJUae0j54tI-unsplash.jpg"
+                  alt=""
+                />
+              </picture>
             </div>
           </a>
         </li>
@@ -382,8 +410,8 @@ function toggleLift(index: number) {
   top: 0px;
   left: 0px;
   width: 100%;
-  height: 100%;
-  transform: translate3d scale(1.3);
+  height: 120vh;
+  /* transform: translate3d scale(1.3); */
   will-change: transform;
 }
 

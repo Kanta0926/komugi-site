@@ -5,8 +5,9 @@
     "baseUrl": ".",
     "types": ["@types/node", "vite/client"],
     "paths": {
+      "#app": ["./.nuxt/types/app"],
       "@/*": ["./*"]
     }
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".output"]
 }

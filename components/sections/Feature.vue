@@ -9,77 +9,103 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
 // パララックス処理
 gsap.registerPlugin(ScrollTrigger);
 
-// const containerRef = ref<HTMLElement | null>(null);
+const featureRef = ref<HTMLElement | null>(null);
 
 onMounted(() => {
-  const elements = gsap.utils.toArray<HTMLElement>(".js-parallax");
+  // hover時のwidthトランジション
+  // if (!featureRef.value) return;
 
-  elements.forEach((wrap) => {
-    const y = wrap.getAttribute("data-y") || "-100";
+  // const el = featureRef.value;
 
-    gsap.to(wrap, {
-      y: y,
+  // el.addEventListener("mouseenter", () => {
+  //   gsap.to(el, {
+  //     width: "40%",
+  //     duration: 0.5,
+  //     ease: "power2.out",
+  //   });
+  // });
+
+  // el.addEventListener("mouseleave", () => {
+  //   gsap.to(el, {
+  //     width: "30%", // 元のサイズに戻す
+  //     duration: 0.5,
+  //     ease: "power2.inOut",
+  //   });
+  // });
+
+  // liの上下parallax
+  const elements = document.querySelectorAll<HTMLElement>(".js-parallax");
+
+  elements.forEach((el) => {
+    gsap.to(el, {
+      "--parallax-y": "0px", // 初期値
       scrollTrigger: {
-        trigger: wrap,
+        trigger: el,
         start: "top bottom",
         end: "bottom top",
-        scrub: 0.5,
-        markers: true, // デバッグ用
+        scrub: true,
+        markers: false,
+        onUpdate: (self) => {
+          const progress = self.progress; // 0〜1 の値
+          const offset = 250 * progress; // パララックス量
+          el.style.setProperty("--parallax-y", `${offset}px`);
+        },
       },
     });
   });
 });
 
-// 画像のホバー時のイージング処理
-// const featureRef = ref<HTMLElement | null>(null);
-
-// const animateWidth = (
-//   el: HTMLElement,
-//   start: number,
-//   end: number,
-//   duration: number
-// ): void => {
-//   // アニメーションの開始を記録
-//   const startTime = performance.now();
-
-//   const step = (currentTime: number) => {
-//     // アニメーション開始してから時刻を計算
-//     const elapsed = currentTime - startTime;
-
-//     // 0-1の範囲でアニメーションの進行具合
-//     const progress = Math.min(elapsed / duration, 1);
-//     const newWidth = start + (end - start) * progress;
-
-//     el.style.width = `${newWidth}%`;
-
-//     if (progress < 1) {
-//       requestAnimationFrame(step);
-//     }
-//   };
-
-//   requestAnimationFrame(step);
-// };
-
-// // ホバー時の関数
-// const expand = () => {
-//   if (featureRef.value) {
-//     animateWidth(featureRef.value, 33.33, 40, 400);
-//   }
-// };
-
-// // ホバー解除時の関数
-// const shrink = () => {
-//   if (featureRef.value) {
-//     animateWidth(featureRef.value, 40, 33.33, 400);
-//   }
-// };
-
-// const isLifted = ref(false); // 状態を持つ（最初は false）
-
+// liのトグル処理
 const liftedIndex = ref<number | null>(null);
 
 function toggleLift(index: number) {
   liftedIndex.value = liftedIndex.value === index ? null : index;
+
+  // 画像のホバー時のイージング処理
+  // const featureRef = ref<HTMLElement | null>(null);
+
+  // const animateWidth = (
+  //   el: HTMLElement,
+  //   start: number,
+  //   end: number,
+  //   duration: number
+  // ): void => {
+  //   // アニメーションの開始を記録
+  //   const startTime = performance.now();
+
+  //   const step = (currentTime: number) => {
+  //     // アニメーション開始してから時刻を計算
+  //     const elapsed = currentTime - startTime;
+
+  //     // 0-1の範囲でアニメーションの進行具合
+  //     const progress = Math.min(elapsed / duration, 1);
+  //     const newWidth = start + (end - start) * progress;
+
+  //     el.style.width = `${newWidth}%`;
+
+  //     if (progress < 1) {
+  //       requestAnimationFrame(step);
+  //     }
+  //   };
+
+  //   requestAnimationFrame(step);
+  // };
+
+  // // ホバー時の関数
+  // const expand = () => {
+  //   if (featureRef.value) {
+  //     animateWidth(featureRef.value, 33.33, 40, 400);
+  //   }
+  // };
+
+  // // ホバー解除時の関数
+  // const shrink = () => {
+  //   if (featureRef.value) {
+  //     animateWidth(featureRef.value, 40, 33.33, 400);
+  //   }
+  // };
+
+  // const isLifted = ref(false); // 状態を持つ（最初は false）
 }
 </script>
 
@@ -129,7 +155,7 @@ function toggleLift(index: number) {
             <div class="feature-vell"></div>
 
             <div class="feature-img js-parallax" data-y="-20vw">
-              <picture class="fexture-img-pic">
+              <picture class="feature-img-pic">
                 <img
                   src="/images/american-heritage-chocolate-HJUae0j54tI-unsplash.jpg"
                   alt=""
@@ -169,8 +195,11 @@ function toggleLift(index: number) {
               <PlusIcon />
             </div>
             <div class="feature-vell"></div>
-            <div class="feature-img">
-              <img src="/images/brenna-huff-PpxsF4LBOg-unsplash.png" alt="" />
+
+            <div class="feature-img js-parallax" data-y="-20vw">
+              <picture class="feature-img-pic">
+                <img src="/images/brenna-huff-PpxsF4LBOg-unsplash.png" alt="" />
+              </picture>
             </div>
           </a>
         </li>
@@ -205,8 +234,11 @@ function toggleLift(index: number) {
               <PlusIcon></PlusIcon>
             </div>
             <div class="feature-vell"></div>
-            <div class="feature-img">
-              <img src="/images/brenna-unsplash.png"" alt="" />
+
+            <div class="feature-img js-parallax" data-y="-20vw">
+              <picture class="feature-img-pic">
+                <img src="/images/brenna-unsplash.png" alt="" />
+              </picture>
             </div>
           </a>
         </li>
@@ -323,9 +355,9 @@ function toggleLift(index: number) {
   will-change: width;
 }
 
-/* .feature-contents:hover {
+.feature-contents:hover {
   width: 40%;
-} */
+}
 
 .feature-contents:hover img {
   /* transform: scaleX(1.2); */
@@ -410,9 +442,11 @@ function toggleLift(index: number) {
   top: 0px;
   left: 0px;
   width: 100%;
-  height: 120vh;
+  height: 100%;
   /* transform: translate3d scale(1.3); */
   will-change: transform;
+  overflow: hidden;
+  --parallax-scale: 1.3;
 }
 
 .feature-img img {
@@ -427,16 +461,6 @@ function toggleLift(index: number) {
   font-family: "Gothic A1";
   font-weight: bold;
 }
-
-/* 必要に応じて style タグに追加 */
-/* .fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-} */
 
 .feature-vell {
   position: absolute;
@@ -470,6 +494,18 @@ function toggleLift(index: number) {
 }
 
 /* .lifted.feature-img {
-  transform: translateY(-20px); 
+  transform: translateY(-20px);
 } */
+
+.feature-img-pic {
+  transform: scale(1.5);
+  transform: translateY(var(--parallax-y, 0px));
+  transform: translate3d(0, calc(1 * var(--parallax-y, 0)), 1px)
+    scale(var(--parallax-scale));
+  transition: transform 0.1s linear;
+  will-change: transform;
+  height: 100%;
+  display: block;
+  width: 100%;
+}
 </style>

@@ -12,6 +12,8 @@
           <span>From simple to seasonal limited edition bagels</span>
         </div>
       </div>
+
+      <div class=""></div>
     </div>
   </section>
 </template>
@@ -20,8 +22,7 @@
   position: relative;
 }
 
-.feature-inner {
-  margin-top: 14.375rem;
+.bagle-inner {
   display: flex;
   flex-flow: column;
   align-items: center;

@@ -9,7 +9,7 @@ import PlusIcon from "@/assets/icons/Subtract.svg";
 // パララックス処理
 gsap.registerPlugin(ScrollTrigger);
 
-const featureRef = ref<HTMLElement | null>(null);
+// const featureRef = ref<HTMLElement | null>(null);
 
 onMounted(() => {
   // hover時のwidthトランジション
@@ -231,7 +231,7 @@ function toggleLift(index: number) {
               </div>
             </div>
             <div class="feature-btn">
-              <PlusIcon></PlusIcon>
+              <PlusIcon />
             </div>
             <div class="feature-vell"></div>
 
@@ -355,13 +355,13 @@ function toggleLift(index: number) {
   will-change: width;
 }
 
-.feature-contents:hover {
+/* .feature-contents:hover {
   width: 40%;
-}
+} */
 
-.feature-contents:hover img {
-  /* transform: scaleX(1.2); */
-}
+/* .feature-contents:hover img {
+  transform: scaleX(1.2);
+} */
 
 .feature-contens-pointer {
   position: relative;
@@ -380,7 +380,7 @@ function toggleLift(index: number) {
   margin: 0 auto;
   /* top: 70%; */
   flex-direction: column;
-  mask-image: url("@/assets/images/マスクグラデーション04.png");
+  mask-image: url("/images/maskGradation04.png");
   mask-size: 100% 100%;
   padding: 10rem 0 9rem 0;
   height: 100%;
@@ -457,7 +457,7 @@ function toggleLift(index: number) {
 /* クリック時のテキスト */
 .feature-text-sub {
   color: #ffff;
-  font-seze: 1rem;
+  font-size: 1rem;
   font-family: "Gothic A1";
   font-weight: bold;
 }
@@ -477,9 +477,9 @@ function toggleLift(index: number) {
   will-change: opacity;
 }
 
-.feature-text {
-  /* transition: transform 0.4s ease; */
-}
+/* .feature-text {
+  transition: transform 0.4s ease;
+} */
 
 .lifted .feature-text-inner {
   transform: translateY(0); /* 上に20px浮かせる */

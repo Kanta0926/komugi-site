@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
   nitro: {
-    preset: "static", // ← これが重要！静的生成に切り替える
+    preset: "static",
   },
   vite: {
     plugins: [require("vite-svg-loader")()],

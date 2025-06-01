@@ -5,6 +5,12 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+const swiperRef = ref(null);
+
+onMounted(() => {
+  swiperRef.value?.swiper?.autoplay.start();
+});
 </script>
 
 <template>
@@ -27,7 +33,9 @@ import "swiper/css/pagination";
         <Swiper
           class="swiper-inner"
           :slides-per-view="'auto'"
-          :space-between="20"
+          :space-between="24"
+          :autoplay="{ delay: 3000, disableOnInteraction: false }"
+          :loop="true"
         >
           <SwiperSlide class="bagle-contens-inner">
             <div class="bagle-img">
@@ -92,7 +100,7 @@ import "swiper/css/pagination";
             </div>
           </SwiperSlide>
 
-          <SwiperSlide class="bagle-contens-inner bagle-contens3">
+          <SwiperSlide class="bagle-contens-inner bagle-contens4">
             <div class="bagle-img">
               <img src="/images/32548518_m.png" alt="" />
             </div>
@@ -115,7 +123,7 @@ import "swiper/css/pagination";
             </div>
           </SwiperSlide>
 
-          <SwiperSlide class="bagle-contens-inner bagle-contens3">
+          <SwiperSlide class="bagle-contens-inner bagle-contens5">
             <div class="bagle-img">
               <img src="/images/32085879_s.png" alt="" />
             </div>
@@ -138,7 +146,7 @@ import "swiper/css/pagination";
             </div>
           </SwiperSlide>
 
-          <SwiperSlide class="bagle-contens-inner bagle-contens3">
+          <SwiperSlide class="bagle-contens-inner bagle-contens6">
             <div class="bagle-img">
               <img src="/images/3711959_s.png" alt="" />
             </div>
@@ -241,7 +249,7 @@ import "swiper/css/pagination";
   background-color: #f7e1da;
   width: 20%;
   height: 100%;
-  color: #333333;
+  color: #6c5c53;
   padding: 118px 130px;
   font-family: "Gothic A1";
   font-weight: bold;
@@ -254,7 +262,19 @@ import "swiper/css/pagination";
 }
 
 .bagle-contens3 {
-  background-color: #ff8983;
+  background-color: #f7e1da;
+}
+
+.bagle-contens4 {
+  background-color: #fff7ec;
+}
+
+.bagle-contens5 {
+  background-color: #eef8f2;
+}
+
+.bagle-contens6 {
+  background-color: #f2eef9;
 }
 
 .bagle-img {

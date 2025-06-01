@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -6,11 +7,32 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const swiperRef = ref(null);
+// swiperの処理記述
+// const swiperRef = ref<any>(null);
+// const onMouseEnter = () => {
+//   console.log(swiperRef);
 
-onMounted(() => {
-  swiperRef.value?.swiper?.autoplay.start();
-});
+//   swiperRef.value?.swiper?.autoplay?.stop();
+// };
+
+// const onMouseLeave = () => {
+//   swiperRef.value?.swiper?.autoplay?.start();
+// };
+
+const swiperRef = ref<any>(null);
+const swiperInstance = ref<any>(null);
+
+const onSwiper = (swiper: any) => {
+  swiperInstance.value = swiper;
+};
+
+const onMouseEnter = () => {
+  swiperInstance.value?.autoplay?.stop();
+};
+
+const onMouseLeave = () => {
+  swiperInstance.value?.autoplay?.start();
+};
 </script>
 
 <template>
@@ -32,10 +54,16 @@ onMounted(() => {
       <div class="bagle-contens">
         <Swiper
           class="swiper-inner"
+          ref="swiperRef"
           :slides-per-view="'auto'"
+          :centeredSlides="true"
           :space-between="24"
+          :modules="[Autoplay]"
           :autoplay="{ delay: 3000, disableOnInteraction: false }"
           :loop="true"
+          @swiper="onSwiper"
+          @mouseenter="onMouseEnter"
+          @mouseleave="onMouseLeave"
         >
           <SwiperSlide class="bagle-contens-inner">
             <div class="bagle-img">

@@ -7,6 +7,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+import PageLink from "@/assets/icons/akar-icons_link-out.svg";
+
 // swiperの処理記述
 // const swiperRef = ref<any>(null);
 // const onMouseEnter = () => {
@@ -57,10 +59,9 @@ const onMouseLeave = () => {
           ref="swiperRef"
           :slides-per-view="'auto'"
           :centeredSlides="true"
-          :space-between="24"
-          :modules="[Autoplay]"
-          :autoplay="{ delay: 3000, disableOnInteraction: false }"
+          :space-between="-48"
           :loop="true"
+          :loopedSlides="8"
           @swiper="onSwiper"
           @mouseenter="onMouseEnter"
           @mouseleave="onMouseLeave"
@@ -71,9 +72,9 @@ const onMouseLeave = () => {
             </div>
 
             <div class="bagle-contents-title">
-              <spna class="bagle-contents-num">01</spna>
-              <spna class="bagle-contens-name" lang="en">Kinako Bagle</spna>
-              <spna lang="ja">きなことあんみつ</spna>
+              <span class="bagle-contents-num">01</span>
+              <span class="bagle-contens-name" lang="en">Kinako Bagle</span>
+              <span lang="ja">きなことあんみつ</span>
             </div>
 
             <div class="bagle-contens-text">
@@ -93,9 +94,9 @@ const onMouseLeave = () => {
             </div>
 
             <div class="bagle-contents-title">
-              <spna class="bagle-contents-num">02</spna>
-              <spna class="bagle-contens-name" lang="en">Sugar Bagle</spna>
-              <spna lang="ja">シナモンと砂糖</spna>
+              <span class="bagle-contents-num">02</span>
+              <span class="bagle-contens-name" lang="en">Sugar Bagle</span>
+              <span lang="ja">シナモンと砂糖</span>
             </div>
 
             <div class="bagle-contens-text">
@@ -113,9 +114,9 @@ const onMouseLeave = () => {
             </div>
 
             <div class="bagle-contents-title">
-              <spna class="bagle-contents-num">03</spna>
-              <spna class="bagle-contens-name" lang="en">Cheese Bagle</spna>
-              <spna lang="ja">チェダーチーズ</spna>
+              <span class="bagle-contents-num">03</span>
+              <span class="bagle-contens-name" lang="en">Cheese Bagle</span>
+              <span lang="ja">チェダーチーズ</span>
             </div>
 
             <div class="bagle-contens-text">
@@ -134,11 +135,11 @@ const onMouseLeave = () => {
             </div>
 
             <div class="bagle-contents-title">
-              <spna class="bagle-contents-num">04</spna>
-              <spna class="bagle-contens-name" lang="en"
-                >Chocolate Chip Cocoa Bagle</spna
+              <span class="bagle-contents-num">04</span>
+              <span class="bagle-contens-name" lang="en"
+                >Chocolate Chip Cocoa Bagle</span
               >
-              <spna lang="ja">チョコチップココア</spna>
+              <span lang="ja">チョコチップココア</span>
             </div>
 
             <div class="bagle-contens-text">
@@ -157,11 +158,11 @@ const onMouseLeave = () => {
             </div>
 
             <div class="bagle-contents-title">
-              <spna class="bagle-contents-num">05</spna>
-              <spna class="bagle-contens-name" lang="en"
-                >Chocolate Lemon Bagle</spna
+              <span class="bagle-contents-num">05</span>
+              <span class="bagle-contens-name" lang="en"
+                >Chocolate Lemon Bagle</span
               >
-              <spna lang="ja">チョコ檸檬ベーグル</spna>
+              <span lang="ja">チョコ檸檬ベーグル</span>
             </div>
 
             <div class="bagle-contens-text">
@@ -180,9 +181,9 @@ const onMouseLeave = () => {
             </div>
 
             <div class="bagle-contents-title">
-              <spna class="bagle-contents-num">06</spna>
-              <spna class="bagle-contens-name" lang="en">Cranberry Bagle</spna>
-              <spna lang="ja">クランベリーベーグル</spna>
+              <span class="bagle-contents-num">06</span>
+              <span class="bagle-contens-name" lang="en">Cranberry Bagle</span>
+              <span lang="ja">クランベリーベーグル</span>
             </div>
 
             <div class="bagle-contens-text">
@@ -196,6 +197,13 @@ const onMouseLeave = () => {
           </SwiperSlide>
         </Swiper>
       </div>
+
+      <a href="" class="btn-inner">
+        <div class="bagle-btn">
+          <span>menue</span>
+          <PageLink class="bagle-btn-svg" />
+        </div>
+      </a>
     </div>
   </section>
 </template>
@@ -208,7 +216,7 @@ const onMouseLeave = () => {
   display: flex;
   flex-flow: column;
   align-items: center;
-  padding-top: 14.375rem;
+  padding: 14.375rem 0;
 }
 
 .title-inner {
@@ -269,7 +277,7 @@ const onMouseLeave = () => {
 }
 
 .swiper-inner {
-  width: 100%;
+  width: 100vw;
   height: 100%;
 }
 
@@ -277,12 +285,26 @@ const onMouseLeave = () => {
   background-color: #f7e1da;
   width: 20%;
   height: 100%;
+
+  width: 20vw;
+  height: 80vh;
   color: #6c5c53;
   padding: 118px 130px;
   font-family: "Gothic A1";
   font-weight: bold;
   border-radius: 2.4rem;
   padding: 7.75rem 6.25rem;
+  opacity: 0.6;
+  will-change: transform;
+  will-change: opacity;
+  /* transition: ease-in-out 0.5s; */
+  transform: scale(0.8);
+}
+
+.swiper-slide-active.bagle-contens-inner {
+  opacity: 1;
+  transform: scale(0.9);
+  z-index: 500;
 }
 
 .bagle-contens2 {
@@ -306,9 +328,10 @@ const onMouseLeave = () => {
 }
 
 .bagle-img {
-  width: 80%;
-  height: auto;
+  width: 20.25vw;
+  height: 20.25vw;
   margin: 0 auto 7.375rem auto;
+  margin: 0 auto;
 }
 
 .bagle-img img {
@@ -321,7 +344,7 @@ const onMouseLeave = () => {
   flex-direction: column;
   gap: 0.25rem;
   position: relative;
-  margin-bottom: 4.625rem;
+  margin: 4.625rem 0;
 }
 
 .bagle-contents-title::after {
@@ -346,5 +369,56 @@ const onMouseLeave = () => {
 
 .bagle-contens-text {
   line-height: 2rem;
+  width: 100%;
+  height: 26.4vh;
+  width: 20.25vw;
+}
+
+.btn-inner {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2.5rem auto 0;
+  max-width: 240px;
+  padding: 0.88rem 5.375rem;
+  color: #543618;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  background: #fff7ec;
+  border-radius: 50px;
+  /* border: 0.2rem solid #543618;
+  box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc; */
+}
+
+.bagle-btn {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  color: #6c5c53;
+  gap: 0.5rem;
+}
+
+.bagle-btn span {
+  font-size: 1.5rem;
+  font-family: "Gothic A1";
+  font-weight: bold;
+}
+
+.bagle-btn-svg {
+  fill: #cbac9b;
+  fill-opacity: 0.5;
+  /* stroke-opacity: 0.6; */
+  stroke: #333333;
+}
+
+/* btn-hover */
+.btn-inner:hover {
+  color: #fff7ec;
+  background: #cbac9b;
+}
+
+.btn-inner:hover .bagle-btn {
+  color: #fff7ec;
 }
 </style>

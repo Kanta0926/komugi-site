@@ -216,7 +216,7 @@ const onMouseLeave = () => {
   display: flex;
   flex-flow: column;
   align-items: center;
-  padding: 14.375rem 0;
+  padding: 14.375rem 0 11.25rem 0;
 }
 
 .title-inner {
@@ -387,8 +387,7 @@ const onMouseLeave = () => {
   font-weight: 600;
   background: #fff7ec;
   border-radius: 50px;
-  /* border: 0.2rem solid #543618;
-  box-shadow: 0.2rem 0.2rem 0px 0.1rem #cccccc; */
+  transition-delay: 0.1s;
 }
 
 .bagle-btn {
@@ -408,8 +407,8 @@ const onMouseLeave = () => {
 .bagle-btn-svg {
   fill: #cbac9b;
   fill-opacity: 0.5;
-  /* stroke-opacity: 0.6; */
   stroke: #333333;
+  transition: transform 0.3s ease;
 }
 
 /* btn-hover */
@@ -420,5 +419,11 @@ const onMouseLeave = () => {
 
 .btn-inner:hover .bagle-btn {
   color: #fff7ec;
+}
+
+.btn-inner:hover .bagle-btn-svg {
+  fill: #fff7ec;
+  stroke: #ffff;
+  transform: translate(4px, -4px);
 }
 </style>

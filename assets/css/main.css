@@ -93,12 +93,10 @@ section h1 {
 }
 
 .contens-inner {
-  align-items: start;
-  color: #000;
+  color: #000000;
   display: flex;
-  flex-flow: column;
-  flex-flow: row-reverse;
-  justify-content: space-between;
+  justify-content: center;
+  width: 34.7%;
   margin-bottom: 4.875rem;
   width: 100%;
 }

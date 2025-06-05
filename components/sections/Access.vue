@@ -3,8 +3,12 @@ import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import InstaIcon from "@/assets/icons/hugeicons_instagram.svg";
+
 // パララックス処理
 gsap.registerPlugin(ScrollTrigger);
+
+const currentIndex = ref(0);
 
 onMounted(() => {
   // liの上下parallax
@@ -27,6 +31,9 @@ onMounted(() => {
       },
     });
   });
+  setInterval(() => {
+    currentIndex.value = (currentIndex.value + 1) % 3;
+  }, 3500);
 });
 </script>
 
@@ -88,6 +95,42 @@ onMounted(() => {
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
+      </div>
+
+      <a href="" class="btn-inner">
+        <div class="access-btn">
+          <span>instagram</span>
+          <InstaIcon class="access-btn-svg" />
+        </div>
+      </a>
+
+      <!-- 背景テキスト -->
+      <div class="bg-text-inner">
+        <div>
+          <transition name="fade" mode="out-in">
+            <div class="bg-text-scroll" v-if="currentIndex === 0" key="slide-0">
+              <span>Bagels</span>
+              <span>for you</span>
+              <span>my dear.</span>
+            </div>
+
+            <div
+              class="bg-text-scroll"
+              v-else-if="currentIndex === 1"
+              key="slide-1"
+            >
+              <span>Bagels</span>
+              <span>for</span>
+              <span>everyday moments.</span>
+            </div>
+
+            <div class="bg-text-scroll" v-else key="slide-2">
+              <span>Bagels</span>
+              <span>with</span>
+              <span>loved ones.</span>
+            </div>
+          </transition>
+        </div>
       </div>
     </div>
   </section>
@@ -156,8 +199,6 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   height: 62vh;
-
-  /* transform: translate3d scale(1.3); */
   will-change: transform;
   overflow: hidden;
   --parallax-scale: 1.3;
@@ -168,26 +209,15 @@ onMounted(() => {
   height: 100%;
 }
 
-.contens-inner {
-  align-items: center;
-  padding: 14.375rem 0 11.25rem 0;
-}
-
 .access-top-img {
 }
 
 .access-img-pic {
-  /* transform: scale(1.5); */
   transform: translateY(var(--parallax-y, 0px));
   transform: translateY(calc(var(--parallax-y, 0px) * -4));
-
-  /* transform: translate3d(0, calc(-1 * var(--parallax-y, 0)), 1px)
-    scale(var(--parallax-scale)); */
   transition: transform 0.1s linear;
   will-change: transform;
   display: block;
-  /* width: 100%;
-  height: 100%; */
 }
 
 /* access部分 */
@@ -199,15 +229,17 @@ onMounted(() => {
   color: #000000;
   display: flex;
   justify-content: center;
-  width: 34.7%;
+  margin: 0 auto 7.5rem;
+  gap: 18.625rem;
 }
 
-.sotre-inner {
-  width: 40vw;
+.store-inner {
+  width: 22vw;
+  margin-left: 10rem;
 }
+
 .store-text {
   font-size: 1.5rem;
-  font-family: "Gothic A1";
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -215,7 +247,7 @@ onMounted(() => {
 }
 
 .day-inner {
-  width: 40vw;
+  width: 22vw;
   filter: grayscale(60%);
 }
 
@@ -237,5 +269,97 @@ onMounted(() => {
 .map-inner iframe {
   width: 80rem;
   height: 26.75rem;
+}
+
+/* ボタン */
+.btn-inner {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 6.75rem auto 0;
+  max-width: 240px;
+  padding: 0.88rem 5.375rem;
+  color: #543618;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  background: #fff7ec;
+  border-radius: 50px;
+  transition-delay: 0.1s;
+}
+
+.access-btn {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  color: #6c5c53;
+  gap: 0.5rem;
+}
+
+.access-btn span {
+  font-size: 1.5rem;
+  font-family: "Gothic A1";
+  font-weight: bold;
+}
+
+.access-btn-svg {
+  fill: #cbac9b;
+  fill-opacity: 0.5;
+  stroke: #333333;
+  transition: transform 0.3s ease;
+}
+
+/* btn-hover */
+.btn-inner:hover {
+  color: #fff7ec;
+  background: #cbac9b;
+}
+
+.btn-inner:hover .access-btn {
+  color: #fff7ec;
+}
+
+.btn-inner:hover .access-btn-svg {
+  fill: #fff7ec;
+  stroke: #ffff;
+  transform: translate(4px, -4px);
+}
+
+/* 背景テキスト */
+.bg-text-inner {
+  font-size: 14.375rem;
+  font-weight: bold;
+  color: #c0a487;
+  position: absolute;
+  filter: blur(6px);
+  z-index: -100;
+  width: 100%;
+  overflow: hidden;
+  top: 70%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 28%;
+  left: 8%;
+  font-family: "Gothic A1";
+  font-weight: bold;
+  line-height: normal;
+}
+
+.bg-text-scroll {
+  display: inline-block;
+  flex-direction: column;
+  display: flex;
+}
+
+.fade-enter-active {
+  transition: opacity 1.5s ease-in;
+}
+.fade-leave-active {
+  transition: opacity 1.5s ease-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -324,12 +324,13 @@ onUnmounted(() => {
   width: 100%;
   overflow: hidden;
   top: 70%;
+  filter: blur(6px);
 }
 
 .bg-text-scroll {
   display: inline-block;
   white-space: nowrap;
-  animation: scroll-text 15s linear infinite;
+  animation: scroll-text 30s linear infinite;
 }
 
 @keyframes scroll-text {

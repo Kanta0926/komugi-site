@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { data: posts } = await useFetch(
+  "https://example.com/wp-json/wp/v2/posts?per_page=4&_embed"
+);
+</script>
+
 <template>
   <section class="sec-inner">
     <div class="news-inner">
@@ -7,12 +12,18 @@
         <h1 lang="en">News</h1>
       </header>
       <div class="contens-inner">
-        <h2 lang="ja">
-          シンプルなものから、季節感あふれる限定ベーグルまで<br />
-        </h2>
-        <div class="contens-text-inner">
-          <span lang="en">From simple to seasonal limited edition bagels</span>
-        </div>
+        <!-- RESTで取得 -->
+        <!-- <div class="news-inner">
+          <div v-for="post in posts" :key="post.id" class="news-item">
+            <img
+              :src="post._embedded['wp:featuredmedia']?.[0]?.source_url"
+              alt="thumbnail"
+              class="thumbnail"
+            />
+            <p class="date">{{ new Date(post.date).toLocaleDateString() }}</p>
+            <h3 class="title" v-html="post.title.rendered" />
+          </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -75,5 +86,29 @@
   justify-content: center;
   flex-flow: column;
   align-items: center;
+}
+
+/* 記事部分 */
+.news-inner {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.news-item {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+.thumbnail {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.date {
+  font-size: 0.9rem;
+  color: #888;
+}
+.title {
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 </style>

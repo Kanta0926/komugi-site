@@ -98,7 +98,7 @@ onMounted(() => {
         <MapIcon class="svg-icon" />
         <p>〒730-0025 広島件広島市東区39-82</p>
       </div>
-      <a href="" class="svg-icon">
+      <a href="" class="svg-icon svg-insta">
         <InstaIcon />
       </a>
     </div>
@@ -319,5 +319,10 @@ onMounted(() => {
 .svg-icon {
   margin-right: 0.5rem;
   display: flex;
+}
+
+.svg-insta {
+  width: 2rem;
+  height: 2rem;
 }
 </style>

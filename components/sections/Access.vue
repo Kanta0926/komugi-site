@@ -307,6 +307,8 @@ onMounted(() => {
   fill-opacity: 0.5;
   stroke: #333333;
   transition: transform 0.3s ease;
+  width: 2rem;
+  height: 2rem;
 }
 
 /* btn-hover */

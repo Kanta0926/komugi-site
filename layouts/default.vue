@@ -1,11 +1,19 @@
 <script setup lang="ts">
+import { inject, watch } from "vue";
+
 import InstaIcon from "@/assets/icons/hugeicons_instagram.svg";
 import XIcon from "@/assets/icons/Vector.svg";
+
+const showHeader = inject("showHeader", ref(true)); // デフォルトでtrue
+
+watch(showHeader, (val) => {
+  console.log("[default.vue] showHeaderが変更:", val);
+});
 </script>
 
 <template>
   <div>
-    <header class="header-inner">
+    <header v-show="showHeader" class="header-inner">
       <!-- <a href="" class="nav-logo">
         <picture class="nav-logo-inner">
           <img src="/images/小麦好日ロゴ05.png" alt="" />
@@ -111,6 +119,11 @@ import XIcon from "@/assets/icons/Vector.svg";
   width: 100%;
   padding: 2rem 2rem 0 0;
   box-sizing: border-box;
+  transition: opacity 0.3s ease;
+}
+
+.header-inner[style*="display: none"] {
+  opacity: 0;
 }
 
 .nav-logo {

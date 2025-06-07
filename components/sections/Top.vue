@@ -22,43 +22,78 @@ const images = [
   useRuntimeConfig().app.baseURL + "images/Rectangle21.png",
 ];
 
+// header用の終端の監視処理
+const sentinel = ref();
+const emit = defineEmits(["leaveTop"]);
+
 onMounted(() => {
   setInterval(() => {
     currentIndex.value = (currentIndex.value + 1) % images.length;
   }, 6000); // 5秒ごとに切り替え
+
+  // header用の監視処理
+  const observer = new IntersectionObserver(
+    // 交差時にemitをコールバック
+    ([entry]) => {
+      emit("leaveTop", !entry.isIntersecting);
+    },
+    { threshold: 0 }
+  );
+
+  // 監視要素をobserve
+  if (sentinel.value) {
+    observer.observe(sentinel.value);
+  }
 });
 </script>
 
 <template>
   <section class="top-inner">
     <div class="logo-inner">
-      <a href="">
+      <NuxtLink>
         <img :src="logo" class="logo" alt="小麦好日" />
-      </a>
+      </NuxtLink>
 
       <div>
         <img :src="titleText" class="title-text" alt="" />
       </div>
     </div>
+
     <div class="global-nav">
       <ul>
         <li>
-          <a href="#about"><span>01</span>about</a>
+          <NuxtLink to="#About">
+            <span class="global-nav-num">01</span>
+            <span class="global-nav-text">about</span>
+          </NuxtLink>
         </li>
         <li>
-          <a href="#feature"><span>02</span>Feature</a>
+          <NuxtLink to="#Feature"
+            ><span class="global-nav-num">02</span>
+            <span class="global-nav-text">Feature</span>
+          </NuxtLink>
         </li>
         <li>
-          <a href="#bagle"><span>03</span>Bagle</a>
+          <NuxtLink to="#Bagle">
+            <span class="global-nav-num">03</span>
+            <span class="global-nav-text">Bagle</span>
+          </NuxtLink>
         </li>
         <li>
-          <a href="#news"><span>04</span>News</a>
+          <NuxtLink to="#News">
+            <span class="global-nav-num">04</span>
+            <span class="global-nav-text">News</span>
+          </NuxtLink>
         </li>
         <li>
-          <a href="#access"><span>05</span>Access</a>
+          <NuxtLink to="#Access">
+            <span class="global-nav-num">05</span>
+            <span class="global-nav-text">Access</span>
+          </NuxtLink>
         </li>
       </ul>
     </div>
+
     <div class="topimage-inner">
       <div
         v-for="(image, index) in images"
@@ -102,6 +137,7 @@ onMounted(() => {
         <InstaIcon />
       </a>
     </div>
+    <div ref="sentinel" class="scroll-sentinel"></div>
   </section>
 </template>
 
@@ -125,6 +161,11 @@ onMounted(() => {
   height: 20%;
   max-width: 100%;
   display: flex;
+  transition: opacity 0.3s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+.logo-inner a:hover {
+  opacity: 0.6;
 }
 
 .title-text {
@@ -153,11 +194,11 @@ onMounted(() => {
   font-family: "Cormorant Garamond";
   font-weight: bold;
   position: relative;
-  padding-right: 4.375rem;
-  margin-right: 1.14rem;
+  /* padding-right: 4.375rem;
+  margin-right: 1.14rem; */
 }
 
-.global-nav a span::after {
+/* .global-nav a span::after {
   background-color: #ffff;
   content: "";
   display: block;
@@ -166,6 +207,32 @@ onMounted(() => {
   position: absolute;
   bottom: 5%;
   right: 0;
+} */
+
+.global-nav span:first-of-type::after {
+  background-color: #ffff;
+  content: "";
+  display: block;
+  width: 50%;
+  height: 1px;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+}
+
+.global-nav-num {
+  padding-right: 4.375rem;
+  margin-right: 1.14rem;
+}
+
+.global-nav-text {
+  transform: translateX(0);
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+.global-nav a:hover .global-nav-text {
+  transform: translateX(0.4rem);
 }
 
 /* top画像のトランジション */
@@ -319,10 +386,15 @@ onMounted(() => {
 .svg-icon {
   margin-right: 0.5rem;
   display: flex;
+  stroke: #ffff;
 }
 
 .svg-insta {
   width: 2rem;
   height: 2rem;
+}
+
+.scroll-sentinel {
+  height: 1px;
 }
 </style>

@@ -49,6 +49,7 @@ li::marker {
 a {
   text-decoration: none;
   color: #333333;
+  cursor: pointer;
 }
 
 article h1,

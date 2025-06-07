@@ -13,6 +13,8 @@ import XIcon from "@/assets/icons/Vector.svg";
       </a> -->
 
       <nav class="header-nav">
+        <NuxtLink to="#About">ABOUT</NuxtLink>
+
         <NuxtLink to="#Feature">Feature</NuxtLink>
         <NuxtLink to="#Bagle">Bagle</NuxtLink>
         <NuxtLink to="#News">News</NuxtLink>
@@ -30,47 +32,62 @@ import XIcon from "@/assets/icons/Vector.svg";
         <div class="footer-nav">
           <ul>
             <li>
-              <a href="#about"><span>01</span>about</a>
+              <NuxtLink to="#About">
+                <span class="footer-nav-num">01</span>
+                <span class="footer-nav-text">about</span>
+              </NuxtLink>
             </li>
             <li>
-              <a href="#feature"><span>02</span>Feature</a>
+              <NuxtLink to="#Feature"
+                ><span class="footer-nav-num">02</span>
+                <span class="footer-nav-text">Feature</span>
+              </NuxtLink>
             </li>
             <li>
-              <a href="#bagle"><span>03</span>Bagle</a>
+              <NuxtLink to="#Bagle">
+                <span class="footer-nav-num">03</span>
+                <span class="footer-nav-text">Bagle</span>
+              </NuxtLink>
             </li>
             <li>
-              <a href="#news"><span>04</span>News</a>
+              <NuxtLink to="#News">
+                <span class="footer-nav-num">04</span>
+                <span class="footer-nav-text">News</span>
+              </NuxtLink>
             </li>
             <li>
-              <a href="#access"><span>05</span>Access</a>
+              <NuxtLink to="#Access">
+                <span class="footer-nav-num">05</span>
+                <span class="footer-nav-text">Access</span>
+              </NuxtLink>
             </li>
           </ul>
         </div>
 
         <div class="footer-img">
-          <a href="">
+          <NuxtLink>
             <img src="/images/logo05.png" alt="" />
-          </a>
+          </NuxtLink>
         </div>
 
         <div class="footer-sms">
           <span lang="en">Foolow Us</span>
           <div class="footer-icon">
-            <a href="" class="insta-icon">
+            <NuxtLink to="" class="insta-icon">
               <InstaIcon />
-            </a>
-            <a href="" class="x-icon">
+            </NuxtLink>
+            <NuxtLink to="" class="x-icon">
               <XIcon />
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </div>
 
       <div class="policy-inner">
         <div class="policy-right">
-          <a href=""><span lang="en">Contact</span></a>
-          <a href=""><span lang="en">Privacy Policy</span></a>
-          <a href=""><span lang="en">Operation</span></a>
+          <NuxtLink to=""><span lang="en">Contact</span></NuxtLink>
+          <NuxtLink to=""><span lang="en">Privacy Policy</span></NuxtLink>
+          <NuxtLink to=""><span lang="en">Operation</span></NuxtLink>
         </div>
         <p class="policy-left">&copy; 2025 KOMUGIKOUJITU</p>
       </div>
@@ -112,6 +129,11 @@ import XIcon from "@/assets/icons/Vector.svg";
 
 .header-nav a {
   color: #ffff;
+  transition: transform 0.3s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+.header-nav a:hover {
+  transform: translateY(-0.4rem);
 }
 
 .insta-img {
@@ -134,6 +156,8 @@ import XIcon from "@/assets/icons/Vector.svg";
   width: 100%;
   margin-bottom: 4rem;
   position: relative;
+  padding: 0 4rem;
+  box-sizing: border-box;
 }
 
 .footer-nav-inner::after {
@@ -146,9 +170,20 @@ import XIcon from "@/assets/icons/Vector.svg";
   top: 110%;
 }
 
+.footer-nav span:first-of-type::after {
+  background-color: #ffff;
+  content: "";
+  display: block;
+  width: 50%;
+  height: 1px;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+}
+
 .footer-nav {
-  /* position: absolute; */
   z-index: 100;
+  position: relative;
   /* bottom: 10%;
   left: 5%; */
 }
@@ -157,30 +192,44 @@ import XIcon from "@/assets/icons/Vector.svg";
   font-size: 1.8rem;
   text-decoration: none;
   color: inherit;
+  /* transition: transform 0.3s cubic-bezier(0, 0.55, 0.45, 1); */
+  /* transform: translateY(0); */
+  display: inline-block;
 }
 
 .footer-nav span {
   font-family: "Cormorant Garamond";
   font-weight: bold;
   position: relative;
+}
+
+.footer-nav-num {
   padding-right: 4.375rem;
   margin-right: 1.14rem;
 }
 
-.footer-nav a span::after {
-  background-color: #ffff;
-  content: "";
-  display: block;
-  width: 42px;
-  height: 1px;
-  position: absolute;
-  bottom: 5%;
-  right: 0;
+.footer-nav-text {
+  transform: translateX(0);
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+.footer-nav a:hover .footer-nav-text {
+  transform: translateX(0.4rem);
 }
 
 .footer-img {
   width: 20%;
   height: 20%;
+  opacity: 1;
+}
+
+.footer-img a {
+  transition: opacity 0.3s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+.footer-img a:hover {
+  opacity: 0.6;
 }
 
 .footer-sms {
@@ -196,6 +245,14 @@ import XIcon from "@/assets/icons/Vector.svg";
   align-items: center;
   gap: 0.8rem;
   margin-top: 1rem;
+}
+
+.footer-icon a {
+  transition: transform 0.3s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+.footer-icon a:hover {
+  transform: translateY(-0.4rem);
 }
 
 .insta-icon {
@@ -234,9 +291,16 @@ import XIcon from "@/assets/icons/Vector.svg";
   display: flex;
   font-size: 1rem;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 5rem;
+  padding: 0 12rem;
+  box-sizing: border-box;
+}
+
+.policy-right {
+  display: flex;
+  gap: 4rem;
 }
 
 .policy-right span {

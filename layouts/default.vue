@@ -11,7 +11,7 @@ const showHeader = ref(false);
 provide("showHeader", showHeader);
 
 const { scrollTo } = useScrollTo();
-scrollTo("#section2", { offset: 0 });
+// scrollTo("#section2", { offset: 0 });
 </script>
 
 <template>
@@ -25,21 +25,11 @@ scrollTo("#section2", { offset: 0 });
       </a> -->
 
         <nav class="header-nav">
-          <a @click.prevent="() => scrollTo('#About', { offset: -100 })">
-            ABOUT
-          </a>
-          <a @click.prevent="() => scrollTo('#Feature', { offset: -100 })">
-            Feature
-          </a>
-          <a @click.prevent="() => scrollTo('#Bagle', { offset: -100 })">
-            Bagle
-          </a>
-          <a @click.prevent="() => scrollTo('#News', { offset: -100 })">
-            News
-          </a>
-          <a @click.prevent="() => scrollTo('#Access', { offset: -100 })">
-            Access
-          </a>
+          <a @click.prevent="() => scrollTo('#About')"> ABOUT </a>
+          <a @click.prevent="() => scrollTo('#Feature')"> Feature </a>
+          <a @click.prevent="() => scrollTo('#Bagle')"> Bagle </a>
+          <a @click.prevent="() => scrollTo('#News')"> News </a>
+          <a @click.prevent="() => scrollTo('#Access')"> Access </a>
           <!-- <a @click.prevent="() => scrollTo('#Insta', { offset: -100 })">
             Insta
           </a> -->
@@ -56,31 +46,31 @@ scrollTo("#section2", { offset: 0 });
         <div class="footer-nav">
           <ul>
             <li>
-              <a @click.prevent="() => scrollTo('#About', { offset: -100 })">
+              <a @click.prevent="() => scrollTo('#About')">
                 <span class="footer-nav-num">01</span>
                 <span class="footer-nav-text">about</span>
               </a>
             </li>
             <li>
-              <a @click.prevent="() => scrollTo('#Feature', { offset: -100 })">
+              <a @click.prevent="() => scrollTo('#Feature')">
                 <span class="footer-nav-num">02</span>
                 <span class="footer-nav-text">Feature</span>
               </a>
             </li>
             <li>
-              <a @click.prevent="() => scrollTo('#Bagle', { offset: -100 })">
+              <a @click.prevent="() => scrollTo('#Bagle')">
                 <span class="footer-nav-num">03</span>
                 <span class="footer-nav-text">Bagle</span>
               </a>
             </li>
             <li>
-              <a @click.prevent="() => scrollTo('#News', { offset: -100 })">
+              <a @click.prevent="() => scrollTo('#News')">
                 <span class="footer-nav-num">04</span>
                 <span class="footer-nav-text">News</span>
               </a>
             </li>
             <li>
-              <a @click.prevent="() => scrollTo('#Access', { offset: -100 })">
+              <a @click.prevent="() => scrollTo('#Access')">
                 <span class="footer-nav-num">05</span>
                 <span class="footer-nav-text">Access</span>
               </a>

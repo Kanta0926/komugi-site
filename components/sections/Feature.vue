@@ -110,7 +110,7 @@ function toggleLift(index: number) {
 </script>
 
 <template>
-  <section class="sec-inner">
+  <section id="Feature" class="sec-inner">
     <div class="feature-inner">
       <header class="title-inner">
         <div><span>02</span></div>

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, provide } from "vue";
 
 import Top from "@/components/sections/Top.vue";
@@ -8,17 +8,18 @@ import Bagle from "@/components/sections/Bagle.vue";
 import Access from "@/components/sections/Access.vue";
 import News from "@/components/sections/News.vue";
 
-const showHeader = ref(false);
+// const showHeader = ref(false);
 // provide("showHeader", showHeader);
 
-function handleLeaveTop(val) {
-  showHeader.value = val;
-  console.log("[index.vue] showHeader受け取り:", val);
-}
+// function handleLeaveTop(val: boolean) {
+//   showHeader.value = val;
+//   console.log("[index.vue] showHeader受け取り:", val);
+// }
 </script>
 
 <template>
-  <Top @leaveTop="handleLeaveTop"></Top>
+  <!-- <Top @leaveTop="handleLeaveTop"></Top> -->
+  <Top></Top>
   <About></About>
   <Feature></Feature>
   <Bagle></Bagle>

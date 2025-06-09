@@ -1,5 +1,5 @@
-<script setup>
-import { ref, onMounted } from "vue";
+<script setup lang="ts">
+import { inject, onMounted, ref } from "vue";
 
 import titleText from "@/assets/images/Group14.png";
 import logo from "@/assets/images/小麦好日ロゴ05.png";
@@ -23,32 +23,39 @@ const images = [
 ];
 
 // header用の終端の監視処理
-const sentinel = ref();
-const emit = defineEmits(["leaveTop"]);
+const topSectionRef = ref<HTMLElement | null>(null);
+const showHeader = inject("showHeader") as Ref<boolean>;
+if (!inject) throw new Error("showHeaderがinjectされていません");
+
+let observer: IntersectionObserver;
 
 onMounted(() => {
+  // 画面切り替えの処理
   setInterval(() => {
     currentIndex.value = (currentIndex.value + 1) % images.length;
-  }, 6000); // 5秒ごとに切り替え
+  }, 6000);
 
   // header用の監視処理
-  const observer = new IntersectionObserver(
-    // 交差時にemitをコールバック
+  observer = new IntersectionObserver(
+    // 画面ないに要素があるとき、.valueはfalse
     ([entry]) => {
-      emit("leaveTop", !entry.isIntersecting);
+      if (showHeader) {
+        showHeader.value = !entry.isIntersecting;
+      }
     },
-    { threshold: 0 }
+    {
+      threshold: 0,
+    }
   );
 
-  // 監視要素をobserve
-  if (sentinel.value) {
-    observer.observe(sentinel.value);
+  if (topSectionRef.value) {
+    observer.observe(topSectionRef.value);
   }
 });
 </script>
 
 <template>
-  <section class="top-inner">
+  <section id="Top" ref="topSectionRef" class="top-inner">
     <div class="logo-inner">
       <NuxtLink>
         <img :src="logo" class="logo" alt="小麦好日" />

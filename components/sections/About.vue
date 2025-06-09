@@ -24,7 +24,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="sec-inner">
+  <section id="About" class="sec-inner">
     <div class="about-inner">
       <header class="title-inner">
         <div><span>01</span></div>

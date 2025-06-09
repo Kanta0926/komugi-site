@@ -5,7 +5,7 @@ const { data: posts } = await useFetch(
 </script>
 
 <template>
-  <section class="sec-inner">
+  <section id="News" class="sec-inner">
     <div class="news-inner">
       <header class="title-inner">
         <div><span>05</span></div>

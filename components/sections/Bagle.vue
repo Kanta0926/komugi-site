@@ -38,7 +38,7 @@ const onMouseLeave = () => {
 </script>
 
 <template>
-  <section class="sec-inner">
+  <section id="Bagle" class="sec-inner">
     <div class="bagle-inner">
       <header class="title-inner">
         <div><span>03</span></div>

@@ -38,7 +38,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="sec-inner">
+  <section id="Access" class="sec-inner">
     <div class="access-top-img">
       <div class="access-parallax" data-y="-20vw">
         <picture class="access-img-pic">

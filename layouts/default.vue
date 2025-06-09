@@ -1,35 +1,51 @@
 <script setup lang="ts">
-import { inject, watch } from "vue";
+import { ref, provide, watch } from "vue";
+
+import { useScrollTo } from "@/composables/useScrollTo";
 
 import InstaIcon from "@/assets/icons/hugeicons_instagram.svg";
 import XIcon from "@/assets/icons/Vector.svg";
 
-const showHeader = inject("showHeader", ref(true)); // デフォルトでtrue
+// headerの出現処理
+const showHeader = ref(false);
+provide("showHeader", showHeader);
 
-watch(showHeader, (val) => {
-  console.log("[default.vue] showHeaderが変更:", val);
-});
+const { scrollTo } = useScrollTo();
+scrollTo("#section2", { offset: 0 });
 </script>
 
 <template>
   <div>
-    <header v-show="showHeader" class="header-inner">
-      <!-- <a href="" class="nav-logo">
+    <Transition name="fade">
+      <header v-if="showHeader" class="header-inner">
+        <!-- <a href="" class="nav-logo">
         <picture class="nav-logo-inner">
           <img src="/images/小麦好日ロゴ05.png" alt="" />
         </picture>
       </a> -->
 
-      <nav class="header-nav">
-        <NuxtLink to="#About">ABOUT</NuxtLink>
-
-        <NuxtLink to="#Feature">Feature</NuxtLink>
-        <NuxtLink to="#Bagle">Bagle</NuxtLink>
-        <NuxtLink to="#News">News</NuxtLink>
-        <NuxtLink to="#Access">Access</NuxtLink>
-        <NuxtLink to="#Instagram" class="insta-img"><InstaIcon /></NuxtLink>
-      </nav>
-    </header>
+        <nav class="header-nav">
+          <a @click.prevent="() => scrollTo('#About', { offset: -100 })">
+            ABOUT
+          </a>
+          <a @click.prevent="() => scrollTo('#Feature', { offset: -100 })">
+            Feature
+          </a>
+          <a @click.prevent="() => scrollTo('#Bagle', { offset: -100 })">
+            Bagle
+          </a>
+          <a @click.prevent="() => scrollTo('#News', { offset: -100 })">
+            News
+          </a>
+          <a @click.prevent="() => scrollTo('#Access', { offset: -100 })">
+            Access
+          </a>
+          <!-- <a @click.prevent="() => scrollTo('#Insta', { offset: -100 })">
+            Insta
+          </a> -->
+        </nav>
+      </header>
+    </Transition>
 
     <main>
       <NuxtPage />
@@ -40,40 +56,40 @@ watch(showHeader, (val) => {
         <div class="footer-nav">
           <ul>
             <li>
-              <NuxtLink to="#About">
+              <a @click.prevent="() => scrollTo('#About', { offset: -100 })">
                 <span class="footer-nav-num">01</span>
                 <span class="footer-nav-text">about</span>
-              </NuxtLink>
+              </a>
             </li>
             <li>
-              <NuxtLink to="#Feature"
-                ><span class="footer-nav-num">02</span>
+              <a @click.prevent="() => scrollTo('#Feature', { offset: -100 })">
+                <span class="footer-nav-num">02</span>
                 <span class="footer-nav-text">Feature</span>
-              </NuxtLink>
+              </a>
             </li>
             <li>
-              <NuxtLink to="#Bagle">
+              <a @click.prevent="() => scrollTo('#Bagle', { offset: -100 })">
                 <span class="footer-nav-num">03</span>
                 <span class="footer-nav-text">Bagle</span>
-              </NuxtLink>
+              </a>
             </li>
             <li>
-              <NuxtLink to="#News">
+              <a @click.prevent="() => scrollTo('#News', { offset: -100 })">
                 <span class="footer-nav-num">04</span>
                 <span class="footer-nav-text">News</span>
-              </NuxtLink>
+              </a>
             </li>
             <li>
-              <NuxtLink to="#Access">
+              <a @click.prevent="() => scrollTo('#Access', { offset: -100 })">
                 <span class="footer-nav-num">05</span>
                 <span class="footer-nav-text">Access</span>
-              </NuxtLink>
+              </a>
             </li>
           </ul>
         </div>
 
         <div class="footer-img">
-          <NuxtLink>
+          <NuxtLink to="#Top">
             <img src="/images/logo05.png" alt="" />
           </NuxtLink>
         </div>
@@ -119,11 +135,19 @@ watch(showHeader, (val) => {
   width: 100%;
   padding: 2rem 2rem 0 0;
   box-sizing: border-box;
-  transition: opacity 0.3s ease;
 }
 
-.header-inner[style*="display: none"] {
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s cubic-bezier(0, 0.55, 0.45, 1);
+}
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }
 
 .nav-logo {

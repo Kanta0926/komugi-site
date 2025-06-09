@@ -26,13 +26,12 @@ console.log(posts.value);
 
       <!-- RESTで取得 -->
       <div class="contens-inner">
-        <div v-for="post in posts" :key="post.id" class="news-item">
-          <!-- <img
-            :src="post._embedded['wp:featuredmedia']?.[0]?.source_url"
-            alt="thumbnail"
-            class="thumbnail"
-          /> -->
-
+        <NuxtLink
+          v-for="post in posts"
+          :key="post.id"
+          :to="`/news/${post.id}`"
+          class="news-item"
+        >
           <img
             :src="
               post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes
@@ -45,7 +44,7 @@ console.log(posts.value);
 
           <p class="date">{{ new Date(post.date).toLocaleDateString() }}</p>
           <h3 class="title" v-html="post.title.rendered" />
-        </div>
+        </NuxtLink>
       </div>
     </div>
   </section>

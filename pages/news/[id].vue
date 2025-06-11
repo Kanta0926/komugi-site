@@ -23,15 +23,34 @@ function formatDate(dateStr: string) {
   <div v-if="post" class="post-inner">
     <h1 v-html="post.title.rendered" class="post-title" />
     <p class="post-day">{{ formatDate(post.date) }}</p>
-    <img
-      :src="
-        post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium
-          ?.source_url ?? post._embedded?.['wp:featuredmedia']?.[0]?.source_url
-      "
-      alt="記事サムネイル"
-      class="thumbnail"
-    />
+    <div class="post-image">
+      <!-- <img
+        :src="
+          post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes
+            ?.medium?.source_url ??
+          post._embedded?.['wp:featuredmedia']?.[0]?.source_url
+        "
+        alt="記事サムネイル"
+        class="thumbnail"
+      /> -->
+
+      <img
+        :src="post._embedded['wp:featuredmedia'][0].source_url"
+        :srcset="`
+    ${post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} 300w,
+    ${post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} 1024w
+  `"
+        sizes="(min-width: 768px) 100vw, 100vw"
+      />
+    </div>
     <div v-html="post.content.rendered" class="post-content" />
+
+    <NuxtLink :to="`/`" class="btn-inner">
+      <div class="post-btn">
+        <span>home</span>
+        <PageLink class="post-btn-svg" />
+      </div>
+    </NuxtLink>
   </div>
   <p v-else>読み込み中...</p>
 </template>
@@ -58,16 +77,77 @@ function formatDate(dateStr: string) {
   font-size: 1rem;
 }
 
-.thumbnail {
+.post-image {
   width: 59.53125rem;
   height: 39.6875rem;
-  margin-bottom: 1rem;
+
+  margin: 4rem;
+}
+
+.post-image img {
   object-fit: contain;
+  object-fit: cover;
 }
 
 .post-content {
-  line-height: 1.8;
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: #333333;
+  line-height: 2rem;
+  font-family: "Gothic A1";
+  font-weight: bold;
+}
+
+/* 下部ボタン */
+.btn-inner {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 6rem auto 0;
+  max-width: 240px;
+  padding: 0.88rem 5.375rem;
+  color: #543618;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  background: #fff7ec;
+  border-radius: 50px;
+  transition-delay: 0.1s;
+}
+
+.post-btn {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  color: #6c5c53;
+  gap: 0.5rem;
+}
+
+.post-btn span {
+  font-size: 1.5rem;
+  font-family: "Gothic A1";
+  font-weight: 600;
+}
+
+.post-btn-svg {
+  fill: #cbac9b;
+  fill-opacity: 0.5;
+  stroke: #333333;
+  transition: transform 0.3s ease;
+}
+
+/* btn-hover */
+.btn-inner:hover {
+  color: #fff7ec;
+  background: #cbac9b;
+}
+
+.btn-inner:hover .post-btn {
+  color: #fff7ec;
+}
+
+.btn-inner:hover .post-btn-svg {
+  fill: #fff7ec;
+  stroke: #ffff;
+  transform: translate(4px, -4px);
 }
 </style>

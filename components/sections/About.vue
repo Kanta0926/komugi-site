@@ -31,11 +31,11 @@ onUnmounted(() => {
         <h1>About</h1>
       </header>
       <div class="contens-inner">
-        <figure class="parallax-inner1">
+        <figure class="parallax parallax-inner1">
           <div
             class="parallax-img1"
             :style="{
-              transform: `translateY(${scrollY * -0.2}px) scale(1.7)`,
+              transform: `translateY(${scrollY * -0.1}px) scale(1.7)`,
             }"
           >
             <img src="/images/About01.png" alt="" />
@@ -64,47 +64,47 @@ onUnmounted(() => {
           </p>
         </div>
 
-        <figure class="parallax-inner2">
-          <div
-            class="parallax-img2"
-            :style="{
-              transform: `translateY(${scrollY * -0.2}px) scale(1.7)`,
-            }"
-          >
+        <figure
+          :style="{
+            transform: `translateY(${scrollY * -0.2}px) scale(1)`,
+          }"
+          class="parallax parallax-inner2"
+        >
+          <div class="parallax-img2">
             <img src="/images/About02.png" alt="" />
           </div>
         </figure>
       </div>
 
       <div class="contens-inner2">
-        <figure class="parallax-inner3">
+        <figure class="parallax parallax-inner3">
           <div
             class="parallax-img3"
             :style="{
-              transform: `translateY(${scrollY * -0.2}px) scale(1.2)`,
+              transform: `translateY(${scrollY * -0.2}px) scale(1.3)`,
             }"
           >
+            <img src="/images/brenna-huff-PpxsF4L2BOg-unsplash.png" alt="" />
+          </div>
+        </figure>
+
+        <figure
+          class="parallax parallax-inner4"
+          :style="{
+            transform: `translateY(${scrollY * -0.45}px) scale(1)`,
+          }"
+        >
+          <div class="parallax-img4">
             <img src="/images/brenna-huff-Ppxg-unsplash.png" alt="" />
           </div>
         </figure>
 
-        <figure class="parallax-inner4">
+        <figure class="parallax parallax-inner5">
           <div
-            class="parallax-img4"
             :style="{
-              transform: `translateY(${scrollY * -0.2}px) scale(1.2)`,
+              transform: `translateY(${scrollY * -0.1}px) scale(1.3)`,
             }"
-          >
-            <img src="/images/brenna-huff-Ppxg-unsplash.png" alt="" />
-          </div>
-        </figure>
-
-        <figure class="parallax-inner5">
-          <div
             class="parallax-img5"
-            :style="{
-              transform: `translateY(${scrollY * -0.2}px) scale(1.2)`,
-            }"
           >
             <img src="/images/brenna-hufunsplash.png" alt="" />
           </div>
@@ -130,99 +130,32 @@ onUnmounted(() => {
   align-items: center;
 }
 
-/* .title-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-  margin-bottom: 7.5rem;
-}
-
-.title-inner span {
-  font-family: "Cormorant Garamond";
-  position: absolute;
-  font-size: 2rem;
-  font-weight: bold;
-  left: 1.375rem;
-}
-
-.title-inner h1 {
-  font-size: 4rem;
-}
-
-.title-inner span::after {
-  background-color: #000000;
-  content: "";
-  display: block;
-  width: 42px;
-  height: 1px;
-  position: absolute;
-  bottom: 5%;
-  right: 0;
-  top: 55%;
-  left: 100%;
-  margin-left: 1rem;
-  transform: translateY(-50%);
-} */
-
-/* .contens-inner {
+.contens-inner {
   color: #000000;
   display: flex;
-  flex-flow: column;
   justify-content: space-between;
   align-items: start;
-  flex-flow: row-reverse;
   width: 100%;
   margin-bottom: 4.875rem;
-} */
+}
 
 .contents-text {
   width: 34.7%;
 }
 
-/* .contens-inner h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
+.parallax {
+  transition: transform 0.3s cubic-bezier(0, 0.55, 0.45, 1);
+  overflow: hidden;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+  will-change: transform;
 }
-
-.contens-inner h2 span {
-  font-size: 1.375rem;
-}
-
-.contens-text-inner {
-  margin-top: 1.375rem;
-  font-weight: bold;
-}
-
-.contens-text-inner::after {
-  background-color: #000000;
-  content: "";
-  display: block;
-  width: 42px;
-  height: 1px;
-  position: absolute;
-
-  margin-top: 1.375rem;
-}
-
-.contens-inner p {
-  margin-top: 6.125rem;
-  font-size: 1.4rem;
-  font-weight: 600;
-  line-height: 3.25rem;
-} */
 
 .parallax-inner1 {
   margin-top: -12.125rem;
-  will-change: transform;
-  transition: transform 0.2s ease-in-out; /* optional */
-  overflow: hidden;
-  position: relative;
   width: 36vh;
   height: 85vh;
   padding: 1rem;
-  box-shadow: 10px 4px 20px 4px rgba(0, 0, 0, 1);
-  border-radius: 8px;
 }
 
 .parallax-img1 {
@@ -231,79 +164,55 @@ onUnmounted(() => {
 }
 
 .parallax-inner2 {
-  will-change: transform;
-  transition: transform 0.2s ease-in-out; /* optional */
-  overflow: hidden;
-  position: relative;
   width: 36vh;
   height: 91vh;
   padding: 2rem;
-  box-shadow: 10px 4px 20px 4px rgba(0, 0, 0, 1);
-  border-radius: 8px;
 }
 
 .parallax-img2 {
   position: absolute;
-  top: 40%;
+  transform: scale(1.2);
 }
 
 .parallax-inner3 {
-  will-change: transform;
-  transition: transform 0.2s ease-in-out; /* optional */
-  overflow: hidden;
-  position: relative;
   width: 51.7vh;
   height: 55.51vh;
   padding: 2rem;
-  box-shadow: 10px 4px 20px 4px rgba(0, 0, 0, 1);
-  border-radius: 8px;
 }
 
 .parallax-img3 {
   position: absolute;
-  top: 40%;
+  top: 80%;
 }
 
 .parallax-inner4 {
-  will-change: transform;
-  transition: transform 0.2s ease-in-out; /* optional */
-  overflow: hidden;
-  position: relative;
   width: 38.6vh;
   height: 29.7vh;
   padding: 2rem;
-  box-shadow: 10px 4px 20px 4px rgba(0, 0, 0, 1);
-  border-radius: 8px;
-  margin-right: 240px;
-  margin-top: 224px;
+  margin-right: 15rem;
+  margin-top: 62.5rem;
   display: flex;
   justify-content: center;
 }
 
 .parallax-img4 {
   position: absolute;
-  top: 55%;
+  top: -55%;
 }
 
 .parallax-inner5 {
-  will-change: transform;
-  transition: transform 0.2s ease-in-out; /* optional */
-  overflow: hidden;
-  position: relative;
-  width: 33vh;
-  height: 45.3vh;
+  width: 42vh;
+  height: 68vh;
   padding: 2rem;
-  box-shadow: 10px 4px 20px 4px rgba(0, 0, 0, 1);
-  border-radius: 8px;
-  margin-top: 456px;
-  margin-left: 30px;
+  margin-top: 28.5rem;
+  margin-left: 1.875rem;
   display: flex;
   justify-content: center;
 }
 
 .parallax-img5 {
   position: absolute;
-  top: 100%;
+  top: 40%;
 }
 
 .contens-inner2 {

@@ -254,7 +254,7 @@ function toggleLift(index: number) {
 }
 
 .feature-inner {
-  margin-top: 14.375rem;
+  /* margin-top: 14.375rem; */
   display: flex;
   flex-flow: column;
   align-items: center;

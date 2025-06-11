@@ -12,6 +12,19 @@ provide("showHeader", showHeader);
 
 const { scrollTo } = useScrollTo();
 // scrollTo("#section2", { offset: 0 });
+
+// watch(
+//   () => route.fullPath,
+//   (newPath) => {
+//     if (newPath === "/") {
+//       // ページ最上部に戻っているか確認
+//       if (window.scrollY < 100) {
+//         showHeader.value = false;
+//       }
+//     }
+//   },
+//   { immediate: true }
+// );
 </script>
 
 <template>

@@ -98,12 +98,10 @@ onMounted(() => {
       </div>
 
       <NuxtLink v-entry class="btn-inner fade-in">
-        <a href="">
-          <div class="access-btn">
-            <span>instagram</span>
-            <InstaIcon class="access-btn-svg" />
-          </div>
-        </a>
+        <div class="access-btn">
+          <span>instagram</span>
+          <InstaIcon class="access-btn-svg" />
+        </div>
       </NuxtLink>
 
       <!-- 背景テキスト -->

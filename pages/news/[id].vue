@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import type { WPPost } from "~/types/wp";
+import PageLink from "@/assets/icons/akar-icons_link-out.svg";
 
 // URLから現在のidを取得
 const route = useRoute();
@@ -24,23 +25,14 @@ function formatDate(dateStr: string) {
     <h1 v-html="post.title.rendered" class="post-title" />
     <p class="post-day">{{ formatDate(post.date) }}</p>
     <div class="post-image">
-      <!-- <img
+      <img
         :src="
-          post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes
-            ?.medium?.source_url ??
+          post._embedded?.['wp:featuredmedia']?.[0]?.media_details
+            ?.source_url ??
           post._embedded?.['wp:featuredmedia']?.[0]?.source_url
         "
         alt="記事サムネイル"
         class="thumbnail"
-      /> -->
-
-      <img
-        :src="post._embedded['wp:featuredmedia'][0].source_url"
-        :srcset="`
-    ${post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} 300w,
-    ${post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url} 1024w
-  `"
-        sizes="(min-width: 768px) 100vw, 100vw"
       />
     </div>
     <div v-html="post.content.rendered" class="post-content" />

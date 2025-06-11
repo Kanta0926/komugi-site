@@ -3,110 +3,73 @@ import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// import { useHoverWidth } from "@/composables/useHoverWidth";
+
 // icon
 import PlusIcon from "@/assets/icons/Subtract.svg";
 
 // パララックス処理
 gsap.registerPlugin(ScrollTrigger);
 
-// const featureRef = ref<HTMLElement | null>(null);
+// const { expand, shrink } = useHoverWidth();
+
+// const featureEl = ref<HTMLElement | null>(null);
 
 onMounted(() => {
-  // hover時のwidthトランジション
-  // if (!featureRef.value) return;
+  // if (featureEl.value) {
+  //   // 初期幅を明示的に指定してもOK（省略可能）
+  //   shrink(featureEl.value);
+  // }
 
-  // const el = featureRef.value;
+  // const expand = () => {
+  //   if (featureEl.value) expand(featureEl.value);
+  // };
 
-  // el.addEventListener("mouseenter", () => {
-  //   gsap.to(el, {
-  //     width: "40%",
-  //     duration: 0.5,
-  //     ease: "power2.out",
-  //   });
-  // });
-
-  // el.addEventListener("mouseleave", () => {
-  //   gsap.to(el, {
-  //     width: "30%", // 元のサイズに戻す
-  //     duration: 0.5,
-  //     ease: "power2.inOut",
-  //   });
-  // });
+  // const shrink = () => {
+  //   if (featureEl.value) shrink(featureEl.value);
+  // };
 
   // liの上下parallax
-  const elements = document.querySelectorAll<HTMLElement>(".js-parallax");
+  // const elements = document.querySelectorAll<HTMLElement>(".js-parallax");
 
-  elements.forEach((el) => {
+  // elements.forEach((el) => {
+  //   gsap.to(el, {
+  //     "--parallax-y": "0px", // 初期値
+  //     scrollTrigger: {
+  //       trigger: el,
+  //       start: "top bottom",
+  //       end: "bottom top",
+  //       scrub: true,
+  //       markers: false,
+  //       onUpdate: (self) => {
+  //         const progress = self.progress; // 0〜1 の値
+  //         const offset = 250 * progress; // パララックス量
+  //         el.style.setProperty("--parallax-y", `${offset}px`);
+  //       },
+  //     },
+  //   });
+  // });
+
+  gsap.utils.toArray(".js-parallax").forEach((el: HTMLElement) => {
     gsap.to(el, {
-      "--parallax-y": "0px", // 初期値
+      y: el.dataset.y || "-20vw",
+      ease: "none",
       scrollTrigger: {
         trigger: el,
         start: "top bottom",
         end: "bottom top",
         scrub: true,
-        markers: false,
-        onUpdate: (self) => {
-          const progress = self.progress; // 0〜1 の値
-          const offset = 250 * progress; // パララックス量
-          el.style.setProperty("--parallax-y", `${offset}px`);
-        },
       },
     });
   });
 });
 
 // liのトグル処理
-const liftedIndex = ref<number | null>(null);
+// const liftedIndex = ref<number | null>(null);
 
-function toggleLift(index: number) {
-  liftedIndex.value = liftedIndex.value === index ? null : index;
-
-  // 画像のホバー時のイージング処理
-  // const featureRef = ref<HTMLElement | null>(null);
-
-  // const animateWidth = (
-  //   el: HTMLElement,
-  //   start: number,
-  //   end: number,
-  //   duration: number
-  // ): void => {
-  //   // アニメーションの開始を記録
-  //   const startTime = performance.now();
-
-  //   const step = (currentTime: number) => {
-  //     // アニメーション開始してから時刻を計算
-  //     const elapsed = currentTime - startTime;
-
-  //     // 0-1の範囲でアニメーションの進行具合
-  //     const progress = Math.min(elapsed / duration, 1);
-  //     const newWidth = start + (end - start) * progress;
-
-  //     el.style.width = `${newWidth}%`;
-
-  //     if (progress < 1) {
-  //       requestAnimationFrame(step);
-  //     }
-  //   };
-
-  //   requestAnimationFrame(step);
-  // };
-
-  // // ホバー時の関数
-  // const expand = () => {
-  //   if (featureRef.value) {
-  //     animateWidth(featureRef.value, 33.33, 40, 400);
-  //   }
-  // };
-
-  // // ホバー解除時の関数
-  // const shrink = () => {
-  //   if (featureRef.value) {
-  //     animateWidth(featureRef.value, 40, 33.33, 400);
-  //   }
-  // };
-
-  // const isLifted = ref(false); // 状態を持つ（最初は false）
-}
+// function toggleLift(index: number) {
+//   liftedIndex.value = liftedIndex.value === index ? null : index;
+// }
 </script>
 
 <template>
@@ -208,6 +171,9 @@ function toggleLift(index: number) {
           class="feature-contents"
           @click="toggleLift(2)"
           :class="{ lifted: liftedIndex === 2 }"
+          ref="featureEl"
+          @mouseenter="() => featureEl && expand(featureEl)"
+          @mouseleave="() => featureEl && shrink(featureEl)"
         >
           <a class="feature-contens-pointer" href="javascript:void(0)">
             <div class="feature-text">
@@ -260,40 +226,6 @@ function toggleLift(index: number) {
   align-items: center;
   padding-top: 14.375rem;
   padding-bottom: 14.375rem;
-}
-
-.title-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-  margin-bottom: 7.5rem;
-  font-weight: bold;
-}
-
-.title-inner span {
-  font-family: "Cormorant Garamond";
-  position: absolute;
-  font-size: 2rem;
-}
-
-.title-inner span {
-  left: 1.375rem;
-}
-
-.title-inner span::after {
-  background-color: #000000;
-  content: "";
-  display: block;
-  width: 42px;
-  height: 1px;
-  position: absolute;
-  bottom: 5%;
-  right: 0;
-  top: 55%;
-  left: 100%;
-  margin-left: 1rem;
-  transform: translateY(-50%);
 }
 
 .contens-inner {
@@ -384,7 +316,7 @@ function toggleLift(index: number) {
 }
 
 .feature-text-inner {
-  transform: translateY(12rem);
+  transform: translateY(10rem);
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   transition-duration: 0.6s;
   transition-property: transform;

@@ -1,19 +1,8 @@
 <script setup lang="ts">
+import { useRoute } from "vue-router";
 import type { WPPost } from "~/types/wp";
 
-const CATEGORY_ID = 7;
-// API呼び出し
-const { data: posts } = await useFetch<WPPost[]>(
-  "http://xs666826.xsrv.jp/wp-json/wp/v2/posts",
-  {
-    query: {
-      categories: CATEGORY_ID,
-      _embed: "",
-      per_page: 4,
-    },
-  }
-);
-console.log(posts.value);
+const { data: posts } = await useFetch("/api/posts");
 </script>
 
 <template>

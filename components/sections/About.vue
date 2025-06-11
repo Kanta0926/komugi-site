@@ -1,12 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
 
-// import img1 from "@/assets/images/About01.png";
-// import img2 from "@/assets/images/About02.png";
-// import img3 from "@/assets/images/brenna-huff-PpxsF4L2BOg-unsplash.png";
-// import img4 from "@/assets/images/brenna-huff-Ppxg-unsplash.png";
-// import img5 from "@/assets/images/brenna-hufunsplash.png";
-
 const scrollY = ref(0);
 
 const handleScroll = () => {
@@ -28,32 +22,32 @@ onUnmounted(() => {
     <div class="about-inner">
       <header class="title-inner">
         <div><span>01</span></div>
-        <h1>About</h1>
+        <h1 lang="en">About</h1>
       </header>
-      <div class="contens-inner">
-        <figure class="parallax parallax-inner1">
-          <div
-            class="parallax-img1"
-            :style="{
-              transform: `translateY(${scrollY * -0.1}px) scale(1.7)`,
-            }"
-          >
+      <div v-entry class="contens-inner fade-in">
+        <figure
+          :style="{
+            transform: `translateY(${scrollY * -0.1}px) scale(1)`,
+          }"
+          class="parallax parallax-inner1"
+        >
+          <div class="parallax-img1">
             <img src="/images/About01.png" alt="" />
           </div>
         </figure>
         <div class="contents-text">
           <h2>
-            <span>ベーグル専門店</span>
+            <span lang="ja">ベーグル専門店</span>
             <br />
             小麦好日 <br />
             KOMUGI KOUJITU
           </h2>
 
           <div class="contens-text-inner">
-            <span>Bagel Specialty Shop KOMUGI KOUJITU</span>
+            <span lang="en">Bagel Specialty Shop KOMUGI KOUJITU</span>
           </div>
 
-          <p>
+          <p lang="ja">
             日々の生活にカリッとしたベーグルをお届けする、ベーグル専門店になります。<br />
             国産小麦を中心に、ひとつひとつ丁寧に手ごね・手作りしたベーグルは、もっちり、そしてほんのり優しい味わい。
             <br />
@@ -64,19 +58,19 @@ onUnmounted(() => {
           </p>
         </div>
 
-        <figure
-          :style="{
-            transform: `translateY(${scrollY * -0.2}px) scale(1)`,
-          }"
-          class="parallax parallax-inner2"
-        >
-          <div class="parallax-img2">
+        <figure class="parallax parallax-inner2">
+          <div
+            :style="{
+              transform: `translateY(${scrollY * -0.2}px) scale(1.65)`,
+            }"
+            class="parallax-img2"
+          >
             <img src="/images/About02.png" alt="" />
           </div>
         </figure>
       </div>
 
-      <div class="contens-inner2">
+      <div v-entry class="contens-inner2 fade-in">
         <figure class="parallax parallax-inner3">
           <div
             class="parallax-img3"
@@ -137,6 +131,7 @@ onUnmounted(() => {
   align-items: start;
   width: 100%;
   margin-bottom: 4.875rem;
+  flex-flow: row-reverse;
 }
 
 .contents-text {
@@ -160,7 +155,7 @@ onUnmounted(() => {
 
 .parallax-img1 {
   position: absolute;
-  top: 40%;
+  transform: scale(1.2);
 }
 
 .parallax-inner2 {
@@ -171,7 +166,7 @@ onUnmounted(() => {
 
 .parallax-img2 {
   position: absolute;
-  transform: scale(1.2);
+  top: 20%;
 }
 
 .parallax-inner3 {

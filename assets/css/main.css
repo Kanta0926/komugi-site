@@ -61,7 +61,7 @@ aside h1,
 nav h1,
 section h1 {
   font-size: inherit;
-  margin: inherit;
+  /* margin: inherit; */
 }
 
 h3 {
@@ -69,11 +69,17 @@ h3 {
 }
 
 .title-inner {
-  align-items: center;
-  color: #000;
   display: flex;
+  align-items: center;
   justify-content: center;
+  color: #000000;
   margin-bottom: 7.5rem;
+  font-weight: bold;
+}
+
+.title-inner h1 {
+  margin: 1rem 0;
+  font-size: 4rem;
 }
 
 .title-inner span {
@@ -84,20 +90,19 @@ h3 {
   position: absolute;
 }
 
-.title-inner h1 {
-  font-size: 4rem;
-}
-
 .title-inner span::after {
-  background-color: #000;
+  background-color: #000000;
   content: "";
   display: block;
-  height: 1px;
-  inset: 55% 0 5% 100%;
-  margin-left: 1rem;
-  position: absolute;
-  transform: translateY(-50%);
   width: 42px;
+  height: 1px;
+  position: absolute;
+  bottom: 5%;
+  right: 0;
+  top: 55%;
+  left: 100%;
+  margin-left: 1rem;
+  transform: translateY(-50%);
 }
 
 .contens-inner {

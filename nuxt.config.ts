@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   vite: {
     plugins: [require("vite-svg-loader")()],
   },
-  css: ["@/assets/css/main.css"],
+  css: ["@/assets/css/main.css", "@/assets/css/animations.css"],
   app: {
     baseURL: "/komugi-site/",
 

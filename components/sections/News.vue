@@ -25,7 +25,7 @@ console.log(posts.value);
       </header>
 
       <!-- RESTで取得 -->
-      <div class="contens-inner">
+      <div v-entry class="contens-inner fade-in">
         <NuxtLink
           v-for="post in posts"
           :key="post.id"
@@ -61,44 +61,6 @@ console.log(posts.value);
   flex-flow: column;
   align-items: center;
   padding: 14.375rem 0 11.25rem 0;
-}
-
-.title-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-  margin-bottom: 7.5rem;
-  font-weight: bold;
-}
-
-.title-inner span {
-  font-family: "Cormorant Garamond";
-  position: absolute;
-  font-size: 2rem;
-}
-
-.title-inner h1 {
-  font-size: 4rem;
-}
-
-.title-inner span {
-  left: 1.375rem;
-}
-
-.title-inner span::after {
-  background-color: #000000;
-  content: "";
-  display: block;
-  width: 42px;
-  height: 1px;
-  position: absolute;
-  bottom: 5%;
-  right: 0;
-  top: 55%;
-  left: 100%;
-  margin-left: 1rem;
-  transform: translateY(-50%);
 }
 
 .contens-inner {

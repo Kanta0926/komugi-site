@@ -277,10 +277,6 @@ function toggleLift(index: number) {
   font-size: 2rem;
 }
 
-.title-inner h1 {
-  font-size: 4rem;
-}
-
 .title-inner span {
   left: 1.375rem;
 }

@@ -333,6 +333,10 @@ onMounted(() => {
   justify-content: space-around;
 }
 
+.bottom-inner p {
+  margin: 1.2rem 0;
+}
+
 .bottom-news {
   display: flex;
   justify-content: center;

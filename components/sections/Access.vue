@@ -52,7 +52,7 @@ onMounted(() => {
         <h1 lang="en">Access</h1>
       </header>
 
-      <div class="contens-inner">
+      <div v-entry class="contens-inner fade-in">
         <div class="store-inner">
           <h2 lang="ja">店舗情報<br /></h2>
           <div class="contens-text-inner">
@@ -86,7 +86,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="map-inner">
+      <div v-entry class="map-inner fade-in">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6583.889862660348!2d132.4591055!3d34.402745599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x355a98a6eaf7e7c3%3A0xf57be92cb5339632!2z5bqD5bO25Z-O!5e0!3m2!1sja!2sjp!4v1749025109920!5m2!1sja!2sjp"
           width="600"
@@ -97,12 +97,14 @@ onMounted(() => {
         ></iframe>
       </div>
 
-      <a href="" class="btn-inner">
-        <div class="access-btn">
-          <span>instagram</span>
-          <InstaIcon class="access-btn-svg" />
-        </div>
-      </a>
+      <NuxtLink v-entry class="btn-inner fade-in">
+        <a href="">
+          <div class="access-btn">
+            <span>instagram</span>
+            <InstaIcon class="access-btn-svg" />
+          </div>
+        </a>
+      </NuxtLink>
 
       <!-- 背景テキスト -->
       <div class="bg-text-inner">
@@ -152,44 +154,6 @@ onMounted(() => {
   align-items: center;
   padding-top: 14.375rem;
   padding-bottom: 14.375rem;
-}
-
-.title-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-  margin-bottom: 7.5rem;
-  font-weight: bold;
-}
-
-.title-inner span {
-  font-family: "Cormorant Garamond";
-  position: absolute;
-  font-size: 2rem;
-}
-
-.title-inner h1 {
-  font-size: 4rem;
-}
-
-.title-inner span {
-  left: 1.375rem;
-}
-
-.title-inner span::after {
-  background-color: #000000;
-  content: "";
-  display: block;
-  width: 42px;
-  height: 1px;
-  position: absolute;
-  bottom: 5%;
-  right: 0;
-  top: 55%;
-  left: 100%;
-  margin-left: 1rem;
-  transform: translateY(-50%);
 }
 
 .access-parallax {

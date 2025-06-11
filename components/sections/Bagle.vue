@@ -53,7 +53,7 @@ const onMouseLeave = () => {
         </div>
       </div>
 
-      <div class="bagle-contens">
+      <div v-entry class="bagle-contens fade-in">
         <Swiper
           class="swiper-inner"
           ref="swiperRef"
@@ -198,12 +198,12 @@ const onMouseLeave = () => {
         </Swiper>
       </div>
 
-      <a href="" class="btn-inner">
+      <NuxtLink v-entry class="btn-inner fade-in">
         <div class="bagle-btn">
-          <span>menue</span>
+          <span lang="en">menue</span>
           <PageLink class="bagle-btn-svg" />
         </div>
-      </a>
+      </NuxtLink>
     </div>
   </section>
 </template>
@@ -212,14 +212,7 @@ const onMouseLeave = () => {
   position: relative;
 }
 
-.bagle-inner {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  padding: 14.375rem 0 11.25rem 0;
-}
-
-.title-inner {
+/* .title-inner {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -232,10 +225,6 @@ const onMouseLeave = () => {
   font-family: "Cormorant Garamond";
   position: absolute;
   font-size: 2rem;
-}
-
-.title-inner h1 {
-  font-size: 4rem;
 }
 
 .title-inner span {
@@ -255,7 +244,7 @@ const onMouseLeave = () => {
   left: 100%;
   margin-left: 1rem;
   transform: translateY(-50%);
-}
+} */
 
 .contens-inner {
   color: #000000;
@@ -265,11 +254,11 @@ const onMouseLeave = () => {
   align-items: center;
 }
 
-.bagel-inner {
+.bagle-inner {
   display: flex;
   flex-flow: column;
   align-items: center;
-  padding-top: 14.375rem;
+  padding: 14.375rem 0 11.25rem 0;
 }
 
 .bagle-contens {

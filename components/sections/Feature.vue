@@ -3,60 +3,24 @@ import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// import { useHoverWidth } from "@/composables/useHoverWidth";
-
 // icon
 import PlusIcon from "@/assets/icons/Subtract.svg";
 
 // パララックス処理
 gsap.registerPlugin(ScrollTrigger);
 
-// const { expand, shrink } = useHoverWidth();
-
-// const featureEl = ref<HTMLElement | null>(null);
-
 onMounted(() => {
-  // if (featureEl.value) {
-  //   // 初期幅を明示的に指定してもOK（省略可能）
-  //   shrink(featureEl.value);
-  // }
-  // const expand = () => {
-  //   if (featureEl.value) expand(featureEl.value);
-  // };
-  // const shrink = () => {
-  //   if (featureEl.value) shrink(featureEl.value);
-  // };
-  // liの上下parallax
-  // const elements = document.querySelectorAll<HTMLElement>(".js-parallax");
-  // elements.forEach((el) => {
-  //   gsap.to(el, {
-  //     "--parallax-y": "0px", // 初期値
-  //     scrollTrigger: {
-  //       trigger: el,
-  //       start: "top bottom",
-  //       end: "bottom top",
-  //       scrub: true,
-  //       markers: false,
-  //       onUpdate: (self) => {
-  //         const progress = self.progress; // 0〜1 の値
-  //         const offset = 250 * progress; // パララックス量
-  //         el.style.setProperty("--parallax-y", `${offset}px`);
-  //       },
-  //     },
-  //   });
-  // });
-
   gsap.utils.toArray<HTMLElement>(".js-parallax").forEach((el) => {
-    const y = el.dataset.y || "-20vw"; // data属性の値を使う
+    const y = el.dataset.y || "20vw";
     gsap.to(el, {
       y,
-      scale: 1.3,
-      ease: "none",
+      scale: 1.4,
+      ease: "power2.inOut",
       scrollTrigger: {
         trigger: el,
         start: "top bottom",
         end: "bottom top",
-        scrub: 0.5,
+        scrub: 0.3,
       },
     });
   });
@@ -84,7 +48,7 @@ function toggleLift(index: number) {
         </div>
       </div>
 
-      <div class="feature-contens-inner">
+      <div v-entry class="feature-contens-inner fade-in">
         <li
           class="feature-contents"
           @click="toggleLift(0)"
@@ -117,10 +81,7 @@ function toggleLift(index: number) {
 
             <div class="feature-img js-parallax" data-y="-20vw">
               <picture class="feature-img-pic">
-                <img
-                  src="/images/american-heritage-chocolate-HJUae0j54tI-unsplash.webp"
-                  alt=""
-                />
+                <img src="/images/Feature01.webp" alt="" />
               </picture>
             </div>
           </a>
@@ -159,10 +120,7 @@ function toggleLift(index: number) {
 
             <div class="feature-img js-parallax" data-y="-20vw">
               <picture class="feature-img-pic">
-                <img
-                  src="/images/brenna-huff-PpxsF4LBOg-unsplash.webp"
-                  alt=""
-                />
+                <img src="/images/Feature02.webp" alt="" />
               </picture>
             </div>
           </a>
@@ -172,9 +130,6 @@ function toggleLift(index: number) {
           class="feature-contents"
           @click="toggleLift(2)"
           :class="{ lifted: liftedIndex === 2 }"
-          ref="featureEl"
-          @mouseenter="() => featureEl && expand(featureEl)"
-          @mouseleave="() => featureEl && shrink(featureEl)"
         >
           <a class="feature-contens-pointer" href="javascript:void(0)">
             <div class="feature-text">
@@ -204,7 +159,7 @@ function toggleLift(index: number) {
 
             <div class="feature-img js-parallax" data-y="-20vw">
               <picture class="feature-img-pic">
-                <img src="/images/brenna-unsplash.webp" alt="" />
+                <img src="/images/Feature03.webp" alt="" />
               </picture>
             </div>
           </a>
@@ -237,26 +192,6 @@ function toggleLift(index: number) {
   width: 34.7%;
 }
 
-/* .contens-inner h2 {
-  font-size: 1.375rem;
-  font-weight: 600;
-} */
-
-/* .contens-text-inner {
-  margin-top: 1.375rem;
-} */
-
-/* .contens-text-inner::after {
-  background-color: #000000;
-  content: "";
-  display: block;
-  width: 42px;
-  height: 1px;
-  position: absolute;
-
-  margin-top: 1.375rem;
-} */
-
 .contens-inner p {
   margin-top: 6.125rem;
   font-size: 1.625rem;
@@ -284,13 +219,9 @@ function toggleLift(index: number) {
   will-change: width;
 }
 
-/* .feature-contents:hover {
+.feature-contents:hover {
   width: 40%;
-} */
-
-/* .feature-contents:hover img {
-  transform: scaleX(1.2);
-} */
+}
 
 .feature-contens-pointer {
   position: relative;
@@ -369,14 +300,13 @@ function toggleLift(index: number) {
 
 .feature-img {
   position: absolute;
-  top: 0px;
+  top: 18%;
   left: 0px;
   width: 100%;
   height: 100%;
-  transform: scale(1.3);
+  transform: scale(1.4);
   will-change: transform;
   overflow: hidden;
-  --parallax-scale: 1.3;
 }
 
 .feature-img img {
@@ -407,31 +337,19 @@ function toggleLift(index: number) {
   will-change: opacity;
 }
 
-/* .feature-text {
-  transition: transform 0.4s ease;
-} */
-
 .lifted .feature-text-inner {
-  transform: translateY(0); /* 上に20px浮かせる */
+  transform: translateY(0);
 }
 
 .lifted .feature-btn {
-  transform: rotate(90deg); /* 上に20px浮かせる */
+  transform: rotate(90deg);
 }
 
 .lifted .feature-vell {
   opacity: 0.2;
 }
 
-/* .lifted.feature-img {
-  transform: translateY(-20px);
-} */
-
 .feature-img-pic {
-  /* transform: scale(1.5);
-  transform: translateY(var(--parallax-y, 0px)); */
-  transform: translate3d(0, calc(1 * var(--parallax-y, 0)), 1px)
-    scale(var(--parallax-scale));
   /* transition: transform 0.1s linear; */
   will-change: transform;
   height: 100%;

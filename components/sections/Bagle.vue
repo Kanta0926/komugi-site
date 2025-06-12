@@ -68,7 +68,7 @@ const onMouseLeave = () => {
         >
           <SwiperSlide class="bagle-contens-inner">
             <div class="bagle-img">
-              <img src="/images/maja-vujic-HAP3ti6lOAw-unsplash.png" alt="" />
+              <img src="/images/Bagle01.webp" alt="" />
             </div>
 
             <div class="bagle-contents-title">
@@ -87,10 +87,7 @@ const onMouseLeave = () => {
 
           <SwiperSlide class="bagle-contens-inner bagle-contens2">
             <div class="bagle-img">
-              <img
-                src="/images/yoga-nova-diansyah-iJVWqHKow_s-unsplash.png"
-                alt=""
-              />
+              <img src="/images/Bagle02.webp" alt="" />
             </div>
 
             <div class="bagle-contents-title">
@@ -110,7 +107,7 @@ const onMouseLeave = () => {
 
           <SwiperSlide class="bagle-contens-inner bagle-contens3">
             <div class="bagle-img">
-              <img src="/images/vicky-ng-lIQRPsA43tw-unsplash.png" alt="" />
+              <img src="/images/Bagle03.webp" alt="" />
             </div>
 
             <div class="bagle-contents-title">
@@ -131,7 +128,7 @@ const onMouseLeave = () => {
 
           <SwiperSlide class="bagle-contens-inner bagle-contens4">
             <div class="bagle-img">
-              <img src="/images/32548518_m.png" alt="" />
+              <img src="/images/Bagle04.webp" alt="" />
             </div>
 
             <div class="bagle-contents-title">
@@ -154,7 +151,7 @@ const onMouseLeave = () => {
 
           <SwiperSlide class="bagle-contens-inner bagle-contens5">
             <div class="bagle-img">
-              <img src="/images/32085879_s.png" alt="" />
+              <img src="/images/Bagle05.webp" alt="" />
             </div>
 
             <div class="bagle-contents-title">
@@ -177,7 +174,7 @@ const onMouseLeave = () => {
 
           <SwiperSlide class="bagle-contens-inner bagle-contens6">
             <div class="bagle-img">
-              <img src="/images/3711959_s.png" alt="" />
+              <img src="/images/Bagle06.webp" alt="" />
             </div>
 
             <div class="bagle-contents-title">

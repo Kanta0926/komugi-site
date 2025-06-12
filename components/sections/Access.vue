@@ -42,7 +42,7 @@ onMounted(() => {
     <div class="access-top-img">
       <div class="access-parallax" data-y="-20vw">
         <picture class="access-img-pic">
-          <img src="/images/bagel-7706691_1920 (1).jpg" alt="" />
+          <img src="/images/Access01.webp" alt="" />
         </picture>
       </div>
     </div>

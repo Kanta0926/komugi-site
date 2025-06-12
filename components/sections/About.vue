@@ -32,7 +32,7 @@ onUnmounted(() => {
           class="parallax parallax-inner1"
         >
           <div class="parallax-img1">
-            <img src="/images/About01.png" alt="" />
+            <img src="/images/About01.webp" alt="" />
           </div>
         </figure>
         <div class="contents-text">
@@ -65,7 +65,7 @@ onUnmounted(() => {
             }"
             class="parallax-img2"
           >
-            <img src="/images/About02.png" alt="" />
+            <img src="/images/About02.webp" alt="" />
           </div>
         </figure>
       </div>
@@ -78,7 +78,7 @@ onUnmounted(() => {
               transform: `translateY(${scrollY * -0.2}px) scale(1.3)`,
             }"
           >
-            <img src="/images/brenna-huff-PpxsF4L2BOg-unsplash.png" alt="" />
+            <img src="/images/About03.webp" alt="" />
           </div>
         </figure>
 
@@ -89,7 +89,7 @@ onUnmounted(() => {
           }"
         >
           <div class="parallax-img4">
-            <img src="/images/brenna-huff-Ppxg-unsplash.png" alt="" />
+            <img src="/images/About04.webp" alt="" />
           </div>
         </figure>
 
@@ -100,7 +100,7 @@ onUnmounted(() => {
             }"
             class="parallax-img5"
           >
-            <img src="/images/brenna-hufunsplash.png" alt="" />
+            <img src="/images/About05.webp" alt="" />
           </div>
         </figure>
       </div>

@@ -20,18 +20,14 @@ onMounted(() => {
   //   // 初期幅を明示的に指定してもOK（省略可能）
   //   shrink(featureEl.value);
   // }
-
   // const expand = () => {
   //   if (featureEl.value) expand(featureEl.value);
   // };
-
   // const shrink = () => {
   //   if (featureEl.value) shrink(featureEl.value);
   // };
-
   // liの上下parallax
   // const elements = document.querySelectorAll<HTMLElement>(".js-parallax");
-
   // elements.forEach((el) => {
   //   gsap.to(el, {
   //     "--parallax-y": "0px", // 初期値
@@ -50,26 +46,28 @@ onMounted(() => {
   //   });
   // });
 
-  gsap.utils.toArray(".js-parallax").forEach((el: HTMLElement) => {
+  gsap.utils.toArray<HTMLElement>(".js-parallax").forEach((el) => {
+    const y = el.dataset.y || "-20vw"; // data属性の値を使う
     gsap.to(el, {
-      y: el.dataset.y || "-20vw",
+      y,
+      scale: 1.3,
       ease: "none",
       scrollTrigger: {
         trigger: el,
         start: "top bottom",
         end: "bottom top",
-        scrub: true,
+        scrub: 0.5,
       },
     });
   });
 });
 
 // liのトグル処理
-// const liftedIndex = ref<number | null>(null);
+const liftedIndex = ref<number | null>(null);
 
-// function toggleLift(index: number) {
-//   liftedIndex.value = liftedIndex.value === index ? null : index;
-// }
+function toggleLift(index: number) {
+  liftedIndex.value = liftedIndex.value === index ? null : index;
+}
 </script>
 
 <template>
@@ -120,7 +118,7 @@ onMounted(() => {
             <div class="feature-img js-parallax" data-y="-20vw">
               <picture class="feature-img-pic">
                 <img
-                  src="/images/american-heritage-chocolate-HJUae0j54tI-unsplash.jpg"
+                  src="/images/american-heritage-chocolate-HJUae0j54tI-unsplash.webp"
                   alt=""
                 />
               </picture>
@@ -161,7 +159,10 @@ onMounted(() => {
 
             <div class="feature-img js-parallax" data-y="-20vw">
               <picture class="feature-img-pic">
-                <img src="/images/brenna-huff-PpxsF4LBOg-unsplash.png" alt="" />
+                <img
+                  src="/images/brenna-huff-PpxsF4LBOg-unsplash.webp"
+                  alt=""
+                />
               </picture>
             </div>
           </a>
@@ -203,7 +204,7 @@ onMounted(() => {
 
             <div class="feature-img js-parallax" data-y="-20vw">
               <picture class="feature-img-pic">
-                <img src="/images/brenna-unsplash.png" alt="" />
+                <img src="/images/brenna-unsplash.webp" alt="" />
               </picture>
             </div>
           </a>
@@ -296,6 +297,7 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   display: block;
+  overflow: hidden;
 }
 
 .feature-text {
@@ -371,7 +373,7 @@ onMounted(() => {
   left: 0px;
   width: 100%;
   height: 100%;
-  /* transform: translate3d scale(1.3); */
+  transform: scale(1.3);
   will-change: transform;
   overflow: hidden;
   --parallax-scale: 1.3;
@@ -426,11 +428,11 @@ onMounted(() => {
 } */
 
 .feature-img-pic {
-  transform: scale(1.5);
-  transform: translateY(var(--parallax-y, 0px));
+  /* transform: scale(1.5);
+  transform: translateY(var(--parallax-y, 0px)); */
   transform: translate3d(0, calc(1 * var(--parallax-y, 0)), 1px)
     scale(var(--parallax-scale));
-  transition: transform 0.1s linear;
+  /* transition: transform 0.1s linear; */
   will-change: transform;
   height: 100%;
   display: block;

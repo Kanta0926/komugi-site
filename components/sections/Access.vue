@@ -13,7 +13,6 @@ const currentIndex = ref(0);
 onMounted(() => {
   // liの上下parallax
   const elements = document.querySelectorAll<HTMLElement>(".access-parallax");
-
   elements.forEach((el) => {
     gsap.to(el, {
       "--parallax-y": "0px", // 初期値
@@ -31,6 +30,7 @@ onMounted(() => {
       },
     });
   });
+
   setInterval(() => {
     currentIndex.value = (currentIndex.value + 1) % 3;
   }, 3500);

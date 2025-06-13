@@ -94,4 +94,19 @@ const { data: posts } = await useFetch("/api/posts");
   font-weight: bold;
   font-size: 1.1rem;
 }
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
+  .contens-inner {
+    display: none;
+  }
+}
 </style>

@@ -4,22 +4,17 @@ import { inject, onMounted, ref } from "vue";
 import titleText from "@/assets/images/Group14.png";
 import logo from "@/assets/images/小麦好日ロゴ05.png";
 
-// import img1 from "@/assets/images/Rectangle19.png";
-// import img2 from "@/assets/images/Rectangle20.png";
-// import img3 from "@/assets/images/Rectangle21.png";
-
 // icon
 import MapIcon from "@/assets/icons/ph_map-pin-light.svg";
 import ClockIcon from "@/assets/icons/basil_clock-outline.svg";
 import InstaIcon from "@/assets/icons/hugeicons_instagram.svg";
 
 const currentIndex = ref(0);
-// const images = [img1, img2, img3];
 
 const images = [
-  useRuntimeConfig().app.baseURL + "images/Rectangle19.png",
-  useRuntimeConfig().app.baseURL + "images/Rectangle20.png",
-  useRuntimeConfig().app.baseURL + "images/Rectangle21.png",
+  useRuntimeConfig().app.baseURL + "images/Rectangle19.webp",
+  useRuntimeConfig().app.baseURL + "images/Rectangle20.webp",
+  useRuntimeConfig().app.baseURL + "images/Rectangle21.webp",
 ];
 
 // header用の終端の監視処理
@@ -151,6 +146,7 @@ onMounted(() => {
 <style scoped>
 .top-inner {
   position: relative;
+  overflow: hidden;
 }
 
 .logo-inner {
@@ -160,6 +156,8 @@ onMounted(() => {
   margin-top: 4rem;
   width: 100%;
   box-sizing: border-box;
+  position: absolute;
+  z-index: 100;
 }
 
 .logo-inner a {
@@ -313,11 +311,6 @@ onMounted(() => {
   border-color: #ffff;
 }
 
-.logo-inner {
-  position: absolute;
-  z-index: 100;
-}
-
 .bottom-inner {
   display: flex;
   justify-content: center;
@@ -407,5 +400,20 @@ onMounted(() => {
 
 .scroll-sentinel {
   height: 1px;
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
+  .bottom-inner {
+    /* display: none; */
+  }
 }
 </style>

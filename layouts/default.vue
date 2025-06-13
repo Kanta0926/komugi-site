@@ -357,4 +357,19 @@ const { scrollTo } = useScrollTo();
 .bigtext-inner span {
   font-size: 8rem;
 }
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
+  .footer-inner {
+    display: none;
+  }
+}
 </style>

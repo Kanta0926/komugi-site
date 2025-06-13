@@ -8,22 +8,23 @@ body {
   position: relative;
   margin: 0;
   display: block;
-  overflow-x: clip;
+  /* overflow-x: clip; */
   width: 100%;
+  overflow-x: hidden;
 }
 
 body::before {
-  background-image: url("@/assets/images/pattern_104.png"); /* 画像パスに合わせて書き換え */
-  background-size: cover; /* 画像を全体にフィットさせる */
+  background-image: url("@/assets/images/pattern_104.png");
+  background-size: cover;
   content: "";
   height: 100%;
   left: 0;
   opacity: 0.02;
-  pointer-events: none; /* クリックできるように */
+  pointer-events: none;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000; /* 必要に応じて調整（ページの上に乗せる） */
+  z-index: 1000;
 }
 
 img {
@@ -146,4 +147,16 @@ h3 {
   font-weight: 600;
   line-height: 3.25rem;
   margin-top: 6.125rem;
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
 }

@@ -31,9 +31,10 @@ onMounted(() => {
     });
   });
 
-  setInterval(() => {
-    currentIndex.value = (currentIndex.value + 1) % 3;
-  }, 3500);
+  // 一時的にSP対応のためコメントアウト
+  // setInterval(() => {
+  //   currentIndex.value = (currentIndex.value + 1) % 3;
+  // }, 3500);
 });
 </script>
 
@@ -324,5 +325,24 @@ onMounted(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
+  .contens-inner {
+    display: none;
+  }
+
+  .bg-text-scroll {
+    display: none;
+  }
 }
 </style>

@@ -130,6 +130,9 @@ onMounted(() => {
       <div class="bottom-daily">
         <ClockIcon class="svg-icon" />
         <p>OPEN. 9:30~17:00 年中無休</p>
+        <a href="" class="svg-icon svg-sp-insta">
+          <InstaIcon />
+        </a>
       </div>
       <div class="bottom-map">
         <MapIcon class="svg-icon" />
@@ -398,6 +401,10 @@ onMounted(() => {
   height: 2rem;
 }
 
+.svg-pc-insta {
+  display: none;
+}
+
 .scroll-sentinel {
   height: 1px;
 }
@@ -412,8 +419,68 @@ onMounted(() => {
 /* SP、スマホ対応：743px以下
 ============================================== */
 @media screen and (max-width: 743px) {
+  .global-nav {
+    display: none;
+  }
+
+  .logo-inner {
+    justify-content: space-between;
+    margin: unset;
+    padding: unset;
+    height: 100%;
+  }
+
+  .logo-inner div {
+    width: 5rem;
+    height: auto;
+    height: 14rem;
+    padding: 2rem;
+  }
+
+  .logo-inner div img {
+    object-fit: contain;
+  }
+
+  .logo-inner a {
+    left: 4%;
+    top: 58%;
+    width: 12rem;
+    height: 12rem;
+    margin: unset;
+    padding: unset;
+  }
+
+  .dots-container {
+    top: 72%;
+    right: 6%;
+    bottom: 0;
+  }
+
+  .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
   .bottom-inner {
     /* display: none; */
+    position: relative;
+    flex-direction: column;
+    align-items: baseline;
+    font-size: 1rem;
+    padding: 0.4rem;
+    box-sizing: border-box;
+  }
+
+  .bottom-bar {
+    display: none;
+  }
+
+  .svg-insta {
+    display: none;
+  }
+
+  .svg-pc-insta {
+    display: inline-block;
   }
 }
 </style>

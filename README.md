@@ -1,60 +1,87 @@
 <div id="top"></div>
 
-## 使用技術一覧
-
+## 🔧 Technologies & Tools
 <!-- シールド一覧 -->
+![](https://img.shields.io/badge/UI-Figma-informational?style=flat&logo=figma&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/UI-Nuxt-informational?logo=nuxt&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Code-Vue-informational?style=flat&logo=vuedotjs&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Code-TypeScript-informational?style=flat&logo=typescript&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/CMS-WordPress-informational?style=flat&logo=wordpress&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tool-Photoshop-informational?style=flat&logo=affinityphoto&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Editor-VScode-informational?style=flat&logo=intellijidea&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Code-Node.js-informational?logo=nodedotjs&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tool-illustrator-informational?logo=affinitydesigner&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Plugins-lanis-informational?logo=swiper&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Plugins-Swiper-informational?logo=swiper&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Plugins-Gsap-informational?logo=greensock&logoColor=white&color=2bbc8a)
+
   <!-- フレームワーク -->
   <!-- Nuxt -->
-<img src="https://img.shields.io/badge/-Nuxt.js-00C58E.svg?logo=nuxt.js&style=plastic">
+
 <!-- vue -->
-<img src="https://img.shields.io/badge/-Vue.js-4FC08D.svg?logo=vue.js&style=plastic">
+
 <!-- node -->
-<img src="https://img.shields.io/badge/-Node.js-000000.svg?logo=node.js&style=for-the-badge">
+
 <!-- ソフトウェア-->
 <!-- photoshop -->
-<img src="https://img.shields.io/badge/Photoshop-%230884FF?style=flat
-  ">
+
 <!-- illustrator -->
-<img alt="Static Badge" src="https://img.shields.io/badge/Illustrator-%23FF9D08?style=flat">
+
 <!-- figma -->
-<img alt="Static Badge" src="https://img.shields.io/badge/Figma-%23111111?style=flat&logo=figma&logoColor=%23FF763D">
+
 <!-- CMS -->
 <!-- WP -->
-<img src="https://img.shields.io/badge/-Wordpress-21759B.svg?logo=wordpress&style=plastic">
 <!-- 管理ツール -->
 <!-- github -->
-  <img src="https://img.shields.io/badge/-githubactions-FFFFFF.svg?logo=github-actions&style=for-the-badge">
+
 <!-- npm -->
-<img src="https://img.shields.io/badge/-Npm-CB3837.
-svg?logo=npm&style=plastic">
+
+
 <!-- ライブラリ -->
 <!-- GSAP -->
-<img src="https://img.shields.io/badge/GSAP-brightgreen?style=flat&logo=greensock&logoColor=88CE02&labelColor=FFFF&color=333333
-  ">
+
 <!-- lenis -->
-<img alt="Static Badge" src="https://img.shields.io/badge/Lenis-%23FF9BAA?style=flat">
 <!-- swiper -->
-<img src="https://img.shields.io/badge/Swiper-white?style=flat&logo=swiper&logoColor=FFFF&labelColor=087EFF
-  ">
-</p>
+
 
 ## 目次
 
-1. [プロジェクトについて](#プロジェクトについて)
-2. [環境](#環境)
-3. [ディレクトリ構成](#ディレクトリ構成)
-4. [開発環境構築](#開発環境構築)
-5. [トラブルシューティング](#トラブルシューティング)
+1. [プロジェクト](#プロジェクト)
+2. [作成意図](#作成意図)
+3. [プロジェクト概要](#プロジェクト概要)
+4. [環境](#環境)
+5. [ディレクトリ構成](#ディレクトリ構成)
+6. [開発環境構築](#開発環境構築)
+7. [トラブルシューティング](#トラブルシューティング)
 
 ## プロジェクト名
 
 komugi-site
+- [小麦好日へのリンク](https://kancha.org/komugi-site/)
 
-## プロジェクトについて
+## 💡プロジェクトについて
 
 ベーグル店を想定した HP サイトになってます。<br/>
 Nuxt3 を基本としつつ、WordPress をヘッドレス CMS として使用。<br/>
 ライブラリには、GSAP、Lenis、Swiper を使用してます。
+
+## ⚡作成意図
+1. Figmaに慣れる
+初めてFigmaを使用しました。
+Adobe XDとの差異や、Figma独自の機能の理解をしたく触ってみました。
+
+2. Nuxt3 の学習
+前作で使用した、Vueの経験を活かしNuxt3に触れてみたく
+Nuxt3で制作いたしました。
+ルーティングやdefault、サーバーサイドでの知識が増えたように思います。
+
+3. WordPress　RESTAPIの使用
+ブログとしては、WordPressの使用をしたことはあったのですが、
+ヘッドレスCMSとして使用したことはなかったので今回採用しました。
+APIを通じて、記事データの取得を勉強できました。
+またjson形式の勉強にもなりました。
+
+
 
 <!-- プロジェクトの概要を記載 -->
 

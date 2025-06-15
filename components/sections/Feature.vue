@@ -38,23 +38,23 @@ function toggleLift(index: number) {
   <section id="Feature" class="sec-inner">
     <div class="feature-inner">
       <header class="title-inner">
-        <div><span>02</span></div>
+        <span>02</span>
         <h1>Feature</h1>
       </header>
       <div class="contens-inner">
         <h2>こだわりがある、ベーグルを。<br /></h2>
-        <div class="contens-text-inner">
+        <div class="contens-sub-title">
           <span>Bagels with a Special Attention to Detail</span>
         </div>
       </div>
 
-      <div v-entry class="feature-contens-inner fade-in">
+      <div v-entry class="feature-parallax fade-in">
         <li
-          class="feature-contents"
+          class="parallax-inner"
           @click="toggleLift(0)"
           :class="{ lifted: liftedIndex === 0 }"
         >
-          <a class="feature-contens-pointer" href="javascript:void(0)">
+          <a class="parallax-contens" href="javascript:void(0)">
             <div class="feature-text">
               <div class="feature-text-inner">
                 <h3>
@@ -88,11 +88,11 @@ function toggleLift(index: number) {
         </li>
 
         <li
-          class="feature-contents"
+          class="parallax-inner"
           @click="toggleLift(1)"
           :class="{ lifted: liftedIndex === 1 }"
         >
-          <a class="feature-contens-pointer" href="javascript:void(0)">
+          <a class="parallax-contens" href="javascript:void(0)">
             <div class="feature-text">
               <div class="feature-text-inner">
                 <h3>
@@ -127,11 +127,11 @@ function toggleLift(index: number) {
         </li>
 
         <li
-          class="feature-contents"
+          class="parallax-inner"
           @click="toggleLift(2)"
           :class="{ lifted: liftedIndex === 2 }"
         >
-          <a class="feature-contens-pointer" href="javascript:void(0)">
+          <a class="parallax-contens" href="javascript:void(0)">
             <div class="feature-text">
               <div class="feature-text-inner">
                 <h3>
@@ -200,7 +200,7 @@ function toggleLift(index: number) {
   width: ;
 }
 
-.feature-contens-inner {
+.feature-parallax {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -210,7 +210,7 @@ function toggleLift(index: number) {
   transform: translateX(-50%);
 }
 
-.feature-contents {
+.parallax-inner {
   width: 33.3333%;
   height: 100%;
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -219,11 +219,11 @@ function toggleLift(index: number) {
   will-change: width;
 }
 
-.feature-contents:hover {
+.parallax-inner:hover {
   width: 40%;
 }
 
-.feature-contens-pointer {
+.parallax-contens {
   position: relative;
   width: 100%;
   height: 100%;
@@ -256,14 +256,14 @@ function toggleLift(index: number) {
   will-change: transform;
 }
 
-.feature-contents a {
+.parallax-inner a {
   width: 100%;
   height: 100%;
   position: relative;
   display: block;
 }
 
-.feature-contents a h3 {
+.parallax-inner a h3 {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -273,13 +273,13 @@ function toggleLift(index: number) {
   margin: 2.5rem 0;
 }
 
-.feature-contents a h3 [lang="ja"] {
+.parallax-inner a h3 [lang="ja"] {
   font-size: 1.25rem;
   font-family: "Gothic A1";
   font-weight: bold;
 }
 
-.feature-contents a h3 [lang="en"] {
+.parallax-inner a h3 [lang="en"] {
   font-size: 1rem;
 }
 
@@ -346,7 +346,7 @@ function toggleLift(index: number) {
 }
 
 .lifted .feature-vell {
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .feature-img-pic {
@@ -355,5 +355,79 @@ function toggleLift(index: number) {
   height: 100%;
   display: block;
   width: 100%;
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
+  .sec-inner {
+    overflow: hidden;
+  }
+
+  .feature-inner {
+    margin-top: 10rem;
+  }
+
+  /* main記述 */
+  .title-inner h1 {
+    font-size: 2.8rem;
+  }
+
+  .title-inner spna {
+    font-size: 1.4rem;
+  }
+
+  .contens-inner p {
+    font-size: 1rem;
+    line-height: 2.4rem;
+  }
+
+  .contens-inner h2 {
+    font-size: 2rem;
+  }
+
+  .contens-sub-title span {
+    font-size: 0.8rem;
+  }
+
+  .contens-inner {
+    width: 68%;
+  }
+
+  .feature-parallax {
+    flex-direction: column;
+    overflow: unset;
+    height: auto;
+  }
+
+  .parallax-inner {
+    width: 100%;
+  }
+
+  .parallax-inner a h3 {
+    font-size: 1rem;
+  }
+
+  .parallax-inner:hover {
+    width: unset;
+  }
+
+  .feature-text {
+    mask-image: url("/images/maskGradation04-sp.png");
+    padding: 2rem 0 8rem 0;
+
+    width: 74%;
+  }
+
+  .feature-text-sub {
+    font-size: 0.85rem;
+  }
 }
 </style>

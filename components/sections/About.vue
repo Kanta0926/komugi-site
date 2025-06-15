@@ -21,7 +21,7 @@ onUnmounted(() => {
   <section id="About" class="sec-inner">
     <div class="about-inner">
       <header class="title-inner">
-        <div><span>01</span></div>
+        <span>01</span>
         <h1 lang="en">About</h1>
       </header>
       <div v-entry class="contens-inner fade-in">
@@ -43,7 +43,7 @@ onUnmounted(() => {
             KOMUGI KOUJITU
           </h2>
 
-          <div class="contens-text-inner">
+          <div class="contens-sub-title">
             <span lang="en">Bagel Specialty Shop KOMUGI KOUJITU</span>
           </div>
 
@@ -243,6 +243,78 @@ onUnmounted(() => {
   }
   100% {
     transform: translateX(-100%); /* 左へ */
+  }
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
+  .sec-inner {
+    overflow: hidden;
+  }
+
+  .about-inner {
+    margin-top: 10rem;
+  }
+
+  /* main記述 */
+  .title-inner h1 {
+    font-size: 2.8rem;
+  }
+
+  .title-inner spna {
+    font-size: 1.4rem;
+  }
+
+  .contens-inner p {
+    font-size: 1rem;
+    line-height: 2.4rem;
+  }
+
+  .contens-inner h2 {
+    font-size: 2rem;
+  }
+
+  .contents-text {
+    width: 74%;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 500;
+  }
+
+  .contents-text::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 114%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 21.875rem;
+    height: 60rem;
+    border-radius: 10%;
+    filter: blur(20px);
+    background: #ffff;
+    opacity: 0.5;
+  }
+
+  .contens-sub-title span {
+    font-size: 0.8rem;
+  }
+
+  .parallax {
+    height: 40vh;
   }
 }
 </style>

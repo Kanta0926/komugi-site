@@ -126,7 +126,7 @@ onMounted(() => {
           </p>
         </div>
       </div>
-      <div class="bottom-bar"></div>
+      <div class="bottom-bar bottom-bar-sp"></div>
       <div class="bottom-daily">
         <ClockIcon class="svg-icon" />
         <p>OPEN. 9:30~17:00 年中無休</p>
@@ -394,6 +394,8 @@ onMounted(() => {
   margin-right: 0.5rem;
   display: flex;
   stroke: #ffff;
+  width: 32px;
+  height: 32px;
 }
 
 .svg-insta {
@@ -401,7 +403,7 @@ onMounted(() => {
   height: 2rem;
 }
 
-.svg-pc-insta {
+.svg-sp-insta {
   display: none;
 }
 
@@ -467,12 +469,26 @@ onMounted(() => {
     flex-direction: column;
     align-items: baseline;
     font-size: 1rem;
-    padding: 0.4rem;
+    padding: 0.8rem;
     box-sizing: border-box;
   }
 
-  .bottom-bar {
+  .bottom-inner p {
+    margin: unset;
+  }
+
+  .bottom-bar-sp {
     display: none;
+  }
+
+  .scroll-inner {
+    width: 18rem;
+  }
+
+  .svg-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 0.2;
   }
 
   .svg-insta {
@@ -481,6 +497,10 @@ onMounted(() => {
 
   .svg-pc-insta {
     display: inline-block;
+    stroke-width: 2;
+    height: 28px;
+    width: 28px;
+    margin-left: 2.4rem;
   }
 }
 </style>

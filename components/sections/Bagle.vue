@@ -48,7 +48,7 @@ const onMouseLeave = () => {
         <h2 lang="ja">
           シンプルなものから、季節感あふれる限定ベーグルまで<br />
         </h2>
-        <div class="contens-text-inner">
+        <div class="contens-sub-title">
           <span lang="en">From simple to seasonal limited edition bagels</span>
         </div>
       </div>

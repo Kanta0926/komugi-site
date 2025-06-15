@@ -56,7 +56,7 @@ onMounted(() => {
       <div v-entry class="contens-inner fade-in">
         <div class="store-inner">
           <h2 lang="ja">店舗情報<br /></h2>
-          <div class="contens-text-inner">
+          <div class="contens-sub-title">
             <span lang="en">Store Information</span>
           </div>
 
@@ -70,7 +70,7 @@ onMounted(() => {
         <div class="day-inner">
           <div class="day-text">
             <h2 lang="ja">カレンダー<br /></h2>
-            <div class="contens-text-inner">
+            <div class="contens-sub-title">
               <span lang="en">Calendar</span>
             </div>
           </div>

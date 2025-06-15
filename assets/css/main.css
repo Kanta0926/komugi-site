@@ -127,12 +127,12 @@ h3 {
   font-size: 1.375rem;
 }
 
-.contens-text-inner {
+.contens-sub-title {
   font-weight: bold;
   margin-top: 1.375rem;
 }
 
-.contens-text-inner::after {
+.contens-sub-title::after {
   background-color: #000;
   content: "";
   display: block;
@@ -159,4 +159,7 @@ h3 {
 /* SP、スマホ対応：743px以下
 ============================================== */
 @media screen and (max-width: 743px) {
+  .title-inner span::after {
+    width: 18px;
+  }
 }

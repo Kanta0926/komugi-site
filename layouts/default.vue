@@ -10,6 +10,7 @@ import XIcon from "@/assets/icons/Vector.svg";
 const showHeader = ref(false);
 provide("showHeader", showHeader);
 
+// スムーススクロールの処理
 const { scrollTo } = useScrollTo();
 // scrollTo("#section2", { offset: 0 });
 
@@ -368,6 +369,10 @@ const { scrollTo } = useScrollTo();
 /* SP、スマホ対応：743px以下
 ============================================== */
 @media screen and (max-width: 743px) {
+  .header-inner {
+    display: none;
+  }
+
   .footer-inner {
     display: none;
   }

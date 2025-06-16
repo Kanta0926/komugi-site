@@ -39,10 +39,10 @@ function toggleLift(index: number) {
     <div class="feature-inner">
       <header class="title-inner">
         <span>02</span>
-        <h1>Feature</h1>
+        <h1 lang="en">Feature</h1>
       </header>
       <div class="contens-inner">
-        <h2>こだわりがある、ベーグルを。<br /></h2>
+        <h2 lang="ja">こだわりがある、ベーグルを。<br /></h2>
         <div class="contens-sub-title">
           <span>Bagels with a Special Attention to Detail</span>
         </div>
@@ -59,7 +59,7 @@ function toggleLift(index: number) {
               <div class="feature-text-inner">
                 <h3>
                   <span lang="ja">素材にこだわっているからこそ</span>
-                  <span lang="na"
+                  <span lang="en"
                     >because we are particular about the materials we use</span
                   >
                 </h3>
@@ -97,7 +97,7 @@ function toggleLift(index: number) {
               <div class="feature-text-inner">
                 <h3>
                   <span lang="ja">焼き立てのカリッと食感をあなたに</span>
-                  <span lang="na"
+                  <span lang="en"
                     >Freshly baked and crispy texture for you</span
                   >
                 </h3>
@@ -136,7 +136,7 @@ function toggleLift(index: number) {
               <div class="feature-text-inner">
                 <h3>
                   <span lang="ja">季節ごとのベーグルで新たな体験を</span>
-                  <span lang="na"
+                  <span lang="en"
                     >Feel a new experience with seasonal bagels</span
                   >
                 </h3>
@@ -295,6 +295,8 @@ function toggleLift(index: number) {
   transition-duration: 0.6s;
   transition-property: transform;
   will-change: transform;
+  width: 44px;
+  height: 44px;
   /* top: 70%; */
 }
 
@@ -376,26 +378,26 @@ function toggleLift(index: number) {
   }
 
   /* main記述 */
-  .title-inner h1 {
+  /* .title-inner h1 {
     font-size: 2.8rem;
   }
 
   .title-inner spna {
     font-size: 1.4rem;
-  }
+  } */
 
-  .contens-inner p {
+  /* .contens-inner p {
     font-size: 1rem;
     line-height: 2.4rem;
   }
 
   .contens-inner h2 {
     font-size: 2rem;
-  }
+  } */
 
-  .contens-sub-title span {
+  /* .contens-sub-title span {
     font-size: 0.8rem;
-  }
+  } */
 
   .contens-inner {
     width: 68%;
@@ -409,10 +411,17 @@ function toggleLift(index: number) {
 
   .parallax-inner {
     width: 100%;
+    height: 65vh;
   }
 
-  .parallax-inner a h3 {
+  .parallax-inner a h3 [lang="ja"] {
     font-size: 1rem;
+    font-family: "Gothic A1";
+    font-weight: bold;
+  }
+
+  .parallax-inner a h3 [lang="en"] {
+    font-size: 0.8rem;
   }
 
   .parallax-inner:hover {
@@ -421,13 +430,18 @@ function toggleLift(index: number) {
 
   .feature-text {
     mask-image: url("/images/maskGradation04-sp.png");
-    padding: 2rem 0 8rem 0;
+    padding: 2rem 1.8rem 8rem 1.8rem;
 
-    width: 74%;
+    /* width: 74%; */
   }
 
   .feature-text-sub {
     font-size: 0.85rem;
+  }
+
+  .feature-btn {
+    width: 1.6rem;
+    height: 1.6rem;
   }
 }
 </style>

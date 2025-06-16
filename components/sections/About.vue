@@ -265,13 +265,17 @@ onUnmounted(() => {
   }
 
   /* main記述 */
+  /* .title-inner {
+    margin-bottom: 2.5rem;
+  }
+
   .title-inner h1 {
     font-size: 2.8rem;
   }
 
   .title-inner spna {
     font-size: 1.4rem;
-  }
+  } */
 
   .contens-inner p {
     font-size: 1rem;
@@ -280,6 +284,7 @@ onUnmounted(() => {
 
   .contens-inner h2 {
     font-size: 2rem;
+    margin: unset;
   }
 
   .contents-text {

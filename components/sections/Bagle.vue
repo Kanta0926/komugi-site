@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { useMediaQuery, useMounted } from "@vueuse/core";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -20,7 +21,7 @@ import PageLink from "@/assets/icons/akar-icons_link-out.svg";
 // const onMouseLeave = () => {
 //   swiperRef.value?.swiper?.autoplay?.start();
 // };
-
+// Swiperの処理
 const swiperRef = ref<any>(null);
 const swiperInstance = ref<any>(null);
 
@@ -35,19 +36,30 @@ const onMouseEnter = () => {
 const onMouseLeave = () => {
   swiperInstance.value?.autoplay?.start();
 };
+
+// SP時のHTML変更処理
+const isMobile = useMediaQuery("(max-width: 743px)");
+const isMounted = useMounted();
 </script>
 
 <template>
   <section id="Bagle" class="sec-inner">
     <div class="bagle-inner">
       <header class="title-inner">
-        <div><span>03</span></div>
+        <span>03</span>
         <h1 lang="en">Bagle</h1>
       </header>
       <div class="contens-inner">
-        <h2 lang="ja">
-          シンプルなものから、季節感あふれる限定ベーグルまで<br />
-        </h2>
+        <div v-if="isMounted">
+          <h2 lang="ja" v-if="isMobile">
+            シンプルなものから、季節感あふれるベーグルまで。<br />
+          </h2>
+
+          <h2 lang="ja" v-else>
+            シンプルなものから、季節感あふれる限定ベーグルまで。<br />
+          </h2>
+        </div>
+
         <div class="contens-sub-title">
           <span lang="en">From simple to seasonal limited edition bagels</span>
         </div>
@@ -411,5 +423,43 @@ const onMouseLeave = () => {
   fill: #fff7ec;
   stroke: #ffff;
   transform: translate(4px, -4px);
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
+  .bagle-inner {
+    padding: 6.25rem 0 5rem 0;
+  }
+
+  .swiper-wrapper {
+    gap: 1.4rem;
+  }
+
+  .bagle-contens-inner {
+    width: 68vw;
+    height: 74vh;
+    padding: unset;
+    padding: 2.4rem;
+  }
+  .bagle-img {
+    width: 34vw;
+    height: auto;
+  }
+  .bagle-contens-text {
+    width: 100%;
+    height: 100%;
+  }
+
+  .bagle-contents-title {
+    margin: 3rem 0 4.625rem 0;
+  }
 }
 </style>

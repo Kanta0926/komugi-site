@@ -160,6 +160,10 @@ const onSwiper = (swiper: any) => {
     overflow: hidden;
   }
 
+  .news-inner {
+    padding: 6.25rem 0 5rem 0;
+  }
+
   .contens-inner {
     width: 96%;
     margin-left: 0.8rem;
@@ -167,6 +171,10 @@ const onSwiper = (swiper: any) => {
 
   .swiper-slide {
     width: 80%;
+  }
+
+  .news-item {
+    display: inline-block;
   }
 }
 

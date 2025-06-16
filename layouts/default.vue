@@ -374,7 +374,48 @@ const { scrollTo } = useScrollTo();
   }
 
   .footer-inner {
-    display: none;
+    /* display: none; */
+    overflow: hidden;
+    padding: 6.25rem 0 0 0;
+  }
+
+  .footer-nav-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .footer-img {
+    width: 60%;
+    height: 60%;
+  }
+
+  .policy-inner {
+    padding: unset;
+    flex-direction: column;
+    margin-bottom: 4rem;
+  }
+
+  .policy-right {
+    margin-bottom: 2rem;
+  }
+
+  .bigtext-inner {
+    align-items: center;
+  }
+
+  .bigtext-inner span {
+    font-size: 5rem;
+  }
+}
+
+/* タッチデバイスのhover削除 */
+@media (hover: none) {
+  .footer-nav a:hover .footer-nav-text,
+  .footer-img a:hover,
+  .footer-icon a:hover {
+    transform: none;
+    opacity: 1;
   }
 }
 </style>

@@ -1,20 +1,70 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import type { WPPost } from "~/types/wp";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { useMediaQuery, useMounted } from "@vueuse/core";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const { data: posts } = await useFetch("/api/posts");
+
+// SP時のHTML変更処理
+const isMobile = useMediaQuery("(max-width: 743px)");
+const isMounted = useMounted();
+
+// Swiperの処理
+const swiperRef = ref<any>(null);
+const swiperInstance = ref<any>(null);
+
+const onSwiper = (swiper: any) => {
+  swiperInstance.value = swiper;
+};
 </script>
 
 <template>
   <section id="News" class="sec-inner">
     <div class="news-inner">
       <header class="title-inner">
-        <div><span>05</span></div>
+        <span>05</span>
         <h1 lang="en">News</h1>
       </header>
 
+      <!-- <div v-if="isMounted"> -->
+      <!-- SP表示 -->
+      <div v-if="isMounted && isMobile" v-entry class="contens-inner fade-in">
+        <Swiper
+          class="swiper-inner"
+          ref="swiperRef"
+          :slides-per-view="'auto'"
+          :centeredSlides="true"
+          :space-between="5"
+          @swiper="onSwiper"
+        >
+          <SwiperSlide v-for="post in posts" :key="post.id" class="news-slide">
+            <NuxtLink :to="`/news/${post.id}`" class="news-item">
+              <img
+                :src="
+                  post._embedded?.['wp:featuredmedia']?.[0]?.media_details
+                    ?.sizes?.medium?.source_url ??
+                  post._embedded?.['wp:featuredmedia']?.[0]?.source_url
+                "
+                alt="記事サムネイル"
+                class="thumbnail"
+              />
+
+              <p class="date">
+                {{ new Date(post.date).toLocaleDateString() }}
+              </p>
+              <h3 class="title" v-html="post.title.rendered" />
+            </NuxtLink>
+          </SwiperSlide>
+        </Swiper>
+      </div>
       <!-- RESTで取得 -->
-      <div v-entry class="contens-inner fade-in">
+      <!-- PC表示 -->
+      <div v-else v-entry class="contens-inner fade-in">
         <NuxtLink
           v-for="post in posts"
           :key="post.id"
@@ -36,6 +86,7 @@ const { data: posts } = await useFetch("/api/posts");
         </NuxtLink>
       </div>
     </div>
+    <!-- </div> -->
   </section>
 </template>
 
@@ -105,8 +156,29 @@ const { data: posts } = await useFetch("/api/posts");
 /* SP、スマホ対応：743px以下
 ============================================== */
 @media screen and (max-width: 743px) {
+  .sec-inner {
+    overflow: hidden;
+  }
+
   .contens-inner {
-    display: none;
+    width: 96%;
+    margin-left: 0.8rem;
+  }
+
+  .swiper-slide {
+    width: 80%;
+  }
+}
+
+/* タッチデバイスのhover削除 */
+@media (hover: none) {
+  .news-item {
+    transition: none;
+    transform: none;
+  }
+  .news-item:hover {
+    transform: none;
+    opacity: 1;
   }
 }
 </style>

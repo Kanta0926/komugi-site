@@ -390,7 +390,6 @@ const isMounted = useMounted();
 
 .bagle-btn {
   display: flex;
-  justify-self: center;
   align-items: center;
   color: #6c5c53;
   gap: 0.5rem;
@@ -460,6 +459,34 @@ const isMounted = useMounted();
 
   .bagle-contents-title {
     margin: 3rem 0 4.625rem 0;
+  }
+
+  /* hover削除 */
+  .btn-inner:hover {
+    color: unset;
+    background: unset;
+  }
+
+  .btn-inner:hover .bagle-btn {
+    color: unset;
+  }
+
+  .btn-inner:hover .bagle-btn-svg {
+    fill: unset;
+    stroke: unset;
+    transform: unset;
+  }
+}
+/* タッチデバイスのhover削除 */
+@media (hover: none) {
+  .btn-inner:hover,
+  .btn-inner:hover .bagle-btn,
+  .btn-inner:hover .bagle-btn-svg {
+    color: inherit;
+    background: inherit;
+    fill: inherit;
+    stroke: inherit;
+    transform: none;
   }
 }
 </style>

@@ -3,12 +3,18 @@ import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { useMediaQuery, useMounted } from "@vueuse/core";
+
 import InstaIcon from "@/assets/icons/hugeicons_instagram.svg";
 
 // パララックス処理
 gsap.registerPlugin(ScrollTrigger);
 
 const currentIndex = ref(0);
+
+// SP時のHTML変更処理
+const isMobile = useMediaQuery("(max-width: 743px)");
+const isMounted = useMounted();
 
 onMounted(() => {
   // liの上下parallax
@@ -42,14 +48,19 @@ onMounted(() => {
   <section id="Access" class="sec-inner">
     <div class="access-top-img">
       <div class="access-parallax" data-y="-20vw">
-        <picture class="access-img-pic">
-          <img src="/images/Access01.webp" alt="" />
-        </picture>
+        <div v-if="isMounted">
+          <picture v-if="isMobile" class="access-img-pic">
+            <img src="/images/Access-sp01.webp" alt="" />
+          </picture>
+          <picture v-else class="access-img-pic">
+            <img src="/images/Access01.webp" alt="" />
+          </picture>
+        </div>
       </div>
     </div>
     <div class="access-inner">
       <header class="title-inner">
-        <div><span>04</span></div>
+        <span>04</span>
         <h1 lang="en">Access</h1>
       </header>
 
@@ -65,6 +76,20 @@ onMounted(() => {
             <span lang="ja">〒730-0025 広島件広島市東区39-82</span>
             <span lang="ja">OPEN. 9:30~17:00 年中無休</span>
           </div>
+
+          <!-- SP表示 -->
+          <div v-if="isMounted">
+            <div v-if="isMobile" v-entry class="map-inner fade-in">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6583.889862660348!2d132.4591055!3d34.402745599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x355a98a6eaf7e7c3%3A0xf57be92cb5339632!2z5bqD5bO25Z-O!5e0!3m2!1sja!2sjp!4v1749025109920!5m2!1sja!2sjp"
+                width="600"
+                height="450"
+                style="border: 0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
         </div>
 
         <div class="day-inner">
@@ -74,28 +99,29 @@ onMounted(() => {
               <span lang="en">Calendar</span>
             </div>
           </div>
-          <div>
-            <iframe
-              src="https://calendar.google.com/calendar/embed?src=kanta.sato0926%40gmail.com&ctz=Asia%2FTokyo"
-              style="border: 0"
-              width="800"
-              height="600"
-              frameborder="0"
-              scrolling="no"
-            ></iframe>
-          </div>
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=kanta.sato0926%40gmail.com&ctz=Asia%2FTokyo"
+            style="border: 0"
+            width="800"
+            height="600"
+            frameborder="0"
+            scrolling="no"
+          ></iframe>
         </div>
       </div>
 
-      <div v-entry class="map-inner fade-in">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6583.889862660348!2d132.4591055!3d34.402745599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x355a98a6eaf7e7c3%3A0xf57be92cb5339632!2z5bqD5bO25Z-O!5e0!3m2!1sja!2sjp!4v1749025109920!5m2!1sja!2sjp"
-          width="600"
-          height="450"
-          style="border: 0"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+      <!-- PC表示 -->
+      <div v-if="isMounted">
+        <div v-if="!isMobile" v-entry class="map-inner fade-in">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6583.889862660348!2d132.4591055!3d34.402745599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x355a98a6eaf7e7c3%3A0xf57be92cb5339632!2z5bqD5bO25Z-O!5e0!3m2!1sja!2sjp!4v1749025109920!5m2!1sja!2sjp"
+            width="600"
+            height="450"
+            style="border: 0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </div>
 
       <NuxtLink v-entry class="btn-inner fade-in">
@@ -144,6 +170,7 @@ onMounted(() => {
   background-color: rgba(255, 247, 236, 0.6);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .feature-inner {
@@ -206,7 +233,7 @@ onMounted(() => {
   font-weight: bold;
   display: flex;
   flex-direction: column;
-  margin-top: 6.0875rem;
+  margin-top: 6.125rem;
 }
 
 .day-inner {
@@ -215,12 +242,12 @@ onMounted(() => {
 }
 
 .day-text {
-  margin-bottom: 6.25rem;
 }
 
 .day-inner iframe {
   width: 20rem;
   height: 20rem;
+  margin-top: 6.125rem;
 }
 
 .map-inner {
@@ -337,12 +364,70 @@ onMounted(() => {
 /* SP、スマホ対応：743px以下
 ============================================== */
 @media screen and (max-width: 743px) {
-  .contens-inner {
-    display: none;
+  .access-inner {
+    padding: 6.25rem 0 5rem 0;
   }
 
   .bg-text-scroll {
     display: none;
+  }
+
+  .access-img-pic {
+    transform: translateY(calc(var(--parallax-y, 0px) * -2)) scale(1.4);
+  }
+
+  .contens-inner {
+    flex-direction: column;
+    width: 74%;
+    gap: 9.4rem;
+  }
+
+  .store-inner {
+    width: 100%;
+    margin: unset;
+  }
+
+  .store-text {
+    font-size: 1.25rem;
+    margin-bottom: 3.75rem;
+  }
+
+  .day-inner {
+    width: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .day-text {
+    width: 100%;
+  }
+
+  .day-inner iframe {
+    margin-top: 6.125rem;
+  }
+
+  .map-inner {
+    width: 74%;
+    height: 34vh;
+    margin: 0 auto;
+  }
+
+  .map-inner iframe {
+    height: 34vh;
+  }
+}
+
+/* タッチデバイスのhover削除 */
+@media (hover: none) {
+  .btn-inner:hover,
+  .btn-inner:hover .access-btn,
+  .btn-inner:hover .access-btn-svg {
+    color: inherit;
+    background: inherit;
+    fill: inherit;
+    stroke: inherit;
+    transform: none;
   }
 }
 </style>

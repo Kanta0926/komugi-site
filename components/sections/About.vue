@@ -61,7 +61,7 @@ onUnmounted(() => {
         <figure class="parallax parallax-inner2">
           <div
             :style="{
-              transform: `translateY(${scrollY * -0.2}px) scale(1.65)`,
+              transform: `translateY(${scrollY * -0.2}px) scale(2.4)`,
             }"
             class="parallax-img2"
           >
@@ -261,21 +261,10 @@ onUnmounted(() => {
   }
 
   .about-inner {
-    margin-top: 10rem;
+    margin: unset;
+    /* margin-top: 10rem; */
+    padding: 6.25rem 0;
   }
-
-  /* main記述 */
-  /* .title-inner {
-    margin-bottom: 2.5rem;
-  }
-
-  .title-inner h1 {
-    font-size: 2.8rem;
-  }
-
-  .title-inner spna {
-    font-size: 1.4rem;
-  } */
 
   .contens-inner p {
     font-size: 1rem;
@@ -319,7 +308,37 @@ onUnmounted(() => {
   }
 
   .parallax {
-    height: 40vh;
+    /* height: 40vh; */
+    height: 38vh;
+    width: 30vh;
+    margin: unset;
+    padding: unset;
+    /* padding: 2rem 1rem; */
+  }
+
+  .parallax-inner1 {
+    margin-left: 9rem;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .parallax-img1 {
+    /* top: 20%;
+    transform: scale(1.6); */
+    top: 34%;
+    transform: scale(2.8);
+  }
+
+  .parallax-inner2 {
+    margin-right: 9rem;
+    border-radius: 0 8px 0 0;
+  }
+
+  .parallax-img2 {
+    top: 45%;
+  }
+
+  .parallax-inner4 {
+    margin: unset;
   }
 }
 </style>

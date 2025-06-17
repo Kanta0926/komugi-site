@@ -38,9 +38,9 @@ onMounted(() => {
   });
 
   // 一時的にSP対応のためコメントアウト
-  // setInterval(() => {
-  //   currentIndex.value = (currentIndex.value + 1) % 3;
-  // }, 3500);
+  setInterval(() => {
+    currentIndex.value = (currentIndex.value + 1) % 3;
+  }, 4500);
 });
 </script>
 
@@ -364,12 +364,20 @@ onMounted(() => {
 /* SP、スマホ対応：743px以下
 ============================================== */
 @media screen and (max-width: 743px) {
+  .contens-inner {
+    margin: 0 auto 3.75rem;
+  }
+
   .access-inner {
     padding: 6.25rem 0 5rem 0;
   }
 
-  .bg-text-scroll {
-    display: none;
+  .bg-text-inner {
+    /* display: none; */
+    font-size: 9.2rem;
+    top: 20.5%;
+    left: -4%;
+    filter: blur(4px);
   }
 
   .access-img-pic {
@@ -416,17 +424,24 @@ onMounted(() => {
   .map-inner iframe {
     height: 34vh;
   }
+
+  .btn-inner {
+    padding: 0.88rem 1rem;
+  }
 }
 
 /* タッチデバイスのhover削除 */
 @media (hover: none) {
-  .btn-inner:hover,
-  .btn-inner:hover .access-btn,
+  .btn-inner:hover {
+    color: #543618;
+    background: #fff7ec;
+  }
+  .btn-inner:hover .access-btn {
+    color: #6c5c53;
+  }
   .btn-inner:hover .access-btn-svg {
-    color: inherit;
-    background: inherit;
-    fill: inherit;
-    stroke: inherit;
+    fill: #cbac9b;
+    /* stroke: #ffff; */
     transform: none;
   }
 }

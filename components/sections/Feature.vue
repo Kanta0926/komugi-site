@@ -20,7 +20,7 @@ onMounted(() => {
         trigger: el,
         start: "top bottom",
         end: "bottom top",
-        scrub: 0.3,
+        scrub: 0.5,
       },
     });
   });
@@ -374,30 +374,8 @@ function toggleLift(index: number) {
   }
 
   .feature-inner {
-    margin-top: 10rem;
+    padding: 6.25rem 0;
   }
-
-  /* main記述 */
-  /* .title-inner h1 {
-    font-size: 2.8rem;
-  }
-
-  .title-inner spna {
-    font-size: 1.4rem;
-  } */
-
-  /* .contens-inner p {
-    font-size: 1rem;
-    line-height: 2.4rem;
-  }
-
-  .contens-inner h2 {
-    font-size: 2rem;
-  } */
-
-  /* .contens-sub-title span {
-    font-size: 0.8rem;
-  } */
 
   .contens-inner {
     width: 68%;

@@ -39,7 +39,6 @@ const onSwiper = (swiper: any) => {
           ref="swiperRef"
           :slides-per-view="'auto'"
           :centeredSlides="true"
-          :space-between="5"
           @swiper="onSwiper"
         >
           <SwiperSlide v-for="post in posts" :key="post.id" class="news-slide">
@@ -161,20 +160,30 @@ const onSwiper = (swiper: any) => {
   }
 
   .news-inner {
-    padding: 6.25rem 0 5rem 0;
+    padding: 6.25rem 0;
   }
 
   .contens-inner {
     width: 96%;
+    margin: unset;
     margin-left: 0.8rem;
   }
 
   .swiper-slide {
-    width: 80%;
+    width: 78%;
+    margin-right: 2.5rem;
   }
 
   .news-item {
     display: inline-block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thumbnail {
+    width: 18rem;
   }
 }
 

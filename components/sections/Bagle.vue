@@ -435,7 +435,7 @@ const isMounted = useMounted();
 ============================================== */
 @media screen and (max-width: 743px) {
   .bagle-inner {
-    padding: 6.25rem 0 5rem 0;
+    padding: 6.25rem 0;
   }
 
   .swiper-wrapper {
@@ -460,32 +460,19 @@ const isMounted = useMounted();
   .bagle-contents-title {
     margin: 3rem 0 4.625rem 0;
   }
-
-  /* hover削除 */
-  .btn-inner:hover {
-    color: unset;
-    background: unset;
-  }
-
-  .btn-inner:hover .bagle-btn {
-    color: unset;
-  }
-
-  .btn-inner:hover .bagle-btn-svg {
-    fill: unset;
-    stroke: unset;
-    transform: unset;
-  }
 }
 /* タッチデバイスのhover削除 */
 @media (hover: none) {
-  .btn-inner:hover,
-  .btn-inner:hover .bagle-btn,
+  .btn-inner:hover {
+    color: #543618;
+    background: #fff7ec;
+  }
+  .btn-inner:hover .bagle-btn {
+    color: #6c5c53;
+  }
   .btn-inner:hover .bagle-btn-svg {
-    color: inherit;
-    background: inherit;
-    fill: inherit;
-    stroke: inherit;
+    stroke: #333333;
+    fill: #cbac9b;
     transform: none;
   }
 }

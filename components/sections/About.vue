@@ -85,7 +85,7 @@ onUnmounted(() => {
             }"
             class="parallax-img2"
           >
-            <img src="/images/About02.webp" alt="" />
+            <img src="/images/About02.webp" alt="About" />
           </div>
         </figure>
       </div>

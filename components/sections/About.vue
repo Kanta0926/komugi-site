@@ -1,5 +1,10 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
+import { useMediaQuery, useMounted } from "@vueuse/core";
+
+// SP時のHTML変更処理
+const isMobile = useMediaQuery("(max-width: 743px)");
+const isMounted = useMounted();
 
 const scrollY = ref(0);
 
@@ -58,10 +63,26 @@ onUnmounted(() => {
           </p>
         </div>
 
-        <figure class="parallax parallax-inner2">
+        <!-- SP表示 -->
+        <figure v-if="isMounted && isMobile" class="parallax parallax-inner2">
           <div
             :style="{
-              transform: `translateY(${scrollY * -0.2}px) scale(2.4)`,
+              transform: `translateY(${scrollY * -0.08}px) scale(2.2)`,
+            }"
+            class="parallax-img2"
+          >
+            <img
+              src="/images/aldward-castillo-bPqMD7uSrJg-unsplash.jpg"
+              alt=""
+            />
+          </div>
+        </figure>
+
+        <!-- PC表示 -->
+        <figure v-else class="parallax parallax-inner2">
+          <div
+            :style="{
+              transform: `translateY(${scrollY * -0.2}px) scale(1.65)`,
             }"
             class="parallax-img2"
           >
@@ -71,7 +92,20 @@ onUnmounted(() => {
       </div>
 
       <div v-entry class="contens-inner2 fade-in">
-        <figure class="parallax parallax-inner3">
+        <!-- SP表示 -->
+        <figure v-if="isMounted && isMobile" class="parallax parallax-inner3">
+          <div
+            class="parallax-img3"
+            :style="{
+              transform: `translateY(${scrollY * -0.08}px) scale(1.8)`,
+            }"
+          >
+            <img src="/images/About03.webp" alt="" />
+          </div>
+        </figure>
+
+        <!-- PC表示 -->
+        <figure v-else class="parallax parallax-inner3">
           <div
             class="parallax-img3"
             :style="{
@@ -82,7 +116,22 @@ onUnmounted(() => {
           </div>
         </figure>
 
+        <!-- SP表示 -->
         <figure
+          v-if="isMounted && isMobile"
+          class="parallax parallax-inner4"
+          :style="{
+            transform: `translateY(${scrollY * -0.22}px) scale(1)`,
+          }"
+        >
+          <div class="parallax-img4">
+            <img src="/images/About04.webp" alt="" />
+          </div>
+        </figure>
+
+        <!-- PC表示 -->
+        <figure
+          v-else
           class="parallax parallax-inner4"
           :style="{
             transform: `translateY(${scrollY * -0.45}px) scale(1)`,
@@ -93,7 +142,20 @@ onUnmounted(() => {
           </div>
         </figure>
 
-        <figure class="parallax parallax-inner5">
+        <!-- SP表示 -->
+        <figure v-if="isMounted && isMobile" class="parallax parallax-inner5">
+          <div
+            :style="{
+              transform: `translateY(${scrollY * -0.1}px) scale(1.8)`,
+            }"
+            class="parallax-img5"
+          >
+            <img src="/images/About05.webp" alt="" />
+          </div>
+        </figure>
+
+        <!-- PC表示 -->
+        <figure v-else class="parallax parallax-inner5">
           <div
             :style="{
               transform: `translateY(${scrollY * -0.1}px) scale(1.3)`,
@@ -224,7 +286,7 @@ onUnmounted(() => {
   color: #333333;
   opacity: 0.2;
   position: absolute;
-  z-index: -100;
+  z-index: -200;
   width: 100%;
   overflow: hidden;
   top: 70%;
@@ -263,7 +325,16 @@ onUnmounted(() => {
   .about-inner {
     margin: unset;
     /* margin-top: 10rem; */
-    padding: 6.25rem 0;
+    padding: 6.25rem 0 18.25rem 0;
+  }
+
+  .title-inner {
+    z-index: 100;
+  }
+
+  .contens-inner {
+    margin-bottom: 30rem;
+    flex-flow: initial;
   }
 
   .contens-inner p {
@@ -309,36 +380,75 @@ onUnmounted(() => {
 
   .parallax {
     /* height: 40vh; */
-    height: 38vh;
-    width: 30vh;
+    height: 32vh;
+    width: 14vw;
     margin: unset;
-    padding: unset;
+    /* padding: unset; */
     /* padding: 2rem 1rem; */
   }
 
   .parallax-inner1 {
-    margin-left: 9rem;
-    border-radius: 8px 0 0 8px;
+    /* margin-left: 9rem; */
+    /* width: 14vw; */
+    border-radius: 0 8px 8px 0;
   }
 
   .parallax-img1 {
-    /* top: 20%;
-    transform: scale(1.6); */
-    top: 34%;
-    transform: scale(2.8);
+    top: 28%;
+    transform: scale(2);
   }
 
   .parallax-inner2 {
-    margin-right: 9rem;
-    border-radius: 0 8px 0 0;
+    /* margin-right: 9rem; */
+    border-radius: 8px 0 0 8px;
   }
 
   .parallax-img2 {
-    top: 45%;
+    top: 40%;
+    width: 120%;
+    /* left: 0%; */
+    right: 20%;
+  }
+
+  .contens-inner2 {
+    z-index: -100;
+  }
+
+  .parallax-inner3 {
+    /* margin: 1rem; */
+    height: 18vw;
+    width: 16vw;
+    position: relative;
+    /* margin-right: 1rem; */
+    right: 2%;
+  }
+
+  .parallax-img3 {
+    top: 90%;
+    width: 70%;
+    left: 10%;
   }
 
   .parallax-inner4 {
-    margin: unset;
+    width: 10vw;
+    height: 10vw;
+    position: relative;
+    right: 4% 15.7188px;
+    top: 32rem;
+  }
+
+  .parallax-img4 {
+    top: -10%;
+  }
+
+  .parallax-inner5 {
+    top: 12rem;
+    height: 48vw;
+    position: relative;
+  }
+
+  .parallax-img5 {
+    top: 98%;
   }
 }
 </style>

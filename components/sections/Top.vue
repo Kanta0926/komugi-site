@@ -445,7 +445,7 @@ onMounted(() => {
 
   .logo-inner a {
     left: 4%;
-    top: 58%;
+    top: 66%;
     width: 12rem;
     height: 12rem;
     margin: unset;
@@ -453,7 +453,7 @@ onMounted(() => {
   }
 
   .dots-container {
-    top: 72%;
+    top: 84%;
     right: 6%;
     bottom: 0;
   }
@@ -501,6 +501,17 @@ onMounted(() => {
     height: 28px;
     width: 28px;
     margin-left: 2.4rem;
+  }
+}
+
+/* タッチデバイスのhover削除 */
+@media (hover: none) {
+  .logo-inner a:hover {
+    opacity: 1;
+  }
+
+  .global-nav a:hover .global-nav-text {
+    transform: none;
   }
 }
 </style>

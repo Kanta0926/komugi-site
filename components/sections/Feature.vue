@@ -363,6 +363,58 @@ function toggleLift(index: number) {
 /* タブレット対応：744px~1024px
 ============================================== */
 @media screen and (min-width: 744px) and (max-width: 1024px) {
+  .sec-inner {
+    overflow: hidden;
+  }
+
+  .feature-inner {
+    padding: 6.25rem 0;
+  }
+
+  .contens-inner {
+    width: 68%;
+  }
+
+  .feature-parallax {
+    flex-direction: column;
+    overflow: unset;
+    height: auto;
+  }
+
+  .parallax-inner {
+    width: 100%;
+    height: 65vh;
+  }
+
+  .parallax-inner a h3 [lang="ja"] {
+    font-size: 1.4rem;
+    /* font-family: "Gothic A1";
+    font-weight: bold; */
+  }
+
+  /* .parallax-inner a h3 [lang="en"] {
+    font-size: 0.8rem;
+  } */
+
+  .feature-text {
+    mask-image: url("/images/maskGradation04-sp.png");
+    padding: 2rem 1.8rem 8rem 1.8rem;
+
+    width: 74%;
+  }
+
+  .feature-text-sub {
+    font-size: 1.2rem;
+  }
+
+  .lifted .feature-text-inner {
+    transform: translateY(-4rem);
+  }
+
+  .feature-btn {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -402,10 +454,6 @@ function toggleLift(index: number) {
     font-size: 0.8rem;
   }
 
-  .parallax-inner:hover {
-    width: unset;
-  }
-
   .feature-text {
     mask-image: url("/images/maskGradation04-sp.png");
     padding: 2rem 1.8rem 8rem 1.8rem;
@@ -420,6 +468,13 @@ function toggleLift(index: number) {
   .feature-btn {
     width: 1.6rem;
     height: 1.6rem;
+  }
+}
+
+/* タッチデバイスのhover削除 */
+@media (hover: none) {
+  .parallax-inner:hover {
+    width: unset;
   }
 }
 </style>

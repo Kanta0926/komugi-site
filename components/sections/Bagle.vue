@@ -428,6 +428,62 @@ const isMounted = useMounted();
 /* タブレット対応：744px~1024px
 ============================================== */
 @media screen and (min-width: 744px) and (max-width: 1024px) {
+  .bagle-inner {
+    padding: 6.25rem 0;
+  }
+
+  .swiper-wrapper {
+    gap: 1.4rem;
+  }
+
+  .bagle-contens-inner {
+    width: 68vw;
+    height: 74vh;
+    padding: unset;
+    padding: 2.4rem;
+    font-size: 1.2rem;
+  }
+
+  .bagle-img {
+    width: 34vw;
+    height: auto;
+  }
+
+  .bagle-contens-text {
+    width: 100%;
+    height: auto;
+  }
+
+  .bagle-contens-text p {
+    font-size: 1.2rem;
+  }
+
+  .bagle-contents-num {
+    font-size: 1.4rem;
+  }
+
+  .bagle-contens-name {
+    font-size: 1.6rem;
+  }
+
+  .bagle-contents-title {
+    margin: 3rem 0 4.625rem 0;
+  }
+}
+/* タッチデバイスのhover削除 */
+@media (hover: none) {
+  .btn-inner:hover {
+    color: #543618;
+    background: #fff7ec;
+  }
+  .btn-inner:hover .bagle-btn {
+    color: #6c5c53;
+  }
+  .btn-inner:hover .bagle-btn-svg {
+    stroke: #333333;
+    fill: #cbac9b;
+    transform: none;
+  }
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -461,6 +517,7 @@ const isMounted = useMounted();
     margin: 3rem 0 4.625rem 0;
   }
 }
+
 /* タッチデバイスのhover削除 */
 @media (hover: none) {
   .btn-inner:hover {

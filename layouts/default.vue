@@ -363,6 +363,56 @@ const { scrollTo } = useScrollTo();
 /* タブレット対応：744px~1024px
 ============================================== */
 @media screen and (min-width: 744px) and (max-width: 1024px) {
+  .footer-inner {
+    /* display: none; */
+    overflow: hidden;
+    padding: 6.25rem 0 0 0;
+  }
+
+  .footer-nav-inner {
+    align-items: center;
+    gap: 4rem;
+    padding: 0 6rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-nav span:first-of-type::after {
+    width: 20%;
+  }
+
+  .footer-nav-num {
+    padding-right: 2.2rem;
+    margin: unset;
+  }
+
+  .footer-img {
+    width: 30%;
+    height: 30%;
+    position: relative;
+    right: 4%;
+  }
+
+  .footer-sms span {
+    font-size: 1rem;
+  }
+
+  .policy-inner {
+    padding: unset;
+    flex-direction: column;
+    margin-bottom: 4rem;
+  }
+
+  .policy-right {
+    margin-bottom: 2rem;
+  }
+
+  .bigtext-inner {
+    align-items: center;
+  }
+
+  .bigtext-inner span {
+    font-size: 5rem;
+  }
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -374,7 +424,6 @@ const { scrollTo } = useScrollTo();
   }
 
   .footer-inner {
-    /* display: none; */
     overflow: hidden;
     padding: 6.25rem 0 0 0;
   }
@@ -382,7 +431,7 @@ const { scrollTo } = useScrollTo();
   .footer-nav-inner {
     flex-direction: column;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
   }
 
   .footer-img {
@@ -401,7 +450,7 @@ const { scrollTo } = useScrollTo();
   }
 
   .bigtext-inner {
-    align-items: center;
+    text-align: center;
   }
 
   .bigtext-inner span {

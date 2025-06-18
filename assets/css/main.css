@@ -158,6 +158,39 @@ h3 {
 /* タブレット対応：744px~1024px
 ============================================== */
 @media screen and (min-width: 744px) and (max-width: 1024px) {
+  .title-inner {
+    margin-bottom: 2.5rem;
+  }
+
+  .title-inner h1 {
+    font-size: 2.8rem;
+  }
+
+  .title-inner spna {
+    font-size: 1.4rem;
+  }
+
+  .title-inner span::after {
+    width: 18px;
+  }
+
+  .contens-inner {
+    width: 68%;
+  }
+
+  .contens-inner p {
+    font-size: 1rem;
+    line-height: 2.4rem;
+  }
+
+  .contens-inner h2 {
+    font-size: 2rem;
+    margin: unset;
+  }
+
+  .contens-sub-title span {
+    font-size: 0.8rem;
+  }
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝

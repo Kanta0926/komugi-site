@@ -358,6 +358,74 @@ onMounted(() => {
 /* タブレット対応：744px~1024px
 ============================================== */
 @media screen and (min-width: 744px) and (max-width: 1024px) {
+  .contens-inner {
+    margin: 0 auto 6.125rem;
+  }
+
+  .access-inner {
+    padding: 6.25rem 0 5rem 0;
+  }
+
+  .access-parallax {
+    height: 32vh;
+  }
+
+  .bg-text-inner {
+    /* display: none; */
+    font-size: 9.2rem;
+    top: 20.5%;
+    left: -4%;
+    filter: blur(4px);
+  }
+
+  .access-img-pic {
+    transform: translateY(calc(var(--parallax-y, 0px) * -2)) scale(1.4);
+  }
+
+  .contens-inner {
+    flex-direction: column;
+    width: 74%;
+    gap: 6.4rem;
+  }
+
+  .store-inner {
+    width: 100%;
+    margin: unset;
+  }
+
+  .store-text {
+    font-size: 1.25rem;
+    margin-bottom: 3.75rem;
+  }
+
+  .day-inner {
+    width: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .day-text {
+    width: 100%;
+  }
+
+  .day-inner iframe {
+    margin-top: 6.125rem;
+  }
+
+  .map-inner {
+    width: 74%;
+    height: 34vh;
+    margin: 0 auto;
+  }
+
+  .map-inner iframe {
+    height: 34vh;
+  }
+
+  .btn-inner {
+    padding: 0.88rem 1rem;
+  }
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝

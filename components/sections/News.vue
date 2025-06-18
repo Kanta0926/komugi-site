@@ -12,6 +12,8 @@ const { data: posts } = await useFetch("/api/posts");
 
 // SP時のHTML変更処理
 const isMobile = useMediaQuery("(max-width: 743px)");
+const isTablet = useMediaQuery("(min-width: 744px) and (max-width: 1024px)");
+const isPC = useMediaQuery("(min-width: 1025px)");
 const isMounted = useMounted();
 
 // Swiperの処理
@@ -61,6 +63,41 @@ const onSwiper = (swiper: any) => {
           </SwiperSlide>
         </Swiper>
       </div>
+
+      <!-- TB表示 -->
+      <div
+        v-else-if="isMounted && isTablet"
+        v-entry
+        class="contens-inner fade-in"
+      >
+        <Swiper
+          class="swiper-inner"
+          ref="swiperRef"
+          :slides-per-view="'auto'"
+          :centeredSlides="true"
+          @swiper="onSwiper"
+        >
+          <SwiperSlide v-for="post in posts" :key="post.id" class="news-slide">
+            <NuxtLink :to="`/news/${post.id}`" class="news-item">
+              <img
+                :src="
+                  post._embedded?.['wp:featuredmedia']?.[0]?.media_details
+                    ?.sizes?.medium?.source_url ??
+                  post._embedded?.['wp:featuredmedia']?.[0]?.source_url
+                "
+                alt="記事サムネイル"
+                class="thumbnail"
+              />
+
+              <p class="date">
+                {{ new Date(post.date).toLocaleDateString() }}
+              </p>
+              <h3 class="title" v-html="post.title.rendered" />
+            </NuxtLink>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
       <!-- RESTで取得 -->
       <!-- PC表示 -->
       <div v-else v-entry class="contens-inner fade-in">
@@ -149,6 +186,45 @@ const onSwiper = (swiper: any) => {
 /* タブレット対応：744px~1024px
 ============================================== */
 @media screen and (min-width: 744px) and (max-width: 1024px) {
+  .sec-inner {
+    overflow: hidden;
+  }
+
+  .news-inner {
+    padding: 6.25rem 0;
+  }
+
+  .contens-inner {
+    width: 96%;
+    margin: unset;
+    margin-left: 0.8rem;
+  }
+
+  .swiper-slide {
+    width: 84%;
+    margin-right: 2.5rem;
+  }
+
+  .news-item {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: 32vh;
+  }
+
+  .date {
+    font-size: 1.2rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -189,10 +265,6 @@ const onSwiper = (swiper: any) => {
 
 /* タッチデバイスのhover削除 */
 @media (hover: none) {
-  .news-item {
-    transition: none;
-    transform: none;
-  }
   .news-item:hover {
     transform: none;
     opacity: 1;

@@ -73,10 +73,7 @@ onUnmounted(() => {
             }"
             class="parallax-img2"
           >
-            <img
-              src="/images/aldward-castillo-bPqMD7uSrJg-unsplash.jpg"
-              alt=""
-            />
+            <img src="/images/About02-SP.webp" alt="" />
           </div>
         </figure>
 

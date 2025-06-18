@@ -142,4 +142,76 @@ function formatDate(dateStr: string) {
   stroke: #ffff;
   transform: translate(4px, -4px);
 }
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+  .post-inner {
+    overflow: hidden;
+    width: 76%;
+    text-align: center;
+  }
+
+  .post-inner h1 {
+    overflow: hidden;
+    width: 84%;
+  }
+
+  .post-image {
+    width: 24rem;
+    height: auto;
+  }
+
+  .post-content {
+    text-align: center;
+  }
+
+  .post-content p {
+    text-align: center;
+  }
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
+  .post-inner {
+    overflow: hidden;
+    width: 84%;
+  }
+
+  .post-inner h1 {
+    overflow: hidden;
+    width: 84%;
+    padding: 3.75rem 0 5rem 0;
+  }
+
+  .post-image {
+    width: 24rem;
+    height: auto;
+  }
+
+  .post-content p {
+    text-align: center;
+  }
+}
+
+/* タッチデバイスのhover削除 */
+@media (hover: none) {
+  .btn-inner:hover {
+    color: #543618;
+    background: #fff7ec;
+  }
+
+  .btn-inner:hover .post-btn {
+    color: #6c5c53;
+  }
+
+  .btn-inner:hover .post-btn-svg {
+    stroke: #333333;
+    fill: #cbac9b;
+    transform: none;
+  }
+}
 </style>

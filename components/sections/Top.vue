@@ -415,6 +415,45 @@ onMounted(() => {
 /* タブレット対応：744px~1024px
 ============================================== */
 @media screen and (min-width: 744px) and (max-width: 1024px) {
+  .logo-inner {
+    padding: 0 2.375rem;
+  }
+
+  .logo-inner a {
+    top: 32rem;
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .logo-inner div {
+    width: 8rem;
+    height: auto;
+  }
+
+  .bottom-inner {
+    font-size: 1rem;
+  }
+
+  .bottom-inner p {
+    /* margin: unset; */
+  }
+
+  .scroll-inner {
+    width: 18rem;
+  }
+
+  .bottom-map {
+    display: none;
+  }
+
+  .bottom-daily .svg-icon {
+    stroke-width: 0.2px;
+  }
+
+  .svg-insta {
+    stroke-width: 2px;
+    margin: unset;
+  }
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝

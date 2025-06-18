@@ -30,6 +30,7 @@ onUnmounted(() => {
         <h1 lang="en">About</h1>
       </header>
       <div v-entry class="contens-inner fade-in">
+        <!-- parallx1 -->
         <figure
           :style="{
             transform: `translateY(${scrollY * -0.1}px) scale(1)`,
@@ -63,6 +64,7 @@ onUnmounted(() => {
           </p>
         </div>
 
+        <!-- parallax2 -->
         <!-- SP表示 -->
         <figure v-if="isMounted && isMobile" class="parallax parallax-inner2">
           <div
@@ -92,6 +94,7 @@ onUnmounted(() => {
       </div>
 
       <div v-entry class="contens-inner2 fade-in">
+        <!-- parallax3 -->
         <!-- SP表示 -->
         <figure v-if="isMounted && isMobile" class="parallax parallax-inner3">
           <div
@@ -116,6 +119,7 @@ onUnmounted(() => {
           </div>
         </figure>
 
+        <!-- parallax4 -->
         <!-- SP表示 -->
         <figure
           v-if="isMounted && isMobile"
@@ -142,6 +146,7 @@ onUnmounted(() => {
           </div>
         </figure>
 
+        <!-- parallax5 -->
         <!-- SP表示 -->
         <figure v-if="isMounted && isMobile" class="parallax parallax-inner5">
           <div
@@ -312,6 +317,139 @@ onUnmounted(() => {
 /* タブレット対応：744px~1024px
 ============================================== */
 @media screen and (min-width: 744px) and (max-width: 1024px) {
+  .sec-inner {
+    overflow: hidden;
+  }
+
+  .about-inner {
+    margin: unset;
+    /* margin-top: 10rem; */
+    padding: 6.25rem 0 18.25rem 0;
+  }
+
+  .title-inner {
+    z-index: 100;
+  }
+
+  .contens-inner {
+    margin-bottom: 30rem;
+    flex-flow: initial;
+  }
+
+  .contens-inner p {
+    /* font-size: 1rem;
+    line-height: 2.4rem; */
+  }
+
+  .contens-inner h2 {
+    font-size: 2rem;
+    margin: unset;
+  }
+
+  .contents-text {
+    width: 74%;
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 500;
+  }
+
+  .contents-text::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 120%;
+    height: 60rem;
+    border-radius: 10%;
+    filter: blur(20px);
+    background: #ffff;
+    opacity: 0.5;
+  }
+
+  .contens-sub-title span {
+    font-size: 0.8rem;
+  }
+
+  .parallax {
+    /* height: 40vh; */
+    height: 32vh;
+    width: 14vw;
+    margin: unset;
+    /* padding: unset; */
+    /* padding: 2rem 1rem; */
+  }
+
+  .parallax-inner1 {
+    /* margin-left: 9rem; */
+    /* width: 14vw; */
+    border-radius: 0 8px 8px 0;
+  }
+
+  .parallax-img1 {
+    top: 28%;
+    transform: scale(2);
+  }
+
+  .parallax-inner2 {
+    /* margin-right: 9rem; */
+    border-radius: 8px 0 0 8px;
+  }
+
+  .parallax-img2 {
+    top: 40%;
+    width: 120%;
+    /* left: 0%; */
+    right: 20%;
+  }
+
+  .contens-inner2 {
+    z-index: -100;
+  }
+
+  .parallax-inner3 {
+    margin: 1rem;
+    height: 20vw;
+    width: 20vw;
+    position: relative;
+    right: 2%;
+  }
+
+  .parallax-img3 {
+    width: 120%;
+
+    left: 5%;
+    top: 160%;
+  }
+
+  .parallax-inner4 {
+    width: 18vw;
+    height: 22vw;
+    position: relative;
+    right: 4% 15.7188px;
+    top: 68rem;
+  }
+
+  .parallax-img4 {
+    top: -10%;
+  }
+
+  .parallax-inner5 {
+    top: 12rem;
+    height: 48vw;
+    position: relative;
+  }
+
+  .parallax-img5 {
+    top: 40%;
+    width: 180%;
+  }
 }
 
 /* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -448,7 +586,7 @@ onUnmounted(() => {
   }
 
   .parallax-img5 {
-    top: 98%;
+    top: 82%;
   }
 }
 </style>

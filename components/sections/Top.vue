@@ -2,7 +2,7 @@
 import { inject, onMounted, ref } from "vue";
 
 import titleText from "@/assets/images/Group14.png";
-import logo from "@/assets/images/小麦好日ロゴ05.png";
+import logo from "@/assets/images/logo05.png";
 
 // icon
 import MapIcon from "@/assets/icons/ph_map-pin-light.svg";

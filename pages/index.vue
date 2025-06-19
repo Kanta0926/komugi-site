@@ -7,6 +7,7 @@ import Feature from "@/components/sections/Feature.vue";
 import Bagle from "@/components/sections/Bagle.vue";
 import Access from "@/components/sections/Access.vue";
 import News from "@/components/sections/News.vue";
+// import Loading from "@/components/sections/Loading.vue";
 
 import { useRoute, useNuxtApp } from "#app";
 
@@ -37,6 +38,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <!-- <Loading></Loading> -->
   <Top></Top>
   <About></About>
   <Feature></Feature>

@@ -15,33 +15,6 @@
 ![](https://img.shields.io/badge/Plugins-Swiper-informational?logo=swiper&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Plugins-Gsap-informational?logo=greensock&logoColor=white&color=2bbc8a)
 
-  <!-- フレームワーク -->
-  <!-- Nuxt -->
-
-<!-- vue -->
-
-<!-- node -->
-
-<!-- ソフトウェア-->
-<!-- photoshop -->
-
-<!-- illustrator -->
-
-<!-- figma -->
-
-<!-- CMS -->
-<!-- WP -->
-<!-- 管理ツール -->
-<!-- github -->
-
-<!-- npm -->
-
-
-<!-- ライブラリ -->
-<!-- GSAP -->
-
-<!-- lenis -->
-<!-- swiper -->
 
 
 ## 目次
@@ -49,10 +22,8 @@
 1. [プロジェクト](#プロジェクト)
 2. [作成意図](#作成意図)
 3. [プロジェクト概要](#プロジェクト概要)
-4. [環境](#環境)
-5. [ディレクトリ構成](#ディレクトリ構成)
-6. [開発環境構築](#開発環境構築)
-7. [トラブルシューティング](#トラブルシューティング)
+4. [ディレクトリ構成](#ディレクトリ構成)
+5. [今後の修正](#今後の修正)
 
 ## プロジェクト名
 
@@ -87,32 +58,55 @@ APIを通じて、記事データの取得を勉強できました。
 
 <details>
 <summary>クリックして開く</summary>
-・トップ
+・トップ<br>
 画面が移り変わる仕様。
 ロゴはillustratorにて作成しました。
 内容は一度、figmaで作成したものを元に作成いたしました。
-
-・About
+<br>
+・About<br>
 GSAP での簡易的なパララックスにしてます。
-
-・Feature
+<br>
+・Feature<br>
 背景をパララックスにし、トグルで内容の詳細を確認できる内容となってます。
-
-・Bagle
-Swiper でカルーセルのようにし、
-正面を見やすいよう整形。
+<br>
+・Bagle<br>
+Swiper でカルーセルのようにし、正面を見やすいよう整形。
 ベーグルは、フリー画像から個々のベーグルへ phothoshop で加工を行いました。
-
-・Access
+<br>
+・Access<br>
 GoogleMAP と、GoogleCalendar を埋め込んでます。
 背景テキストが切り替わるような仕様になってます。
-
-・News
+<br>
+・News<br>
 WordPress の記事を API 経由で表示する内容となってます。
-
-・header, footer
+<br>
+・header, footer<br>
 ヘッダーはトップセクション以下で表示にし、
 lenis でスムーススクロールするような内容となってます。
-
+<br>
 </details>
+
+## ディレクトリ構成
+\komugi-site
+├── app.vue
+├── assets
+├── components
+├── composables
+├── layouts
+├── node_modules
+├── nuxt.config.ts
+├── package-lock.json
+├── package.json
+├── pages
+├── plugins
+├── public
+├── README.md
+├── server
+├── tsconfig.json
+└── types
+
+## 今後の修正
+1. サイトを軽くする、おそらくlenisがSP時重たくしている
+2. TOPからAboutへの遷移の仕様を変更する→Topをfixのような見た目にし、Aboutが上がってくる感じ
+3. メタタグを入れる
 <p align="right">(<a href="#top">トップへ</a>)</p>

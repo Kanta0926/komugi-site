@@ -6,7 +6,7 @@ import logo from "@/assets/images/logo07.svg";
   <section id="loading" class="sec-inner">
     <div class="loading-inner">
       <div><logo class="logo-img"></logo></div>
-      <div><span>KOMUGI KOUJITU</span></div>
+      <div class="loading-title"><span>KOMUGI KOUJITU</span></div>
     </div>
   </section>
 </template>
@@ -46,7 +46,7 @@ import logo from "@/assets/images/logo07.svg";
   }
 }
 
-.loading-inner span {
+.loading-title span {
   font-size: 4rem;
   color: #ffff;
   font-family: "Gothic A1";
@@ -58,6 +58,34 @@ import logo from "@/assets/images/logo07.svg";
 @keyframes fadeIn {
   to {
     opacity: 1;
+  }
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* タブレット対応：744px~1024px
+============================================== */
+@media screen and (min-width: 744px) and (max-width: 1024px) {
+  .logo-img {
+    width: 32vw;
+    height: 32vw;
+  }
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+/* SP、スマホ対応：743px以下
+============================================== */
+@media screen and (max-width: 743px) {
+  .logo-img {
+    width: 32vw;
+    height: 32vw;
+  }
+
+  .loading-title {
+    text-align: center;
+  }
+
+  .loading-title span {
+    font-size: 2rem;
   }
 }
 </style>

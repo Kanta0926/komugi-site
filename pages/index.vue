@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, provide } from "vue";
+import { ref, provide, onMounted, nextTick } from "vue";
 
 import Top from "@/components/sections/Top.vue";
 import About from "@/components/sections/About.vue";
@@ -8,25 +8,27 @@ import Bagle from "@/components/sections/Bagle.vue";
 import Access from "@/components/sections/Access.vue";
 import News from "@/components/sections/News.vue";
 
-import { useRoute } from "#app";
-import { useNuxtApp, onMounted, nextTick } from "vue";
+import { useRoute, useNuxtApp } from "#app";
 
 const route = useRoute();
-const { $lenis } = useNuxtApp();
 
 onMounted(async () => {
+  const { $lenis } = useNuxtApp();
+
+  // URLのクエリにscrolltoがあるかの判断
   const scrollTarget = route.query.scrollTo as string | undefined;
   if (scrollTarget) {
+    // ページ描画遅延
     await nextTick();
 
     const el = document.getElementById(scrollTarget);
+    // 描画安定のため300s遅延
     if (el && $lenis) {
-      // 遷移後に描画が安定するのを少し待つ
       setTimeout(() => {
         $lenis.scrollTo(el, {
           offset: 0,
           duration: 1.2,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         });
       }, 300);
     }

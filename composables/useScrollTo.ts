@@ -17,26 +17,28 @@ export const useScrollTo = (): {
   const scrollTo = async (target, options = {}) => {
     if (!$lenis) return;
 
-    // すでにTOPならそのままスクロール
-    if (process.client && route.path === "/") {
-      const element = document.querySelector(target);
-      if (!element) return;
+    const id = target.replace("#", "");
+    const selector = `#${id}`;
 
-      $lenis.scrollTo(element, {
-        offset: options.offset ?? 0,
-        duration: options.duration ?? 1.2,
-        easing:
-          options.easing ??
-          ((t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))),
-      });
+    if (process.client && route.path === "/") {
+      // 現在のページにいる場合のスクロール
+      const el = document.querySelector(selector);
+      if (el) {
+        $lenis.scrollTo(el, {
+          offset: options.offset ?? 0,
+          duration: options.duration ?? 1.2,
+          easing:
+            options.easing ??
+            ((t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))),
+        });
+      }
     } else {
-      // TOPに遷移＋クエリ付き（例: /?scrollTo=news）
+      // TOPページ外にいる場合の遷移＋スクロール
       await router.push({
         path: "/",
-        query: { scrollTo: target.replace("#", "") },
+        query: { scrollTo: id },
       });
     }
   };
-
   return { scrollTo };
 };

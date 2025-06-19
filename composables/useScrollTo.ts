@@ -2,7 +2,7 @@ import { useNuxtApp, useRouter, useRoute } from "#app";
 
 export const useScrollTo = (): {
   scrollTo: (
-    target: string | HTMLElement,
+    target: string,
     options?: {
       offset?: number;
       duration?: number;
@@ -14,40 +14,12 @@ export const useScrollTo = (): {
   const router = useRouter();
   const route = useRoute();
 
-  const scrollTo = async (
-    target: string | HTMLElement,
-    options: {
-      offset?: number;
-      duration?: number;
-      easing?: (t: number) => number;
-    } = {}
-  ) => {
+  const scrollTo = async (target, options = {}) => {
     if (!$lenis) return;
 
-    // トップページ以外なら戻ってからスクロール処理
-    if (process.client && route.path !== "/") {
-      await router.push("/");
-      await nextTick();
-
-      // 遷移後のDOM描画を待つ（タイミングが合わない場合があるため）
-      requestAnimationFrame(() => {
-        const element =
-          typeof target === "string" ? document.querySelector(target) : target;
-
-        if (!element) return;
-
-        $lenis.scrollTo(element, {
-          offset: options.offset ?? 0,
-          duration: options.duration ?? 1.2,
-          easing:
-            options.easing ??
-            ((t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))),
-        });
-      });
-    } else {
-      const element =
-        typeof target === "string" ? document.querySelector(target) : target;
-
+    // すでにTOPならそのままスクロール
+    if (process.client && route.path === "/") {
+      const element = document.querySelector(target);
       if (!element) return;
 
       $lenis.scrollTo(element, {
@@ -56,6 +28,12 @@ export const useScrollTo = (): {
         easing:
           options.easing ??
           ((t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))),
+      });
+    } else {
+      // TOPに遷移＋クエリ付き（例: /?scrollTo=news）
+      await router.push({
+        path: "/",
+        query: { scrollTo: target.replace("#", "") },
       });
     }
   };

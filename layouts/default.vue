@@ -39,7 +39,7 @@ const { scrollTo } = useScrollTo();
       </a> -->
 
         <nav class="header-nav">
-          <a @click.prevent="() => scrollTo('#About')"> ABOUT </a>
+          <a @click="scrollTo('#About')">About</a>
           <a @click.prevent="() => scrollTo('#Feature')"> Feature </a>
           <a @click.prevent="() => scrollTo('#Bagle')"> Bagle </a>
           <a @click.prevent="() => scrollTo('#News')"> News </a>
